@@ -41,27 +41,32 @@ public class ET: ObservableObject {
     
     private(set) public var calibration = Calibration()
     public func makeCalibration() -> Calibration {
-        return Calibration(self.client)
+        self.calibration = Calibration(self.client)
+        return self.calibration
     }
     
     private(set) public var control: Control = Control()
     public func makeControl() -> Control {
-        return Control(self.client)
+        self.control = Control(self.client)
+        return self.control
     }
     
     private(set) public var gaze: Gaze = Gaze()
     public func makeGaze() -> Gaze {
-        return Gaze(self.client)
+        self.gaze = Gaze(self.client)
+        return self.gaze
     }
     
     private(set) public var positioning: Positioning = Positioning()
     public func makePositioning() -> Positioning {
-        return Positioning(self.client)
+        self.positioning = Positioning(self.client)
+        return self.positioning
     }
     
     private(set) public var version: Version = Version()
     public func makeVersion() -> Version {
-        return Version(self.client)
+        self.version = Version(self.client)
+        return self.version
     }
     
     private(set) public var stream: MjpegStream = MjpegStream()

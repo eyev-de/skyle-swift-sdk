@@ -25,13 +25,29 @@ final class SkyleSwiftSDKTests: XCTestCase {
     func testCalibration() {
         let exp = XCTestExpectation(description: #function)
         let calibration = self.et.calibration
+        self.et.$grpcError.sink(receiveValue: { error in
+            guard let error = error else { return }
+            print(error)
+        }).store(in: &self.cancellables)
+        calibration.$state.sink(receiveValue: { state in
+            print(state)
+        }).store(in: &self.cancellables)
         calibration.$currentPoint.sink { point in
             if point == (ET.Calibration.Points.Five.count - 1) {
                 exp.fulfill()
             }
         }.store(in: &self.cancellables)
+        calibration.$point.sink { point in
+            print(point)
+        }.store(in: &self.cancellables)
         
-        calibration.start(points: ET.Calibration.Points.Five)
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            calibration.start(points: ET.Calibration.Points.Five, stopHID: true)
+        }.store(in: &self.cancellables)
+        
         
         wait(for: [exp], timeout: 100)
     }
@@ -43,7 +59,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
             XCTAssert(isStreaming)
             exp.fulfill()
         }.store(in: &self.cancellables)
-        control.stream = true
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            control.stream = true
+        }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 2)
     }
     
@@ -54,7 +75,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
             XCTAssert(isPaused)
             exp.fulfill()
         }.store(in: &self.cancellables)
-        control.pause = true
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            control.pause = true
+        }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 2)
     }
     
@@ -65,7 +91,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
             XCTAssert(!isPaused)
             exp.fulfill()
         }.store(in: &self.cancellables)
-        control.pause = false
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            control.pause = false
+        }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 2)
     }
     
@@ -76,7 +107,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
             XCTAssert(isPauseEnabled)
             exp.fulfill()
         }.store(in: &self.cancellables)
-        control.enablePause = true
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            control.enablePause = true
+        }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 2)
     }
     
@@ -87,7 +123,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
             XCTAssert(!isPauseEnabled)
             exp.fulfill()
         }.store(in: &self.cancellables)
-        control.enablePause = false
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            control.enablePause = false
+        }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 2)
     }
     
@@ -98,7 +139,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
             XCTAssert(isStandbyEnabled)
             exp.fulfill()
         }.store(in: &self.cancellables)
-        control.enableStandby = true
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            control.enableStandby = true
+        }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 2)
     }
     
@@ -109,7 +155,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
             XCTAssert(!isStandbyEnabled)
             exp.fulfill()
         }.store(in: &self.cancellables)
-        control.enableStandby = false
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            control.enableStandby = false
+        }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 2)
     }
     
@@ -126,7 +177,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
             XCTAssert(versions.skyleType > 0)
             exp.fulfill()
         }.store(in: &self.cancellables)
-        version.get()
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            version.get()
+        }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 2)
     }
     
@@ -139,6 +195,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
         }.store(in: &self.cancellables)
         gaze.$state.sink { state in
             XCTAssert(state == .running)
+        }.store(in: &self.cancellables)
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            gaze.start()
         }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 5)
     }
@@ -153,6 +215,12 @@ final class SkyleSwiftSDKTests: XCTestCase {
         }.store(in: &self.cancellables)
         positioning.$state.sink { state in
             XCTAssert(state == .running)
+        }.store(in: &self.cancellables)
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            positioning.start()
         }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 5)
     }

@@ -64,6 +64,8 @@ extension ET {
                                 self.prevPointCount = 0
                                 self.currentPoint = 0
                                 self.point = Point(x: 0, y: 0)
+                                self.quality = 0
+                                self.qualities = []
                             }
                         }
                     }
