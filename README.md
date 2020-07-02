@@ -102,6 +102,8 @@ PlaygroundPage.current.setLiveView(ContentView())
 
 ```
 
+The SwiftUI part will work in an iPadOS >= 13 app (on device and in the Simulator) and a Mac Catalyst app.
+
 # Swift Package Manager
 
 You can also include SkyleSwiftSDK with SPM:
