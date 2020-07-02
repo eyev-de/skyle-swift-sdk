@@ -1,0 +1,3 @@
+[submodule "Skyle.proto"]
+	path = Skyle.proto
+	url = https://github.com/eyev-de/Skyle.proto.git
