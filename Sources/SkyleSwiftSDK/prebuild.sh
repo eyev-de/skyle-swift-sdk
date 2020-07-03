@@ -23,8 +23,8 @@ else
 fi
 
 echo "[$(timestamp)]: Generating files..."
-protoc ${PROJECT_DIR}/Skyle.proto/Skyle.proto \
---proto_path=${PROJECT_DIR}/Skyle.proto/ \
+protoc ${PROJECT_DIR}/Skyle_proto/Skyle.proto \
+--proto_path=${PROJECT_DIR}/Skyle_proto/ \
 --plugin=./.build/release/protoc-gen-swift \
 --swift_opt=Visibility=Public \
 --swift_out=${PROJECT_DIR}/Sources/SkyleSwiftSDK/Protos/ \
