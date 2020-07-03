@@ -2,7 +2,7 @@
 
 This is the official swift SDK for the [Skyle eye-tracker](https://eyev.de/skyle) sold by the eyeV GmbH. The SDK is based on the [Skyle gRPC protos](https://github.com/eyev-de/Skyle.proto) and [Apples Combine framework](https://developer.apple.com/documentation/combine).
 
-It works on >= macOS 10.15 Catalina and >= iOS / iPadOS 13
+It works on >= macOS 10.15 Catalina and >= iPadOS 13
 
 # Usage
 
@@ -18,6 +18,7 @@ Just follow the install instructions and execute the following:
 arena https://github.com/eyev-de/skyle-swift-sdk@from:1.0.0
 ```
 After that paste the following code into the Playground file, connect Skyle to your computer and start the Playground.
+The SwiftUI part will work in an iPadOS >= 13 app (on device and in the Simulator) and a Mac Catalyst app.
 
 ```swift
 
