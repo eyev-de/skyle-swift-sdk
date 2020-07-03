@@ -38,11 +38,6 @@ extension ET {
         private var prevPointCount = 0
         
         private func run() {
-            self.prevPointCount = 0
-            self.currentPoint = 0
-            self.point = Point(x: 0, y: 0)
-            self.quality = 0
-            self.qualities = []
             DispatchQueue.global().async {
                 guard let client = self.client else {
                     return
@@ -67,6 +62,11 @@ extension ET {
                                 self.state = .finished
                                 self.kill()
                             }
+                            self.prevPointCount = 0
+                            self.currentPoint = 0
+                            self.point = Point(x: 0, y: 0)
+                            self.quality = 0
+                            self.qualities = []
                         }
                     }
                 }
@@ -80,8 +80,8 @@ extension ET {
                     }
                 }
                 DispatchQueue.main.async {
-                    if self.state != .finished {
-                        self.state = .finished
+                    if self.state != .none {
+                        self.state = .none
                     }
                 }
             }

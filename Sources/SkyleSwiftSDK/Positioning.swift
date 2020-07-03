@@ -62,8 +62,8 @@ extension ET {
                         }
                     }
                     DispatchQueue.main.async {
-                        if self.state != .finished {
-                            self.state = .finished
+                        if self.state != .none {
+                            self.state = .none
                         }
                     }
                 }
