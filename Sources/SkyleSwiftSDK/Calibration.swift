@@ -80,7 +80,9 @@ extension ET {
                     }
                 }
                 DispatchQueue.main.async {
-                    self.state = .finished
+                    if self.state != .finished {
+                        self.state = .finished
+                    }
                 }
             }
             
@@ -124,7 +126,9 @@ extension ET.Calibration {
             self?.control = Skyle_calibControlMessages.with {
                 $0.calibControl.abort = true
             }
-            self?.state = .finished
+            if self?.state != .finished {
+                self?.state = .finished
+            }
             self?.kill()
         }
     }
