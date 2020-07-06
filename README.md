@@ -103,6 +103,8 @@ PlaygroundPage.current.setLiveView(ContentView())
 
 ```
 
+![](misc/SkyleSwiftSDKDemo.webm)
+
 # Swift Package Manager
 
 You can also include SkyleSwiftSDK with SPM:
