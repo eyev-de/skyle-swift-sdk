@@ -103,7 +103,7 @@ PlaygroundPage.current.setLiveView(ContentView())
 
 ```
 
-![](misc/SkyleSwiftSDKDemo.webm)
+![](misc/SkyleSwiftSDKDemo.gif)
 
 # Swift Package Manager
 
