@@ -10,6 +10,23 @@ import Foundation
 import Combine
 import GRPC
 
+//extension Skyle_calibControlMessages: Codable {
+//    private enum CodingKeys: String, CodingKey {
+//        case id, name, skill
+//    }
+//
+//    public init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        self.id = try container.decode(Int32.self, forKey: .id)
+//        self.name = try container.decode(String.self, forKey: .name)
+//        self.skill = try container.decode(Skyle_calibControlMessages.Skill.self, forKey: .skill)
+//    }
+//
+//    public func encode(to encoder: Encoder) throws {
+//
+//    }
+//}
+
 extension ET {
     public class Calibration: ObservableObject {
         
@@ -34,42 +51,40 @@ extension ET {
         
         private var call: BidirectionalStreamingCall<Skyle_calibControlMessages, Skyle_CalibMessages>?
         private var cancellable: AnyCancellable?
-        
-        private var prevPointCount = 0
-        
+                
         private func run() {
             DispatchQueue.global().async {
                 guard let client = self.client else {
                     return
                 }
                 self.call = client.calibrate { calib in
-                    let p = Int(calib.calibPoint.count)
-                    guard p >= 0, p < self.type.count else {
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        if self.prevPointCount <= p {
-                            self.currentPoint = self.type[p]
-                            self.point = SkyleSwiftSDK.Point(x: Double(calib.calibPoint.currentPoint.x), y: Double(calib.calibPoint.currentPoint.y))
-                            self.prevPointCount = p
-                        } else {
-                            guard calib.calibQuality.qualitys.count > 0 else {
-                                return
+                    switch calib.message {
+                    case .calibControl(let control):
+                        DispatchQueue.main.async {
+                            if !control.calibrate {
+                                if self.state != .finished {
+                                    self.state = .finished
+                                }
                             }
-                            self.quality = calib.calibQuality.quality
-                            self.qualities = calib.calibQuality.qualitys
-                            if self.state != .finished {
-                                self.state = .finished
-                                self.kill()
-                            }
-                            self.prevPointCount = 0
-                            self.currentPoint = 0
-                            self.point = Point(x: 0, y: 0)
-                            self.quality = 0
-                            self.qualities = []
                         }
+                        break
+                    case .calibPoint(let point):
+                        DispatchQueue.main.async {
+                            self.currentPoint = Int(point.count)
+                            self.point = SkyleSwiftSDK.Point(x: Double(point.currentPoint.x), y: Double(point.currentPoint.y))
+                        }
+                        break
+                    case.calibQuality(let quality):
+                        DispatchQueue.main.async {
+                            self.quality = quality.quality
+                            self.qualities = quality.qualitys
+                        }
+                        break
+                    case .none:
+                        break
                     }
                 }
+                
             }
             
             self.call?.status.whenSuccess { status in
@@ -119,9 +134,6 @@ extension ET {
 
 extension ET.Calibration {
     public func stop() {
-        guard self.state != .finished else {
-            return
-        }
         DispatchQueue.main.async { [weak self] in
             self?.control = Skyle_calibControlMessages.with {
                 $0.calibControl.abort = true
@@ -137,7 +149,6 @@ extension ET.Calibration {
         guard self.state != .running, self.state != .connecting else {
             return
         }
-        self.prevPointCount = 0
         DispatchQueue.main.async {
             if self.state != .running {
                 self.state = .running

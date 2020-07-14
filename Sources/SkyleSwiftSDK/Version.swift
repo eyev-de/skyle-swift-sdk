@@ -43,9 +43,11 @@ extension ET {
             .sink(receiveCompletion: {
                 switch $0 {
                 case .failure(let status):
-                    print(status)
+//                    print(status)
+                    break
                 case .finished:
-                    print($0)
+//                    print($0)
+                    break
                 }
             }, receiveValue: { versions in
                 self.setVersions(versions: versions)

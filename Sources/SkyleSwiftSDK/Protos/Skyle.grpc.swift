@@ -39,6 +39,7 @@ public protocol Skyle_SkyleClientProtocol {
   func getProfiles(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions?, handler: @escaping (Skyle_Profile) -> Void) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile>
   func currentProfile(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions?) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile>
   func setProfile(_ request: Skyle_Profile, callOptions: CallOptions?) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage>
+  func deleteProfile(_ request: Skyle_Profile, callOptions: CallOptions?) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage>
 }
 
 public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
@@ -55,7 +56,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
     self.defaultCallOptions = defaultCallOptions
   }
 
-  /// Bidirectional streaming call to Calibrate
+  ///Used to calibrate for the current user. Streams in both directions with given message types. Client needs to close the stream when done
   ///
   /// Callers should use the `send` method on the returned object to send messages
   /// to the server. The caller should send an `.end` after the final message has been sent.
@@ -70,7 +71,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                                                handler: handler)
   }
 
-  /// Server streaming call to Positioning
+  ///Subscribe a stream sending eye positions and quality indicators to achieve good positioning of a user. Client needs to close the stream when done
   ///
   /// - Parameters:
   ///   - request: Request to send to Positioning.
@@ -84,7 +85,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                                         handler: handler)
   }
 
-  /// Server streaming call to Gaze
+  ///Subscribe a gaze stream, that sends coordinates of the current user gaze on a screen. Client needs to close the stream when done
   ///
   /// - Parameters:
   ///   - request: Request to send to Gaze.
@@ -98,7 +99,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                                         handler: handler)
   }
 
-  /// Unary call to GetButton
+  ///Unary call to get the button status
   ///
   /// - Parameters:
   ///   - request: Request to send to GetButton.
@@ -110,7 +111,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                               callOptions: callOptions ?? self.defaultCallOptions)
   }
 
-  /// Unary call to SetButton
+  ///Unary call to configure the button actions, answers with the resulting configuration
   ///
   /// - Parameters:
   ///   - request: Request to send to SetButton.
@@ -122,7 +123,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                               callOptions: callOptions ?? self.defaultCallOptions)
   }
 
-  /// Unary call to Configure
+  ///Unary call to get (OptionMessage -> empty) or set options (OptionMessage -> Options). Answers with the resulting options. Options are saved to the current user profile
   ///
   /// - Parameters:
   ///   - request: Request to send to Configure.
@@ -134,7 +135,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                               callOptions: callOptions ?? self.defaultCallOptions)
   }
 
-  /// Unary call to GetVersions
+  ///Unary call to get software versions
   ///
   /// - Parameters:
   ///   - request: Request to send to GetVersions.
@@ -146,7 +147,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                               callOptions: callOptions ?? self.defaultCallOptions)
   }
 
-  /// Server streaming call to GetProfiles
+  ///Subscribe a profile stream of all available profiles. Host ends stream when all results are sent
   ///
   /// - Parameters:
   ///   - request: Request to send to GetProfiles.
@@ -160,7 +161,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                                         handler: handler)
   }
 
-  /// Unary call to CurrentProfile
+  ///Unary call to get the current profile
   ///
   /// - Parameters:
   ///   - request: Request to send to CurrentProfile.
@@ -172,7 +173,7 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                               callOptions: callOptions ?? self.defaultCallOptions)
   }
 
-  /// Unary call to SetProfile
+  ///Unary call to set or create a profile. Answers with a status message (success or failure)
   ///
   /// - Parameters:
   ///   - request: Request to send to SetProfile.
@@ -184,20 +185,44 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                               callOptions: callOptions ?? self.defaultCallOptions)
   }
 
+  ///Unary call to delete a profile. Answers with a status message (success or failure)
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to DeleteProfile.
+  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func deleteProfile(_ request: Skyle_Profile, callOptions: CallOptions? = nil) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage> {
+    return self.makeUnaryCall(path: "/Skyle.Skyle/DeleteProfile",
+                              request: request,
+                              callOptions: callOptions ?? self.defaultCallOptions)
+  }
+
 }
 
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Skyle_SkyleProvider: CallHandlerProvider {
+  ///Used to calibrate for the current user. Streams in both directions with given message types. Client needs to close the stream when done
   func calibrate(context: StreamingResponseCallContext<Skyle_CalibMessages>) -> EventLoopFuture<(StreamEvent<Skyle_calibControlMessages>) -> Void>
+  ///Subscribe a stream sending eye positions and quality indicators to achieve good positioning of a user. Client needs to close the stream when done
   func positioning(request: SwiftProtobuf.Google_Protobuf_Empty, context: StreamingResponseCallContext<Skyle_PositioningMessage>) -> EventLoopFuture<GRPCStatus>
+  ///Subscribe a gaze stream, that sends coordinates of the current user gaze on a screen. Client needs to close the stream when done
   func gaze(request: SwiftProtobuf.Google_Protobuf_Empty, context: StreamingResponseCallContext<Skyle_Point>) -> EventLoopFuture<GRPCStatus>
+  ///Unary call to get the button status
   func getButton(request: SwiftProtobuf.Google_Protobuf_Empty, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_Button>
+  ///Unary call to configure the button actions, answers with the resulting configuration
   func setButton(request: Skyle_ButtonActions, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_ButtonActions>
+  ///Unary call to get (OptionMessage -> empty) or set options (OptionMessage -> Options). Answers with the resulting options. Options are saved to the current user profile
   func configure(request: Skyle_OptionMessage, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_Options>
+  ///Unary call to get software versions
   func getVersions(request: SwiftProtobuf.Google_Protobuf_Empty, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_DeviceVersions>
+  ///Subscribe a profile stream of all available profiles. Host ends stream when all results are sent
   func getProfiles(request: SwiftProtobuf.Google_Protobuf_Empty, context: StreamingResponseCallContext<Skyle_Profile>) -> EventLoopFuture<GRPCStatus>
+  ///Unary call to get the current profile
   func currentProfile(request: SwiftProtobuf.Google_Protobuf_Empty, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_Profile>
+  ///Unary call to set or create a profile. Answers with a status message (success or failure)
   func setProfile(request: Skyle_Profile, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_StatusMessage>
+  ///Unary call to delete a profile. Answers with a status message (success or failure)
+  func deleteProfile(request: Skyle_Profile, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_StatusMessage>
 }
 
 extension Skyle_SkyleProvider {
@@ -275,23 +300,34 @@ extension Skyle_SkyleProvider {
         }
       }
 
+    case "DeleteProfile":
+      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+        return { request in
+          self.deleteProfile(request: request, context: context)
+        }
+      }
+
     default: return nil
     }
   }
 }
 
 
-// Provides conformance to `GRPCPayload` for request and response messages
-extension Skyle_calibControlMessages: GRPCProtobufPayload {}
-extension Skyle_CalibMessages: GRPCProtobufPayload {}
-extension SwiftProtobuf.Google_Protobuf_Empty: GRPCProtobufPayload {}
-extension Skyle_PositioningMessage: GRPCProtobufPayload {}
-extension Skyle_Point: GRPCProtobufPayload {}
-extension Skyle_Button: GRPCProtobufPayload {}
-extension Skyle_ButtonActions: GRPCProtobufPayload {}
-extension Skyle_OptionMessage: GRPCProtobufPayload {}
-extension Skyle_Options: GRPCProtobufPayload {}
-extension Skyle_DeviceVersions: GRPCProtobufPayload {}
+// Provides conformance to `GRPCPayload`
 extension Skyle_Profile: GRPCProtobufPayload {}
 extension Skyle_StatusMessage: GRPCProtobufPayload {}
-
+extension Skyle_OptionMessage: GRPCProtobufPayload {}
+extension Skyle_calibControlMessages: GRPCProtobufPayload {}
+extension Skyle_CalibControl: GRPCProtobufPayload {}
+extension Skyle_ScreenResolution: GRPCProtobufPayload {}
+extension Skyle_CalibImprove: GRPCProtobufPayload {}
+extension Skyle_CalibMessages: GRPCProtobufPayload {}
+extension Skyle_Point: GRPCProtobufPayload {}
+extension Skyle_CalibPoint: GRPCProtobufPayload {}
+extension Skyle_CalibQuality: GRPCProtobufPayload {}
+extension Skyle_PositioningMessage: GRPCProtobufPayload {}
+extension Skyle_Options: GRPCProtobufPayload {}
+extension Skyle_DeviceVersions: GRPCProtobufPayload {}
+extension Skyle_ButtonActions: GRPCProtobufPayload {}
+extension Skyle_Button: GRPCProtobufPayload {}
+extension Skyle_FilterOptions: GRPCProtobufPayload {}

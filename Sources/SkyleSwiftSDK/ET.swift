@@ -63,6 +63,12 @@ public class ET: ObservableObject {
         return self.positioning
     }
     
+    private(set) public var profiles: Profiles = Profiles()
+    public func makeProfiles() -> Profiles {
+        self.profiles = Profiles(self.client)
+        return self.profiles
+    }
+    
     private(set) public var version: Version = Version()
     public func makeVersion() -> Version {
         self.version = Version(self.client)
@@ -181,6 +187,7 @@ public class ET: ObservableObject {
         self.control.client = self.client
         self.gaze.client = self.client
         self.positioning.client = self.client
+        self.profiles.client = self.client
         self.version.client = self.client
     }
     

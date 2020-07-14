@@ -15,7 +15,7 @@ let package = Package(
             targets: ["SkyleSwiftSDK"]),
     ],
     dependencies: [
-        .package(name: "CombineGRPC", url: "https://github.com/vyshane/grpc-swift-combine.git", from: "0.10.0"),
+        .package(name: "CombineGRPC", url: "https://github.com/vyshane/grpc-swift-combine.git", from: "0.13.0"),
         .package(name: "NetUtils", url: "https://github.com/svdo/swift-netutils.git", from: "4.1.0"),
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0"),
     ],

@@ -8,6 +8,8 @@ It works on >= macOS 10.15 Catalina and >= iPadOS 13
 
 **Important: Update to the latest firmware (>= v3.0) on your eye tracker before using this!**
 
+**You need to install the following to get RNDIS support on macOS: [hoRNDIS](https://github.com/jwise/horndis)**
+
 # Example
 
 To dive straight in you can generate a Playground with the repository using [arena](https://github.com/finestructure/Arena).
