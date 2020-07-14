@@ -74,7 +74,6 @@ extension ET {
                             break
                         }
                     }, receiveValue: { control in
-                        print(control.textFormatString())
                         completion(control, .finished)
                         DispatchQueue.main.async {
                             self.enablePause = control.enablePause
