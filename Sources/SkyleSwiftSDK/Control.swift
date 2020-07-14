@@ -38,39 +38,53 @@ extension ET {
                 self.pause(on: newValue)
             }
         }
-        @Published public var stream: Bool = false
-        {
+        @Published public var stream: Bool = false {
             willSet {
                 self.stream(on: newValue)
+            }
+        }
+        
+        @Published public var isOldiOs: Bool = false {
+            willSet {
+                self.oldIOS(on: newValue)
+            }
+        }
+        
+        @Published public var isNotZommed: Bool = false {
+            willSet {
+                self.notZoomed(on: newValue)
             }
         }
         
         private var cancellable: AnyCancellable?
         private let grpc = GRPCExecutor()
         
-        private func call(options: Skyle_OptionMessage) {
-            guard let client = self.client else {
-                return
+        private func run(options: Skyle_OptionMessage, completion: @escaping (Skyle_Options?, States) -> () = {_, _ in}) {
+            DispatchQueue.global(qos: .userInteractive).async {
+                guard let client = self.client else {
+                    return
+                }
+                self.cancellable = self.grpc.call(client.configure)(options)
+                    .sink(receiveCompletion: {
+                        switch $0 {
+                        case .failure(let status):
+                            completion(nil, .failed(status))
+                            break
+                        case .finished:
+                            break
+                        }
+                    }, receiveValue: { control in
+                        print(control.textFormatString())
+                        completion(control, .finished)
+                        DispatchQueue.main.async {
+                            self.enablePause = control.enablePause
+                            self.enableStandby = control.enableStandby
+                            self.guidance = control.guidance
+                            self.pause = control.pause
+                            self.stream = control.stream
+                        }
+                    })
             }
-            self.cancellable = self.grpc.call(client.configure)(options)
-            .sink(receiveCompletion: {
-                switch $0 {
-                case .failure(let status):
-//                    print(status)
-                    break
-                case .finished:
-//                    print($0)
-                    break
-                }
-            }, receiveValue: { control in
-                DispatchQueue.main.async {
-                    self.enablePause = control.enablePause
-                    self.enableStandby = control.enableStandby
-                    self.guidance = control.guidance
-                    self.pause = control.pause
-                    self.stream = control.stream
-                }
-            })
         }
         
         deinit {
@@ -82,14 +96,14 @@ extension ET {
 
 extension ET.Control {
     public func get() {
-        self.call(options: Skyle_OptionMessage())
+        self.run(options: Skyle_OptionMessage())
     }
     
     private func stream(on: Bool, guided: Bool = false) {
         guard self.stream != on else {
             return
         }
-        self.call(options: Skyle_OptionMessage.with {
+        self.run(options: Skyle_OptionMessage.with {
             $0.options = Skyle_Options.with {
                 $0.stream = on
                 $0.enablePause = self.enablePause
@@ -103,7 +117,7 @@ extension ET.Control {
         guard self.pause != on else {
             return
         }
-        self.call(options: Skyle_OptionMessage.with {
+        self.run(options: Skyle_OptionMessage.with {
             $0.options = Skyle_Options.with {
                 $0.pause = on
                 $0.enablePause = self.enablePause
@@ -117,7 +131,7 @@ extension ET.Control {
         guard self.enableStandby != on else {
             return
         }
-        self.call(options: Skyle_OptionMessage.with {
+        self.run(options: Skyle_OptionMessage.with {
             $0.options = Skyle_Options.with {
                 $0.enableStandby = on
                 $0.enablePause = self.enablePause
@@ -131,13 +145,31 @@ extension ET.Control {
         guard self.enablePause != on else {
             return
         }
-        self.call(options: Skyle_OptionMessage.with {
+        self.run(options: Skyle_OptionMessage.with {
             $0.options = Skyle_Options.with {
                 $0.enablePause = on
                 $0.enableStandby = self.enableStandby
                 $0.pause = self.pause
                 $0.stream = self.stream
             }
+        })
+    }
+    
+    private func notZoomed(on: Bool) {
+        guard self.isNotZommed != on else {
+            return
+        }
+        self.run(options: Skyle_OptionMessage.with {
+            $0.options.iPadOptions.isNotZommed = on
+        })
+    }
+    
+    private func oldIOS(on: Bool) {
+        guard self.isOldiOs != on else {
+            return
+        }
+        self.run(options: Skyle_OptionMessage.with {
+            $0.options.iPadOptions.isOldiOs = on
         })
     }
 }

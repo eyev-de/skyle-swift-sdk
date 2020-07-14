@@ -23,7 +23,7 @@ extension ET {
             self.client = client
         }
         
-        @Published private(set) public var state: State = .finished
+        @Published private(set) public var state: States = .finished
         @Published private(set) public var position: (left: Point, right: Point) = (Point(x: 0, y: 0), Point(x: 0, y: 0))
         @Published private(set) public var isPresent: Bool = false
         
@@ -54,17 +54,25 @@ extension ET {
                     }
                 }
                 
-                self.call?.status.whenSuccess { status in
-                    if status.code == .ok {
-                    } else {
+                self.call?.status.whenComplete { result in
+                    switch result {
+                    case .failure(let error):
                         DispatchQueue.main.async {
-                            self.state = .failed(status)
+                            self.state = .error(error)
                         }
-                    }
-                    DispatchQueue.main.async {
-                        if self.state != .none {
-                            self.state = .none
+                        break
+                    case .success(let status):
+                        if status.code != .ok {
+                            DispatchQueue.main.async {
+                                self.state = .failed(status)
+                            }
                         }
+                        DispatchQueue.main.async {
+                            if self.state != .none {
+                                self.state = .none
+                            }
+                        }
+                        break
                     }
                 }
             }

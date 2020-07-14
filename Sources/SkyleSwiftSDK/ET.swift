@@ -27,12 +27,26 @@ public struct Point: Hashable {
 
 public class ET: ObservableObject {
     
-    public enum State: Equatable {
-        case none, running, connecting, finished, failed(_ status: GRPCStatus)
-    }
-    
-    public enum Fail: Error {
-        case none
+    public enum States: Equatable {
+        public static func == (lhs: ET.States, rhs: ET.States) -> Bool {
+            switch (lhs, rhs) {
+            case (.none, .none):
+                return true
+            case (.running, .running):
+                return true
+            case (.connecting, .connecting):
+                return true
+            case (.finished, .finished):
+                return true
+            case (.failed, .failed):
+                return true
+            case (.error, .error):
+                return true
+            case (.none, _), (.running, _), (.connecting, _), (.finished, _), (.failed, _), (.error, _):
+              return false
+            }
+        }
+        case none, running, connecting, finished, failed(_ status: GRPCStatus), error(_ error: Error)
     }
     
     private(set) public var client: Skyle_SkyleClient?
@@ -67,6 +81,12 @@ public class ET: ObservableObject {
     public func makeProfiles() -> Profiles {
         self.profiles = Profiles(self.client)
         return self.profiles
+    }
+    
+    private(set) public var reset: Reset = Reset()
+    public func makeReset() -> Reset {
+        self.reset = Reset(self.client)
+        return self.reset
     }
     
     private(set) public var version: Version = Version()
@@ -146,6 +166,7 @@ public class ET: ObservableObject {
                 self.client = Skyle_SkyleClient(channel: channel)
                 self.updateClient()
                 _ = self.version.get()
+                self.control.get()
                 DispatchQueue.global(qos: .background).async {
                     self.timeoutGRPC = Timer.scheduledTimer(withTimeInterval: 20.0, repeats: false) { timer in
                         if self.connectivity != .ready {
@@ -188,6 +209,7 @@ public class ET: ObservableObject {
         self.gaze.client = self.client
         self.positioning.client = self.client
         self.profiles.client = self.client
+        self.reset.client = self.client
         self.version.client = self.client
     }
     

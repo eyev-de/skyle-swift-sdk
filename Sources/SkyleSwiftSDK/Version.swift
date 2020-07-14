@@ -35,7 +35,7 @@ extension ET {
         private let grpc = GRPCExecutor()
         private var cancellable: AnyCancellable?
         
-        public func get() {
+        public func get(completion: @escaping (Skyle_DeviceVersions?, States) -> () = {_, _ in}) {
             guard let client = self.client else {
                 return
             }
@@ -43,13 +43,13 @@ extension ET {
             .sink(receiveCompletion: {
                 switch $0 {
                 case .failure(let status):
-//                    print(status)
+                    completion(nil, .failed(status))
                     break
                 case .finished:
-//                    print($0)
                     break
                 }
             }, receiveValue: { versions in
+                completion(versions, .finished)
                 self.setVersions(versions: versions)
             })
         }

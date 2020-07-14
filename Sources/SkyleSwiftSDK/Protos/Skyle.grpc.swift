@@ -40,6 +40,7 @@ public protocol Skyle_SkyleClientProtocol {
   func currentProfile(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions?) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile>
   func setProfile(_ request: Skyle_Profile, callOptions: CallOptions?) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage>
   func deleteProfile(_ request: Skyle_Profile, callOptions: CallOptions?) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage>
+  func reset(_ request: Skyle_ResetMessage, callOptions: CallOptions?) -> UnaryCall<Skyle_ResetMessage, Skyle_StatusMessage>
 }
 
 public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
@@ -197,6 +198,18 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
                               callOptions: callOptions ?? self.defaultCallOptions)
   }
 
+  ///Unary call to reset specific parts 
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to Reset.
+  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func reset(_ request: Skyle_ResetMessage, callOptions: CallOptions? = nil) -> UnaryCall<Skyle_ResetMessage, Skyle_StatusMessage> {
+    return self.makeUnaryCall(path: "/Skyle.Skyle/Reset",
+                              request: request,
+                              callOptions: callOptions ?? self.defaultCallOptions)
+  }
+
 }
 
 /// To build a server, implement a class that conforms to this protocol.
@@ -223,6 +236,8 @@ public protocol Skyle_SkyleProvider: CallHandlerProvider {
   func setProfile(request: Skyle_Profile, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_StatusMessage>
   ///Unary call to delete a profile. Answers with a status message (success or failure)
   func deleteProfile(request: Skyle_Profile, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_StatusMessage>
+  ///Unary call to reset specific parts 
+  func reset(request: Skyle_ResetMessage, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_StatusMessage>
 }
 
 extension Skyle_SkyleProvider {
@@ -307,6 +322,13 @@ extension Skyle_SkyleProvider {
         }
       }
 
+    case "Reset":
+      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+        return { request in
+          self.reset(request: request, context: context)
+        }
+      }
+
     default: return nil
     }
   }
@@ -314,6 +336,7 @@ extension Skyle_SkyleProvider {
 
 
 // Provides conformance to `GRPCPayload`
+extension Skyle_ResetMessage: GRPCProtobufPayload {}
 extension Skyle_Profile: GRPCProtobufPayload {}
 extension Skyle_StatusMessage: GRPCProtobufPayload {}
 extension Skyle_OptionMessage: GRPCProtobufPayload {}
@@ -327,6 +350,7 @@ extension Skyle_CalibPoint: GRPCProtobufPayload {}
 extension Skyle_CalibQuality: GRPCProtobufPayload {}
 extension Skyle_PositioningMessage: GRPCProtobufPayload {}
 extension Skyle_Options: GRPCProtobufPayload {}
+extension Skyle_IPadOptions: GRPCProtobufPayload {}
 extension Skyle_DeviceVersions: GRPCProtobufPayload {}
 extension Skyle_ButtonActions: GRPCProtobufPayload {}
 extension Skyle_Button: GRPCProtobufPayload {}

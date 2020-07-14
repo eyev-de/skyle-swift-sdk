@@ -21,7 +21,7 @@ extension ET {
             self.client = client
         }
         
-        @Published private(set) public var state: State = .none
+        @Published private(set) public var state: States = .none
         @Published private(set) public var point = Point(x: 0, y: 0)
         
         private var call: ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Point>?
@@ -39,17 +39,25 @@ extension ET {
                 }
             }
             
-            self.call?.status.whenSuccess { status in
-                if status.code == .ok {
-                } else {
+            self.call?.status.whenComplete { result in
+                switch result {
+                case .failure(let error):
                     DispatchQueue.main.async {
-                        self.state = .failed(status)
+                        self.state = .error(error)
                     }
-                }
-                DispatchQueue.main.async {
-                    if self.state != .none {
-                        self.state = .none
+                    break
+                case .success(let status):
+                    if status.code != .ok {
+                        DispatchQueue.main.async {
+                            self.state = .failed(status)
+                        }
                     }
+                    DispatchQueue.main.async {
+                        if self.state != .none {
+                            self.state = .none
+                        }
+                    }
+                    break
                 }
             }
         }

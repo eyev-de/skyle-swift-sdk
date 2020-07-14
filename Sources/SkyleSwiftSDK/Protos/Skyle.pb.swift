@@ -28,6 +28,27 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 ///*
+/// Message to request resets
+public struct Skyle_ResetMessage {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  ///restart services (including gRPC server)
+  public var services: Bool = false
+
+  ///restart the whole device (takes up to 30 secs)
+  public var device: Bool = false
+
+  ///reset saved user data and calibs. WARNING! ONLY DO THIS WHEN YOU REALLY WANT TO DELETE ALL USER DATA!
+  public var data: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+///*
 /// Message describing a user profile
 public struct Skyle_Profile {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -483,11 +504,40 @@ public struct Skyle_Options {
   /// Clears the value of `filter`. Subsequent reads from it will return its default value.
   public mutating func clearFilter() {self._filter = nil}
 
+  ///Optional iPad Pro Settings, leave empty when unused / not sending
+  public var iPadOptions: Skyle_IPadOptions {
+    get {return _iPadOptions ?? Skyle_IPadOptions()}
+    set {_iPadOptions = newValue}
+  }
+  /// Returns true if `iPadOptions` has been explicitly set.
+  public var hasIPadOptions: Bool {return self._iPadOptions != nil}
+  /// Clears the value of `iPadOptions`. Subsequent reads from it will return its default value.
+  public mutating func clearIPadOptions() {self._iPadOptions = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 
   fileprivate var _filter: Skyle_FilterOptions? = nil
+  fileprivate var _iPadOptions: Skyle_IPadOptions? = nil
+}
+
+///*
+/// iPad Option message for configuration
+public struct Skyle_IPadOptions {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  ///Set this to true if iOS 13 to 13.3 is used, otherwise false (>= 13.4)
+  public var isOldiOs: Bool = false
+
+  ///Set this to true if screen zoom is not enabled. It is recommended to use zoom!
+  public var isNotZommed: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
 }
 
 ///*
@@ -595,6 +645,47 @@ public struct Skyle_FilterOptions {
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "Skyle"
+
+extension Skyle_ResetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ResetMessage"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "services"),
+    2: .same(proto: "device"),
+    3: .same(proto: "data"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBoolField(value: &self.services)
+      case 2: try decoder.decodeSingularBoolField(value: &self.device)
+      case 3: try decoder.decodeSingularBoolField(value: &self.data)
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.services != false {
+      try visitor.visitSingularBoolField(value: self.services, fieldNumber: 1)
+    }
+    if self.device != false {
+      try visitor.visitSingularBoolField(value: self.device, fieldNumber: 2)
+    }
+    if self.data != false {
+      try visitor.visitSingularBoolField(value: self.data, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Skyle_ResetMessage, rhs: Skyle_ResetMessage) -> Bool {
+    if lhs.services != rhs.services {return false}
+    if lhs.device != rhs.device {return false}
+    if lhs.data != rhs.data {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
 
 extension Skyle_Profile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Profile"
@@ -1117,6 +1208,7 @@ extension Skyle_Options: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     5: .same(proto: "enableStandby"),
     6: .same(proto: "disableMouse"),
     7: .same(proto: "filter"),
+    8: .same(proto: "iPadOptions"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1129,6 +1221,7 @@ extension Skyle_Options: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
       case 5: try decoder.decodeSingularBoolField(value: &self.enableStandby)
       case 6: try decoder.decodeSingularBoolField(value: &self.disableMouse)
       case 7: try decoder.decodeSingularMessageField(value: &self._filter)
+      case 8: try decoder.decodeSingularMessageField(value: &self._iPadOptions)
       default: break
       }
     }
@@ -1156,6 +1249,9 @@ extension Skyle_Options: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if let v = self._filter {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
     }
+    if let v = self._iPadOptions {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1167,6 +1263,42 @@ extension Skyle_Options: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if lhs.enableStandby != rhs.enableStandby {return false}
     if lhs.disableMouse != rhs.disableMouse {return false}
     if lhs._filter != rhs._filter {return false}
+    if lhs._iPadOptions != rhs._iPadOptions {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Skyle_IPadOptions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".IPadOptions"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "isOldiOS"),
+    2: .same(proto: "isNotZommed"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBoolField(value: &self.isOldiOs)
+      case 2: try decoder.decodeSingularBoolField(value: &self.isNotZommed)
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.isOldiOs != false {
+      try visitor.visitSingularBoolField(value: self.isOldiOs, fieldNumber: 1)
+    }
+    if self.isNotZommed != false {
+      try visitor.visitSingularBoolField(value: self.isNotZommed, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Skyle_IPadOptions, rhs: Skyle_IPadOptions) -> Bool {
+    if lhs.isOldiOs != rhs.isOldiOs {return false}
+    if lhs.isNotZommed != rhs.isNotZommed {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

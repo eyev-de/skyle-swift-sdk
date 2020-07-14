@@ -36,7 +36,7 @@ extension ET {
         private var session: URLSession?
         var task: URLSessionDataTask?
         
-        @Published private(set) public var state: State = .finished
+        @Published private(set) public var state: States = .finished
         
         private var retry: Int = 3
         
