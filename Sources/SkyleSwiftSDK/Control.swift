@@ -20,20 +20,20 @@ extension ET {
         }
         
         @Published public var enablePause: Bool = false // pause modus in den ET schauen
-        {
+            {
             willSet {
                 self.autoPause(on: newValue)
             }
         }
         @Published public var enableStandby: Bool = false // iPad aus
-        {
+            {
             willSet {
                 self.autoStandby(on: newValue)
             }
         }
         @Published private(set) public var guidance: Bool = false // alter guidance stream
         @Published public var pause: Bool = false // jetzt pause oder nicht pause
-        {
+            {
             willSet {
                 self.pause(on: newValue)
             }
@@ -44,27 +44,25 @@ extension ET {
             }
         }
         
-        @Published public var isOldiOs: Bool = false {
-            willSet {
-                self.oldIOS(on: newValue)
-            }
-        }
+        @Published private(set) public var isOldiOs: Bool = false
         
-        @Published public var isNotZommed: Bool = false {
-            willSet {
-                self.notZoomed(on: newValue)
-            }
-        }
+        @Published private(set) public var isNotZoomed: Bool = false
         
-        private var cancellable: AnyCancellable?
+        @Published private(set) public var fixationFilter: Int = 20
+        
+        @Published private(set) public var gazeFilter: Int = 11
+        
+        @Published private(set) public var options: Skyle_Options? = nil
+        
+        private var cancellables: Set<AnyCancellable> = []
         private let grpc = GRPCExecutor()
         
         private func run(options: Skyle_OptionMessage, completion: @escaping (Skyle_Options?, States) -> () = {_, _ in}) {
-            DispatchQueue.global(qos: .userInteractive).async {
-                guard let client = self.client else {
-                    return
-                }
-                self.cancellable = self.grpc.call(client.configure)(options)
+            guard let client = self.client else {
+                return
+            }
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.grpc.call(client.configure)(options)
                     .sink(receiveCompletion: {
                         switch $0 {
                         case .failure(let status):
@@ -74,28 +72,41 @@ extension ET {
                             break
                         }
                     }, receiveValue: { control in
-                        completion(control, .finished)
                         DispatchQueue.main.async {
                             self.enablePause = control.enablePause
                             self.enableStandby = control.enableStandby
                             self.guidance = control.guidance
                             self.pause = control.pause
                             self.stream = control.stream
+                            if control.hasFilter {
+                                if control.filter.gazeFilter >= 3 {
+                                    self.gazeFilter = Int(control.filter.gazeFilter)
+                                }
+                                if control.filter.fixationFilter >= 3 {
+                                    self.fixationFilter = Int(control.filter.fixationFilter)
+                                }
+                            }
+                            if control.hasIPadOptions {
+                                self.isOldiOs = control.iPadOptions.isOldiOs
+                                self.isNotZoomed = control.iPadOptions.isNotZommed
+                            }
+                            self.options = control
+                            completion(control, .finished)
                         }
-                    })
+                    }).store(in: &self.cancellables)
             }
         }
         
         deinit {
-            self.cancellable?.cancel()
+            self.cancellables.removeAll()
         }
         
     }
 }
 
 extension ET.Control {
-    public func get() {
-        self.run(options: Skyle_OptionMessage())
+    public func get(completion: @escaping (Skyle_Options?, ET.States) -> () = {_, _ in}) {
+        self.run(options: Skyle_OptionMessage(), completion: completion)
     }
     
     private func stream(on: Bool, guided: Bool = false) {
@@ -154,21 +165,36 @@ extension ET.Control {
         })
     }
     
-    private func notZoomed(on: Bool) {
-        guard self.isNotZommed != on else {
+    public func setiPadOptions(isOldiOs: Bool, isNotZoomed: Bool) {
+        guard self.isNotZoomed != isNotZoomed || self.isOldiOs != isOldiOs else {
             return
         }
         self.run(options: Skyle_OptionMessage.with {
-            $0.options.iPadOptions.isNotZommed = on
+            $0.options.iPadOptions.isNotZommed = isNotZoomed
+            $0.options.iPadOptions.isOldiOs = isOldiOs
         })
     }
     
-    private func oldIOS(on: Bool) {
-        guard self.isOldiOs != on else {
-            return
-        }
+    public func setGazeFilter(_ value: Int, completion: @escaping (Skyle_Options?, ET.States) -> () = {_, _ in}) {
         self.run(options: Skyle_OptionMessage.with {
-            $0.options.iPadOptions.isOldiOs = on
-        })
+            $0.options.filter.gazeFilter = ET.Control.filterBoundaries(value)
+            $0.options.filter.fixationFilter = ET.Control.filterBoundaries(self.fixationFilter)
+        }) { options, state in
+            completion(options, state)
+        }
     }
+    
+    public func setFixationFilter(_ value: Int, completion: @escaping (Skyle_Options?, ET.States) -> () = {_, _ in}) {
+        self.run(options: Skyle_OptionMessage.with {
+            $0.options.filter.gazeFilter = ET.Control.filterBoundaries(self.gazeFilter)
+            $0.options.filter.fixationFilter = ET.Control.filterBoundaries(value)
+        }) { options, state in
+            completion(options, state)
+        }
+    }
+    
+    public static func filterBoundaries(_ value: Int) -> Int32 {
+        return Int32(min(max(value, 3), 33))
+    }
+    
 }

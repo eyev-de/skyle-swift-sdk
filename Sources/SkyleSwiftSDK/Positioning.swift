@@ -26,6 +26,8 @@ extension ET {
         @Published private(set) public var state: States = .finished
         @Published private(set) public var position: (left: Point, right: Point) = (Point(x: 0, y: 0), Point(x: 0, y: 0))
         @Published private(set) public var isPresent: Bool = false
+        @Published private(set) public var qualityDepth: Int = 0
+        @Published private(set) public var qualitySides: Int = 0
         
         private var timer: Timer!
         
@@ -48,6 +50,8 @@ extension ET {
                         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
                             self.isPresent = false
                         }
+                        self.qualityDepth = Int(position.qualityDepth)
+                        self.qualitySides = Int(position.qualitySides)
                         let leftEye = position.hasLeftEye ? Point(x: Double(position.leftEye.x), y: Double(position.leftEye.y)) : Point(x: 0, y: 0)
                         let rightEye = position.hasRightEye ? Point(x: Double(position.rightEye.x), y: Double(position.rightEye.y)) : Point(x: 0, y: 0)
                         self.position = (leftEye, rightEye)

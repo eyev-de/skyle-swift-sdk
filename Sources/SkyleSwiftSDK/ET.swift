@@ -188,6 +188,8 @@ public class ET: ObservableObject {
             if newState == .ready {
                 self.timeoutGRPC?.invalidate()
                 self.legacy.stop()
+                _ = self.version.get()
+                self.control.get()
             } else if (newState == .idle || newState == .shutdown || newState == .transientFailure) && !self.legacyConnectivity {
                 self.version.setVersions(versions: Skyle_DeviceVersions())
             }
