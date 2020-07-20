@@ -21,7 +21,7 @@ extension ET {
             self.client = client
         }
         
-        @Published private(set) public var state: States = .none
+        @Published private(set) public var state: States = .finished
         @Published private(set) public var point = Point(x: 0, y: 0)
         
         private var call: ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Point>?
@@ -30,45 +30,49 @@ extension ET {
             guard let client = self.client else {
                 return
             }
-            self.call = client.gaze(Google_Protobuf_Empty()) { point in
-                DispatchQueue.main.async {
-                    if self.state != .running {
-                        self.state = .running
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                self?.call = client.gaze(Google_Protobuf_Empty()) { point in
+                    DispatchQueue.main.async { [weak self] in
+                        if self?.state != .running {
+                            self?.state = .running
+                        }
+                        self?.point = Point(x: Double(point.x), y: Double(point.y))
                     }
-                    self.point = Point(x: Double(point.x), y: Double(point.y))
                 }
-            }
-            
-            self.call?.status.whenComplete { result in
-                switch result {
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self.state = .error(error)
-                    }
-                    break
-                case .success(let status):
-                    if status.code != .ok {
-                        DispatchQueue.main.async {
-                            self.state = .failed(status)
+                
+                self?.call?.status.whenComplete { result in
+                    switch result {
+                    case .failure(let error):
+                        DispatchQueue.main.async { [weak self] in
+                            self?.state = .error(error)
                         }
-                    }
-                    DispatchQueue.main.async {
-                        if self.state != .none {
-                            self.state = .none
+                        break
+                    case .success(let status):
+                        if status.code != .ok && status.code != .cancelled {
+                            DispatchQueue.main.async { [weak self] in
+                                self?.state = .failed(status)
+                            }
                         }
+                        DispatchQueue.main.async { [weak self] in
+                            if self?.state != .finished {
+                                self?.state = .finished
+                            }
+                        }
+                        break
                     }
-                    break
                 }
             }
         }
         
         private func kill() {
-            DispatchQueue.global().async {
-                _ = self.call?.cancel()
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                _ = self?.call?.cancel()
                 do {
-                    _ = try self.call?.status.wait()
+                    _ = try self?.call?.status.wait()
                 } catch {
-                    print(error)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.state = .error(error)
+                    }
                 }
             }
         }
@@ -81,13 +85,12 @@ extension ET {
 
 extension ET.Gaze {
     public func start() {
-        if self.state != .running && self.state != .connecting {
-            DispatchQueue.main.async {
-                self.state = .connecting
-            }
-            DispatchQueue.global().async {
-                self.run()
-            }
+        guard self.state != .running && self.state != .connecting else {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.state = .connecting
+            self?.run()
         }
     }
     public func stop() {

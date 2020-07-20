@@ -25,10 +25,10 @@ extension ET {
         init(_ client: Skyle_SkyleClient?) {
             self.client = client
         }
-        @Published private(set) public var state: States = .none
+        @Published private(set) public var state: States = .finished
         
         @Published private(set) public var profiles: [Profile] = []
-        @Published private(set) public var currentProfile: Profile = Profile()
+        @Published private(set) public var currentProfile: Profile? = nil
         
         private let grpc = GRPCExecutor()
         private var cancellables: Set<AnyCancellable> = []
@@ -40,52 +40,54 @@ extension ET {
             guard let client = self.client else {
                 return
             }
-            DispatchQueue.main.async {
-                self.profiles.removeAll(keepingCapacity: true)
-            }
-            DispatchQueue.global(qos: .userInitiated).async {
-                self.call = client.getProfiles(Google_Protobuf_Empty()) { profile in
-                    DispatchQueue.main.async {
-                        if self.state != .running {
-                            self.state = .running
+            DispatchQueue.main.async { [weak self] in
+                self?.profiles.removeAll(keepingCapacity: true)
+                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                    var tempProfiles: [ET.Profile] = []
+                    self?.call = client.getProfiles(Google_Protobuf_Empty()) { profile in
+                        DispatchQueue.main.async { [weak self] in
+                            if self?.state != .running {
+                                self?.state = .running
+                            }
                         }
                         let p = Profile(profile)
-                        p.client = self.client
-                        self.profiles.append(p)
+                        p.client = self?.client
+                        tempProfiles.append(p)
                     }
-                }
-                
-                self.call?.status.whenComplete { result in
-                    switch result {
-                    case .failure(let error):
-                        completion(nil, .error(error))
-                        DispatchQueue.main.async {
-                            self.state = .error(error)
-                        }
-                        break
-                    case .success(let status):
-                        completion(self.profiles, .finished)
-                        if status.code != .ok {
-                            DispatchQueue.main.async {
-                                self.state = .failed(status)
+                    
+                    self?.call?.status.whenComplete { result in
+                        switch result {
+                        case .failure(let error):
+                            completion(nil, .error(error))
+                            DispatchQueue.main.async { [weak self] in
+                                self?.state = .error(error)
                             }
-                        }
-                        DispatchQueue.main.async {
-                            if self.state != .none {
-                                self.state = .none
+                            break
+                        case .success(let status):
+                            completion(self?.profiles, .finished)
+                            if status.code != .ok && status.code != .cancelled {
+                                DispatchQueue.main.async { [weak self] in
+                                    self?.state = .failed(status)
+                                }
                             }
+                            DispatchQueue.main.async { [weak self] in
+                                if self?.state != .finished {
+                                    self?.state = .finished
+                                }
+                                self?.profiles = tempProfiles
+                            }
+                            break
                         }
-                        break
                     }
                 }
             }
         }
         
         private func kill() {
-            DispatchQueue.global(qos: .userInitiated).async {
-                _ = self.call?.cancel()
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                _ = self?.call?.cancel()
                 do {
-                    _ = try self.call?.status.wait()
+                    _ = try self?.call?.status.wait()
                 } catch {
                     print(error)
                 }
@@ -96,7 +98,8 @@ extension ET {
             guard let client = self.client else {
                 return
             }
-            DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.global(qos: .userInitiated).async {  [weak self] in
+                guard let self = self else { return }
                 self.grpc.call(client.currentProfile)(Google_Protobuf_Empty())
                     .sink(receiveCompletion: {
                         switch $0 {
@@ -108,8 +111,8 @@ extension ET {
                         }
                     }, receiveValue: { profile in
                         completion(profile.profile(), .finished)
-                        DispatchQueue.main.async {
-                            self.currentProfile = profile.profile()
+                        DispatchQueue.main.async {  [weak self] in
+                            self?.currentProfile = profile.profile()
                         }
                     }).store(in: &self.cancellables)
             }
@@ -119,13 +122,14 @@ extension ET {
             guard let client = self.client else {
                 return
             }
-            DispatchQueue.global(qos: .userInitiated).async {
-                self.deleteCall = client.deleteProfile(profile.profile())
-                self.deleteCall!.response.whenComplete({ response in
+            DispatchQueue.global(qos: .userInitiated).async {  [weak self] in
+                self?.deleteCall = client.deleteProfile(profile.profile())
+                self?.deleteCall!.response.whenComplete({ response in
                     switch response {
                     case .success(let result):
-                        DispatchQueue.main.async {
-                            self.profiles = self.profiles.filter { $0 !== profile }
+                        DispatchQueue.main.async {  [weak self] in
+                            guard let self = self else { return }
+                            self.profiles = self.profiles.filter { $0.id != profile.id }
                         }
                         completion(result, .finished)
                     case .failure(let error):
@@ -143,12 +147,11 @@ extension ET {
 
 extension ET.Profiles {
     public func get(completion: @escaping (ET.Profile?, ET.States) -> () = {_, _ in}) {
-        if self.state != .running && self.state != .connecting {
-            DispatchQueue.main.async {
-                self.state = .connecting
-            }
-            self.run() { profiles, state in
-                self.getCurrent() { profile, state in
+        guard self.state != .running && self.state != .connecting else { return }
+        DispatchQueue.main.async {  [weak self] in
+            self?.state = .connecting
+            self?.run() { profiles, state in
+                self?.getCurrent() { profile, state in
                     completion(profile, state)
                 }
             }

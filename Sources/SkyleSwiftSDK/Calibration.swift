@@ -52,32 +52,35 @@ extension ET {
         private var call: BidirectionalStreamingCall<Skyle_calibControlMessages, Skyle_CalibMessages>?
         private var cancellable: AnyCancellable?
                 
-        private func run() {
-            DispatchQueue.global().async {
-                guard let client = self.client else {
+        private func run(recalibrate: Bool = false) {
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                guard let client = self?.client else {
                     return
                 }
-                self.call = client.calibrate { calib in
+                self?.call = client.calibrate { calib in
                     switch calib.message {
                     case .calibControl(let control):
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.async { [weak self] in
                             if !control.calibrate {
-                                if self.state != .finished {
-                                    self.state = .finished
+                                if self?.state != .finished {
+                                    self?.state = .finished
                                 }
                             }
                         }
                         break
                     case .calibPoint(let point):
-                        DispatchQueue.main.async {
-                            self.currentPoint = Int(point.count)
-                            self.point = SkyleSwiftSDK.Point(x: Double(point.currentPoint.x), y: Double(point.currentPoint.y))
+                        DispatchQueue.main.async { [weak self] in
+                            self?.currentPoint = Int(point.count)
+                            self?.point = SkyleSwiftSDK.Point(x: Double(point.currentPoint.x), y: Double(point.currentPoint.y))
                         }
                         break
                     case.calibQuality(let quality):
-                        DispatchQueue.main.async {
-                            self.quality = quality.quality
-                            self.qualities = quality.qualitys
+                        DispatchQueue.main.async { [weak self] in
+                            self?.quality = quality.quality
+                            self?.qualities = quality.qualitys
+                            if !recalibrate {
+                                self?.kill()
+                            }
                         }
                         break
                     case .none:
@@ -85,28 +88,6 @@ extension ET {
                     }
                 }
                 
-            }
-            
-            self.call?.status.whenComplete { result in
-                switch result {
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self.state = .error(error)
-                    }
-                    break
-                case .success(let status):
-                    if status.code != .ok {
-                        DispatchQueue.main.async {
-                            self.state = .failed(status)
-                        }
-                    }
-                    DispatchQueue.main.async {
-                        if self.state != .none {
-                            self.state = .none
-                        }
-                    }
-                    break
-                }
             }
             
             if self.cancellable == nil {
@@ -118,13 +99,30 @@ extension ET {
         }
         
         private func kill() {
-            DispatchQueue.global().async { [weak self] in
-                _ = self?.call?.sendEnd()
-                _ = self?.call?.cancel()
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                let end = self?.call?.sendEnd()
+                end?.whenComplete({ result in
+                    switch result {
+                    case .failure(let error):
+                        DispatchQueue.main.async { [weak self] in
+                            self?.state = .error(error)
+                        }
+                        break
+                    case .success:
+                        DispatchQueue.main.async { [weak self] in
+                            if self?.state != ET.States.none {
+                                self?.state = .none
+                            }
+                        }
+                        break
+                    }
+                })
                 do {
-                    _ = try self?.call?.status.wait()
+                    try end?.wait()
                 } catch {
-                    print(error)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.state = .error(error)
+                    }
                 }
                 self?.cancellable?.cancel()
             }
@@ -159,7 +157,7 @@ extension ET.Calibration {
         }
     }
     
-    public func start(points: [Int] = Points.Nine, stopHID: Bool = true, width: Int32 = ET.Calibration.width, height: Int32 = ET.Calibration.height) {
+    public func start(points: [Int] = Points.Nine, stopHID: Bool = true, recalibrate: Bool = false, width: Int32 = ET.Calibration.width, height: Int32 = ET.Calibration.height) {
         guard self.state != .running, self.state != .connecting else {
             return
         }
@@ -167,8 +165,8 @@ extension ET.Calibration {
             if self?.state != .running {
                 self?.state = .running
             }
-            DispatchQueue.global(qos: .userInitiated).async {
-                self?.run()
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                self?.run(recalibrate: recalibrate)
                 DispatchQueue.main.async { [weak self] in
                     self?.type = points
                     self?.control = Skyle_calibControlMessages.with {

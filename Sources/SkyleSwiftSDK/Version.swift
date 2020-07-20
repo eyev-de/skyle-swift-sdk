@@ -49,22 +49,24 @@ extension ET {
                     break
                 }
             }, receiveValue: { versions in
-                completion(versions, .finished)
-                self.setVersions(versions: versions)
+                DispatchQueue.main.async { [weak self] in
+                    self?.setVersions(versions: versions)
+                    DispatchQueue.global(qos: .userInitiated).async {
+                        completion(versions, .finished)
+                    }
+                }
             })
         }
         
         func setVersions(versions: Skyle_DeviceVersions) {
-            DispatchQueue.main.async {
-                self.version = versions
-                self.firmware = versions.firmware
-                self.base = versions.base
-                self.calib = versions.calib
-                self.eyetracker = versions.eyetracker
-                self.skyleType = versions.skyleType
-                self.isDemo = versions.isDemo
-                self.serial = versions.serial
-            }
+            self.version = versions
+            self.firmware = versions.firmware
+            self.base = versions.base
+            self.calib = versions.calib
+            self.eyetracker = versions.eyetracker
+            self.skyleType = versions.skyleType
+            self.isDemo = versions.isDemo
+            self.serial = versions.serial
         }
         
         deinit {
@@ -91,7 +93,6 @@ extension ET.Version {
         static func get(completion: @escaping (UpdateInfo?) -> Void) {
             AF.request(Legacy.url).validate().responseJSON { response in
                 guard response.error == nil else {
-                    print(response.error!)
                     completion(nil)
                     return
                 }
@@ -104,7 +105,6 @@ extension ET.Version {
                     let info = try decoder.decode(UpdateInfo.self, from: data)
                     completion(info)
                 } catch {
-                    print(error)
                     completion(nil)
                 }
             }

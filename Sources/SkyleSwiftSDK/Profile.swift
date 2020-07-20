@@ -22,7 +22,7 @@ extension ET {
         
         var client: Skyle_SkyleClient? = nil
         
-        @Published private(set) public var id: Int = -1
+        @Published internal(set) public var id: Int = -1
         @Published public var skill: Skyle_Profile.Skill = .medium
         @Published public var name: String = ""
         
@@ -48,16 +48,19 @@ extension ET {
             guard let client = self.client else {
                 return
             }
-            self.call = client.setProfile(self.profile())
-            self.call!.response.whenComplete({ response in
-                switch response {
-                case .success(let result):
-                    completion(result, .finished)
-                    break
-                case .failure(let error):
-                    completion(nil, .error(error))
-                }
-            })
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                guard let self = self else { return }
+                self.call = client.setProfile(self.profile())
+                self.call!.response.whenComplete({ response in
+                    switch response {
+                    case .success(let result):
+                        completion(result, .finished)
+                        break
+                    case .failure(let error):
+                        completion(nil, .error(error))
+                    }
+                })
+            }
         }
     }
 }

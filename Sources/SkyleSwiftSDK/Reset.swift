@@ -21,12 +21,12 @@ extension ET {
         private var call: UnaryCall<Skyle_ResetMessage, Skyle_StatusMessage>?
         
         private func run(options: Skyle_ResetMessage, completion: @escaping (Skyle_StatusMessage?, States) -> () = {_, _ in}) {
-            DispatchQueue.global(qos: .background).async {
-                guard let client = self.client else {
-                    return
-                }
-                self.call = client.reset(options)
-                self.call!.response.whenComplete({ response in
+            guard let client = self.client else {
+                return
+            }
+            DispatchQueue.global(qos: .background).async { [weak self] in
+                self?.call = client.reset(options)
+                self?.call!.response.whenComplete({ response in
                     switch response {
                     case .success(let result):
                         completion(result, .finished)

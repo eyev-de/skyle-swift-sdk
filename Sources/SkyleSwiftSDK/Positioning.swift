@@ -34,46 +34,46 @@ extension ET {
         private var call: ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_PositioningMessage>?
         
         private func run() {
-            DispatchQueue.global().async {
-                guard let client = self.client else {
-                    return
-                }
-                self.call = client.positioning(Google_Protobuf_Empty()) { position in
-                    DispatchQueue.main.async {
-                        if self.state != .running {
-                            self.state = .running
+            guard let client = self.client else {
+                return
+            }
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                self?.call = client.positioning(Google_Protobuf_Empty()) { position in
+                    DispatchQueue.main.async { [weak self] in
+                        if self?.state != .running {
+                            self?.state = .running
                         }
-                        self.isPresent = true
-                        if self.timer != nil {
-                            self.timer.invalidate()
+                        self?.isPresent = true
+                        if self?.timer != nil {
+                            self?.timer.invalidate()
                         }
-                        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
-                            self.isPresent = false
+                        self?.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { timer in
+                            self?.isPresent = false
                         }
-                        self.qualityDepth = Int(position.qualityDepth)
-                        self.qualitySides = Int(position.qualitySides)
+                        self?.qualityDepth = Int(position.qualityDepth)
+                        self?.qualitySides = Int(position.qualitySides)
                         let leftEye = position.hasLeftEye ? Point(x: Double(position.leftEye.x), y: Double(position.leftEye.y)) : Point(x: 0, y: 0)
                         let rightEye = position.hasRightEye ? Point(x: Double(position.rightEye.x), y: Double(position.rightEye.y)) : Point(x: 0, y: 0)
-                        self.position = (leftEye, rightEye)
+                        self?.position = (leftEye, rightEye)
                     }
                 }
                 
-                self.call?.status.whenComplete { result in
+                self?.call?.status.whenComplete { result in
                     switch result {
                     case .failure(let error):
-                        DispatchQueue.main.async {
-                            self.state = .error(error)
+                        DispatchQueue.main.async { [weak self] in
+                            self?.state = .error(error)
                         }
                         break
                     case .success(let status):
-                        if status.code != .ok {
-                            DispatchQueue.main.async {
-                                self.state = .failed(status)
+                        if status.code != .ok && status.code != .cancelled {
+                            DispatchQueue.main.async { [weak self] in
+                                self?.state = .failed(status)
                             }
                         }
-                        DispatchQueue.main.async {
-                            if self.state != .none {
-                                self.state = .none
+                        DispatchQueue.main.async { [weak self] in
+                            if self?.state != .finished {
+                                self?.state = .finished
                             }
                         }
                         break
@@ -83,12 +83,14 @@ extension ET {
         }
         
         private func kill() {
-            DispatchQueue.global().async {
-                _ = self.call?.cancel()
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                _ = self?.call?.cancel()
                 do {
-                    _ = try self.call?.status.wait()
+                    _ = try self?.call?.status.wait()
                 } catch {
-                    print(error)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.state = .error(error)
+                    }
                 }
             }
         }
@@ -102,21 +104,19 @@ extension ET {
 
 extension ET.Positioning {
     public func start() {
-        if self.state != .running && self.state != .connecting {
-            DispatchQueue.main.async {
-                self.state = .connecting
-            }
-            DispatchQueue.global().async {
-                self.run()
-            }
+        guard self.state != .running && self.state != .connecting else {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.state = .connecting
+            self?.run()
         }
     }
+    
     public func stop() {
-        if self.state != .finished {
-            self.kill()
-            DispatchQueue.main.async {
-                self.state = .finished
-            }
+        guard self.state != .finished else {
+            return
         }
+        self.kill()
     }
 }

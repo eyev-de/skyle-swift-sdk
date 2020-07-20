@@ -24,19 +24,25 @@ final class SkyleSwiftSDKTests: XCTestCase {
     
     func testCalibration() {
         let exp = XCTestExpectation(description: #function)
-        let calibration = self.et.calibration
+        let calibration = self.et.makeCalibration()
+        
         self.et.$grpcError.sink(receiveValue: { error in
             guard let error = error else { return }
             print(error)
         }).store(in: &self.cancellables)
+        
         calibration.$state.sink(receiveValue: { state in
+            print(calibration.state)
             print(state)
-        }).store(in: &self.cancellables)
-        calibration.$currentPoint.sink { point in
-            if point == (ET.Calibration.Points.Five.count - 1) {
+            if calibration.state == .finished, state == .none {
                 exp.fulfill()
             }
+        }).store(in: &self.cancellables)
+        
+        calibration.$currentPoint.sink { point in
+            print(point)
         }.store(in: &self.cancellables)
+        
         calibration.$point.sink { point in
             print(point)
         }.store(in: &self.cancellables)
@@ -207,20 +213,121 @@ final class SkyleSwiftSDKTests: XCTestCase {
     
     func testPositioning() {
         let exp = XCTestExpectation(description: #function)
-        let positioning = self.et.positioning
+        let positioning = self.et.makePositioning()
+        var count = 100
         positioning.$position.sink { position in
-            XCTAssert(position.left.x != 0 && position.left.y != 0)
-            XCTAssert(position.right.x != 0 && position.right.y != 0)
-            exp.fulfill()
+            print(position)
+            if count < 0 {
+                positioning.stop()
+            }
+            count -= 1
         }.store(in: &self.cancellables)
+        
         positioning.$state.sink { state in
-            XCTAssert(state == .running)
+            print(state)
         }.store(in: &self.cancellables)
+        
         self.et.$connectivity.removeDuplicates().sink { connectivity in
             guard connectivity == .ready else {
                 return
             }
             positioning.start()
+        }.store(in: &self.cancellables)
+        
+        wait(for: [exp], timeout: 100)
+    }
+    
+    func testProfiles() {
+        let exp = XCTestExpectation(description: #function)
+        let exp2 = XCTestExpectation(description: #function)
+        let profiles = self.et.makeProfiles()
+        
+        profiles.$profiles.sink { profiles in
+            guard profiles.count > 0 else { return }
+            print("Received \(profiles.count) profiles.")
+            for profile in profiles {
+                print(profile.profile().textFormatString())
+            }
+        }.store(in: &self.cancellables)
+        
+        profiles.$state.sink { state in
+            guard profiles.state == .running, state == .finished else { return }
+            exp.fulfill()
+        }.store(in: &self.cancellables)
+        
+        profiles.$currentProfile.sink { profile in
+            guard let profile = profile else { return }
+            print("Current profile")
+            print(profile.profile().textFormatString() as Any)
+            exp2.fulfill()
+        }.store(in: &self.cancellables)
+        
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            profiles.get()
+        }.store(in: &self.cancellables)
+        
+        wait(for: [exp, exp2], timeout: 5)
+    }
+    
+    func testAddProfile() {
+        let exp = XCTestExpectation(description: #function)
+        let profiles = self.et.makeProfiles()
+        
+        let p1 = ET.Profile(Skyle_Profile.with {
+            $0.name = "Max Mustermann"
+            $0.skill = .low
+        })
+        
+        let p2 = ET.Profile(Skyle_Profile.with {
+            $0.name = "Sabine Musterfrau"
+            $0.skill = .high
+        })
+        
+        profiles.$profiles.sink { profiles in
+            guard profiles.count > 0 else { return }
+            print("Received \(profiles.count) profiles.")
+            for profile in profiles {
+                print(profile.profile().textFormatString())
+            }
+        }.store(in: &self.cancellables)
+        
+        profiles.$currentProfile.sink { profile in
+            guard let profile = profile else { return }
+            print("Current profile")
+            print(profile.profile().textFormatString())
+        }.store(in: &self.cancellables)
+        
+        self.et.$connectivity.removeDuplicates().sink { connectivity in
+            guard connectivity == .ready else {
+                return
+            }
+            profiles.get() { _, _ in
+                profiles.set(p1) { profile, error in
+                    XCTAssertTrue(profile != nil)
+                    guard let profile = profile else { return }
+                    p1.id = profile.id
+                    profiles.set(p2) { profile, error in
+                        XCTAssertTrue(profile != nil)
+                        guard let profile = profile else { return }
+                        p2.id = profile.id
+                        profiles.delete(p1) { message, state in
+                            print(state)
+                            XCTAssertTrue(message != nil)
+                            XCTAssertTrue(message!.success)
+                            profiles.delete(p2) { message, state in
+                                print(state)
+                                XCTAssertTrue(message != nil)
+                                XCTAssertTrue(message!.success)
+                                exp.fulfill()
+                            }
+                        }
+                    }
+                }
+            }
+            
         }.store(in: &self.cancellables)
         wait(for: [exp], timeout: 5)
     }
@@ -234,5 +341,32 @@ final class SkyleSwiftSDKTests: XCTestCase {
         ("testVersion", testVersion),
         ("testGaze", testGaze),
         ("testPositioning", testPositioning),
+        ("testProfiles", testProfiles),
+        ("testAddProfile", testAddProfile),
     ]
 }
+
+//@discardableResult
+//prefix func ++<T: Numeric> (_ val: inout T) -> T {
+//    val += 1
+//    return val
+//}
+//
+//@discardableResult
+//prefix func --<T: Numeric> (_ val: inout T) -> T {
+//    val -= 1
+//    return val
+//}
+//
+//@discardableResult
+//postfix func ++<T: Numeric> (_ val: inout T) -> T {
+//    defer { val += 1 }
+//    return val
+//}
+//
+//@discardableResult
+//postfix func --<T: Numeric> (_ val: inout T) -> T {
+//    defer { val -= 1 }
+//    return val
+//}
+

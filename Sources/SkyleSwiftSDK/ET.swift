@@ -165,8 +165,8 @@ public class ET: ObservableObject {
                 let channel = self.channelBuilder.connect(host: host, port: port)
                 self.client = Skyle_SkyleClient(channel: channel)
                 self.updateClient()
-                _ = self.version.get()
-                self.control.get()
+                self.makeVersion().get()
+                self.makeControl().get()
                 DispatchQueue.global(qos: .background).async {
                     self.timeoutGRPC = Timer.scheduledTimer(withTimeInterval: 20.0, repeats: false) { timer in
                         if self.connectivity != .ready {
@@ -182,24 +182,26 @@ public class ET: ObservableObject {
             .store(in: &self.cancellables)
         
         self.delegate.softConnectivity.sink(receiveValue: { newState in
-            DispatchQueue.main.async {
-                self.connectivity = newState
+            DispatchQueue.main.async { [weak self] in
+                self?.connectivity = newState
             }
             if newState == .ready {
                 self.timeoutGRPC?.invalidate()
                 self.legacy.stop()
-                _ = self.version.get()
-                self.control.get()
+                self.makeVersion().get()
+                self.makeControl().get()
             } else if (newState == .idle || newState == .shutdown || newState == .transientFailure) && !self.legacyConnectivity {
-                self.version.setVersions(versions: Skyle_DeviceVersions())
+                DispatchQueue.main.async { [weak self] in
+                    self?.version.setVersions(versions: Skyle_DeviceVersions())
+                }
             }
         })
             .store(in: &self.cancellables)
         
         self.delegate.error.sink(receiveValue: { error in
             guard let error = error else { return }
-            DispatchQueue.main.async {
-                self.grpcError = error
+            DispatchQueue.main.async { [weak self] in
+                self?.grpcError = error
             }
         })
             .store(in: &self.cancellables)
