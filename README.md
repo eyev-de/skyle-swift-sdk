@@ -40,11 +40,11 @@ struct ContentView: View {
     init() {
         let et = ET()
         self.et = et
-        self.gaze = et.gaze
-        self.version = et.version
-        self.positioning = et.positioning
-        self.control = et.control
-        self.stream = et.stream
+        self.gaze = et.gaze // please use makeGaze() instead
+        self.version = et.version // please use makeVersion() instead
+        self.positioning = et.positioning // please use makePositioning() instead
+        self.control = et.control // please use makeControl() instead
+        self.stream = et.stream // please use makeStream() instead
     }
     
     var body: some View {
@@ -121,6 +121,9 @@ Just add the following to your `dependencies` in your Package.swift file.
 
 Alternatively, you can add it to your project in Xcode. Go to File -> Swift Packages -> Add Package Dependency...
 
+# Documentation
+
+[Documentation](https://eyev-de.github.io/skyle-swift-sdk/)
 
 # Meta
 
