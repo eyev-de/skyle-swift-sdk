@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Skyle_SkyleProvider Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Skyle_SkyleProvider" class="dashAnchor"></a>
+    <a title="Skyle_SkyleProvider Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SkyleSwiftSDK Docs</a> (89% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SkyleSwiftSDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Skyle_SkyleProvider Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ET.html">ET</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/States.html">– States</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Calibration.html">– Calibration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Control.html">– Control</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/GRPCErrorProvider.html">– GRPCErrorProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Delegate.html">– Delegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Legacy.html">– Legacy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Gaze.html">– Gaze</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/MjpegStream.html">– MjpegStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Positioning.html">– Positioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Profile.html">– Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Profiles.html">– Profiles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Reset.html">– Reset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Version.html">– Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObservableArray.html">ObservableArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Skyle_SkyleClientProtocol.html">Skyle_SkyleClientProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Skyle_SkyleProvider.html">Skyle_SkyleProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Point.html">Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Button.html">Skyle_Button</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibControl.html">Skyle_CalibControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibImprove.html">Skyle_CalibImprove</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibMessages.html">Skyle_CalibMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibPoint.html">Skyle_CalibPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibQuality.html">Skyle_CalibQuality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_DeviceVersions.html">Skyle_DeviceVersions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_FilterOptions.html">Skyle_FilterOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_IPadOptions.html">Skyle_IPadOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_OptionMessage.html">Skyle_OptionMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_OptionMessage/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Options.html">Skyle_Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Point.html">Skyle_Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_PositioningMessage.html">Skyle_PositioningMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Profile.html">Skyle_Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Profile/Skill.html">– Skill</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ResetMessage.html">Skyle_ResetMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ScreenResolution.html">Skyle_ScreenResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_calibControlMessages.html">Skyle_calibControlMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_calibControlMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Skyle_SkyleProvider</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Skyle_SkyleProvider</span> <span class="p">:</span> <span class="kt">CallHandlerProvider</span></code></pre>
+
+                </div>
+              </div>
+            <p>To build a server, implement a class that conforms to this protocol.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP9calibrate7context3NIO15EventLoopFutureCyy4GRPC06StreamH0OyAA0A21_calibControlMessagesVGcGAI28StreamingResponseCallContextCyAA0a6_CalibO0VG_tF"></a>
+                    <a name="//apple_ref/swift/Method/calibrate(context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP9calibrate7context3NIO15EventLoopFutureCyy4GRPC06StreamH0OyAA0A21_calibControlMessagesVGcGAI28StreamingResponseCallContextCyAA0a6_CalibO0VG_tF">calibrate(context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Used to calibrate for the current user. Streams in both directions with given message types. Client needs to close the stream when done</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">calibrate</span><span class="p">(</span><span class="nv">context</span><span class="p">:</span> <span class="kt">StreamingResponseCallContext</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_CalibMessages.html">Skyle_CalibMessages</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">StreamEvent</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_calibControlMessages.html">Skyle_calibControlMessages</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP11positioning7request7context3NIO15EventLoopFutureCy4GRPC10GRPCStatusCG0B8Protobuf07Google_N6_EmptyV_AJ28StreamingResponseCallContextCyAA0A19_PositioningMessageVGtF"></a>
+                    <a name="//apple_ref/swift/Method/positioning(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP11positioning7request7context3NIO15EventLoopFutureCy4GRPC10GRPCStatusCG0B8Protobuf07Google_N6_EmptyV_AJ28StreamingResponseCallContextCyAA0A19_PositioningMessageVGtF">positioning(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subscribe a stream sending eye positions and quality indicators to achieve good positioning of a user. Client needs to close the stream when done</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">positioning</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StreamingResponseCallContext</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_PositioningMessage.html">Skyle_PositioningMessage</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt">GRPCStatus</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP4gaze7request7context3NIO15EventLoopFutureCy4GRPC10GRPCStatusCG0B8Protobuf07Google_N6_EmptyV_AJ28StreamingResponseCallContextCyAA0A6_PointVGtF"></a>
+                    <a name="//apple_ref/swift/Method/gaze(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP4gaze7request7context3NIO15EventLoopFutureCy4GRPC10GRPCStatusCG0B8Protobuf07Google_N6_EmptyV_AJ28StreamingResponseCallContextCyAA0A6_PointVGtF">gaze(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subscribe a gaze stream, that sends coordinates of the current user gaze on a screen. Client needs to close the stream when done</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">gaze</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StreamingResponseCallContext</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_Point.html">Skyle_Point</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt">GRPCStatus</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP9getButton7request7context3NIO15EventLoopFutureCyAA0a1_F0VG0B8Protobuf07Google_M6_EmptyV_4GRPC21StatusOnlyCallContext_ptF"></a>
+                    <a name="//apple_ref/swift/Method/getButton(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP9getButton7request7context3NIO15EventLoopFutureCyAA0a1_F0VG0B8Protobuf07Google_M6_EmptyV_4GRPC21StatusOnlyCallContext_ptF">getButton(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to get the button status</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getButton</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StatusOnlyCallContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_Button.html">Skyle_Button</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP9setButton7request7context3NIO15EventLoopFutureCyAA0a1_F7ActionsVGAK_4GRPC21StatusOnlyCallContext_ptF"></a>
+                    <a name="//apple_ref/swift/Method/setButton(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP9setButton7request7context3NIO15EventLoopFutureCyAA0a1_F7ActionsVGAK_4GRPC21StatusOnlyCallContext_ptF">setButton(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to configure the button actions, answers with the resulting configuration</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setButton</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a></span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StatusOnlyCallContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP9configure7request7context3NIO15EventLoopFutureCyAA0A8_OptionsVGAA0A14_OptionMessageV_4GRPC21StatusOnlyCallContext_ptF"></a>
+                    <a name="//apple_ref/swift/Method/configure(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP9configure7request7context3NIO15EventLoopFutureCyAA0A8_OptionsVGAA0A14_OptionMessageV_4GRPC21StatusOnlyCallContext_ptF">configure(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to get (OptionMessage -&gt; empty) or set options (OptionMessage -&gt; Options). Answers with the resulting options. Options are saved to the current user profile</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">configure</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_OptionMessage.html">Skyle_OptionMessage</a></span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StatusOnlyCallContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_Options.html">Skyle_Options</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP11getVersions7request7context3NIO15EventLoopFutureCyAA0a7_DeviceF0VG0B8Protobuf07Google_N6_EmptyV_4GRPC21StatusOnlyCallContext_ptF"></a>
+                    <a name="//apple_ref/swift/Method/getVersions(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP11getVersions7request7context3NIO15EventLoopFutureCyAA0a7_DeviceF0VG0B8Protobuf07Google_N6_EmptyV_4GRPC21StatusOnlyCallContext_ptF">getVersions(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to get software versions</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getVersions</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StatusOnlyCallContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_DeviceVersions.html">Skyle_DeviceVersions</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP11getProfiles7request7context3NIO15EventLoopFutureCy4GRPC10GRPCStatusCG0B8Protobuf07Google_O6_EmptyV_AJ28StreamingResponseCallContextCyAA0A8_ProfileVGtF"></a>
+                    <a name="//apple_ref/swift/Method/getProfiles(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP11getProfiles7request7context3NIO15EventLoopFutureCy4GRPC10GRPCStatusCG0B8Protobuf07Google_O6_EmptyV_AJ28StreamingResponseCallContextCyAA0A8_ProfileVGtF">getProfiles(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subscribe a profile stream of all available profiles. Host ends stream when all results are sent</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">getProfiles</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StreamingResponseCallContext</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt">GRPCStatus</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP14currentProfile7request7context3NIO15EventLoopFutureCyAA0a1_F0VG0B8Protobuf07Google_M6_EmptyV_4GRPC21StatusOnlyCallContext_ptF"></a>
+                    <a name="//apple_ref/swift/Method/currentProfile(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP14currentProfile7request7context3NIO15EventLoopFutureCyAA0a1_F0VG0B8Protobuf07Google_M6_EmptyV_4GRPC21StatusOnlyCallContext_ptF">currentProfile(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to get the current profile</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">currentProfile</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StatusOnlyCallContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP10setProfile7request7context3NIO15EventLoopFutureCyAA0A14_StatusMessageVGAA0a1_F0V_4GRPC0M15OnlyCallContext_ptF"></a>
+                    <a name="//apple_ref/swift/Method/setProfile(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP10setProfile7request7context3NIO15EventLoopFutureCyAA0A14_StatusMessageVGAA0a1_F0V_4GRPC0M15OnlyCallContext_ptF">setProfile(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to set or create a profile. Answers with a status message (success or failure)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setProfile</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StatusOnlyCallContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP13deleteProfile7request7context3NIO15EventLoopFutureCyAA0A14_StatusMessageVGAA0a1_F0V_4GRPC0M15OnlyCallContext_ptF"></a>
+                    <a name="//apple_ref/swift/Method/deleteProfile(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP13deleteProfile7request7context3NIO15EventLoopFutureCyAA0A14_StatusMessageVGAA0a1_F0V_4GRPC0M15OnlyCallContext_ptF">deleteProfile(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to delete a profile. Answers with a status message (success or failure)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">deleteProfile</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StatusOnlyCallContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderP5reset7request7context3NIO15EventLoopFutureCyAA0A14_StatusMessageVGAA0a6_ResetM0V_4GRPC0L15OnlyCallContext_ptF"></a>
+                    <a name="//apple_ref/swift/Method/reset(request:context:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderP5reset7request7context3NIO15EventLoopFutureCyAA0A14_StatusMessageVGAA0a6_ResetM0V_4GRPC0L15OnlyCallContext_ptF">reset(request:<wbr>context:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to reset specific parts</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">reset</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_ResetMessage.html">Skyle_ResetMessage</a></span><span class="p">,</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">StatusOnlyCallContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">EventLoopFuture</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4GRPC19CallHandlerProviderP11serviceNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/serviceName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4GRPC19CallHandlerProviderP11serviceNameSSvp">serviceName</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">serviceName</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A8ProviderPAAE12handleMethod_18callHandlerContext4GRPC08GRPCCallH0_pSgSS_AF04CallhI0VtF"></a>
+                    <a name="//apple_ref/swift/Method/handleMethod(_:callHandlerContext:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A8ProviderPAAE12handleMethod_18callHandlerContext4GRPC08GRPCCallH0_pSgSS_AF04CallhI0VtF">handleMethod(_:<wbr>callHandlerContext:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Determines, calls and returns the appropriate request handler, depending on the request&rsquo;s method.
+Returns nil for methods not handled by this service.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">handleMethod</span><span class="p">(</span><span class="n">_</span> <span class="nv">methodName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callHandlerContext</span><span class="p">:</span> <span class="kt">CallHandlerContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">GRPCCallHandler</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-07-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

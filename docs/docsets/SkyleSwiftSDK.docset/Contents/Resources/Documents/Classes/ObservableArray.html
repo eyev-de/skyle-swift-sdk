@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ObservableArray Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ObservableArray" class="dashAnchor"></a>
+    <a title="ObservableArray Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SkyleSwiftSDK Docs</a> (89% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SkyleSwiftSDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ObservableArray Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ET.html">ET</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/States.html">– States</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Calibration.html">– Calibration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Control.html">– Control</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/GRPCErrorProvider.html">– GRPCErrorProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Delegate.html">– Delegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Legacy.html">– Legacy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Gaze.html">– Gaze</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/MjpegStream.html">– MjpegStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Positioning.html">– Positioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Profile.html">– Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Profiles.html">– Profiles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Reset.html">– Reset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Version.html">– Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObservableArray.html">ObservableArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Skyle_SkyleClientProtocol.html">Skyle_SkyleClientProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Skyle_SkyleProvider.html">Skyle_SkyleProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Point.html">Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Button.html">Skyle_Button</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibControl.html">Skyle_CalibControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibImprove.html">Skyle_CalibImprove</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibMessages.html">Skyle_CalibMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibPoint.html">Skyle_CalibPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibQuality.html">Skyle_CalibQuality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_DeviceVersions.html">Skyle_DeviceVersions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_FilterOptions.html">Skyle_FilterOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_IPadOptions.html">Skyle_IPadOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_OptionMessage.html">Skyle_OptionMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_OptionMessage/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Options.html">Skyle_Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Point.html">Skyle_Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_PositioningMessage.html">Skyle_PositioningMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Profile.html">Skyle_Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Profile/Skill.html">– Skill</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ResetMessage.html">Skyle_ResetMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ScreenResolution.html">Skyle_ScreenResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_calibControlMessages.html">Skyle_calibControlMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_calibControlMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ObservableArray</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ObservableArray</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt">ObservableObject</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK15ObservableArrayC5arraySayxGvp"></a>
+                    <a name="//apple_ref/swift/Property/array" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK15ObservableArrayC5arraySayxGvp">array</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK15ObservableArrayCACyxGycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK15ObservableArrayCACyxGycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK15ObservableArrayC5arrayACyxGSayxG_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(array:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK15ObservableArrayC5arrayACyxGSayxG_tcfc">init(array:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">array</span><span class="p">:</span> <span class="p">[</span><span class="kt">T</span><span class="p">])</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK15ObservableArrayC6appendyyxF"></a>
+                    <a name="//apple_ref/swift/Method/append(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK15ObservableArrayC6appendyyxF">append(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">append</span><span class="p">(</span><span class="n">_</span> <span class="nv">element</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK15ObservableArrayC7isEmptySbvp"></a>
+                    <a name="//apple_ref/swift/Property/isEmpty" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK15ObservableArrayC7isEmptySbvp">isEmpty</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isEmpty</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK15ObservableArrayCfd"></a>
+                    <a name="//apple_ref/swift/Method/deinit" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK15ObservableArrayCfd">deinit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">deinit</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-07-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calibration Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../../js/jquery.min.js" defer></script>
+    <script src="../../js/jazzy.js" defer></script>
+    
+    <script src="../../js/lunr.min.js" defer></script>
+    <script src="../../js/typeahead.jquery.js" defer></script>
+    <script src="../../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Calibration" class="dashAnchor"></a>
+    <a title="Calibration Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../../index.html">SkyleSwiftSDK Docs</a> (89% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../../index.html">SkyleSwiftSDK Reference</a>
+        <img id="carat" src="../../img/carat.png" />
+        Calibration Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Classes/ET.html">ET</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/States.html">– States</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Calibration.html">– Calibration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Control.html">– Control</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/GRPCErrorProvider.html">– GRPCErrorProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Delegate.html">– Delegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Legacy.html">– Legacy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Gaze.html">– Gaze</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/MjpegStream.html">– MjpegStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Positioning.html">– Positioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Profile.html">– Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Profiles.html">– Profiles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Reset.html">– Reset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ET/Version.html">– Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/ObservableArray.html">ObservableArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Protocols/Skyle_SkyleClientProtocol.html">Skyle_SkyleClientProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Protocols/Skyle_SkyleProvider.html">Skyle_SkyleProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../../Structs/Point.html">Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_Button.html">Skyle_Button</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_CalibControl.html">Skyle_CalibControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_CalibImprove.html">Skyle_CalibImprove</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_CalibMessages.html">Skyle_CalibMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_CalibMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_CalibPoint.html">Skyle_CalibPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_CalibQuality.html">Skyle_CalibQuality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_DeviceVersions.html">Skyle_DeviceVersions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_FilterOptions.html">Skyle_FilterOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_IPadOptions.html">Skyle_IPadOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_OptionMessage.html">Skyle_OptionMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_OptionMessage/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_Options.html">Skyle_Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_Point.html">Skyle_Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_PositioningMessage.html">Skyle_PositioningMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_Profile.html">Skyle_Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_Profile/Skill.html">– Skill</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_ResetMessage.html">Skyle_ResetMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_ScreenResolution.html">Skyle_ScreenResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_calibControlMessages.html">Skyle_calibControlMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Structs/Skyle_calibControlMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Calibration</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Calibration</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>The calibration class provides <code>Publisher</code> and functions to perform a calibration of Skyle.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC6clientAA0a1_A6ClientCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/client" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC6clientAA0a1_A6ClientCSgvp">client</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A reference to the current client, which represents the gRPC connection.
+This is automatically updated by <code><a href="../../Classes/ET.html">ET</a></code> when a new connection is established.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">internal</span> <span class="k">var</span> <span class="nv">client</span><span class="p">:</span> <span class="kt"><a href="../../Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationCAEycfc"></a>
+                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationCAEycfc">init()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Internal empty constructor</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">internal</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationCyAeA0a1_A6ClientCSgcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationCyAeA0a1_A6ClientCSgcfc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Internal constructor passing a possible client</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">internal</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">client</span><span class="p">:</span> <span class="kt"><a href="../../Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC6PointsV"></a>
+                    <a name="//apple_ref/swift/Struct/Points" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC6PointsV">Points</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="../../Classes/ET/Calibration/Points.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Points</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC4typeSaySiGvp"></a>
+                    <a name="//apple_ref/swift/Property/type" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC4typeSaySiGvp">type</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>type</code> property exposes a <code>Publisher</code> which indicates the type of calibration.
+Currently not actively used. Should be set to either value in <code><a href="../../Classes/ET/Calibration/Points.html">ET.Calibration.Points</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">type</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC5stateAC6StatesOvp"></a>
+                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC5stateAC6StatesOvp">state</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>state</code> property exposes a <code>Publisher</code> which indicates the state of the calibration.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../../Classes/ET/States.html">States</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC7controlAA0A21_calibControlMessagesVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/control" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC7controlAA0A21_calibControlMessagesVSgvp">control</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>control</code> property exposes a <code>Publisher</code> which holds the control messages fot the calibration.
+This can be used to send a control message to the calibration to abort the calibration for example. See <code><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC4stopyyF">Calibration.stop()</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">control</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Skyle_calibControlMessages.html">Skyle_calibControlMessages</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC5pointAA5PointVvp"></a>
+                    <a name="//apple_ref/swift/Property/point" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC5pointAA5PointVvp">point</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>point</code> property exposes a <code>Publisher</code> which indicates the calibration point as coordinates on the screen.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">point</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Point.html">Point</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC12currentPointSivp"></a>
+                    <a name="//apple_ref/swift/Property/currentPoint" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC12currentPointSivp">currentPoint</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>currentPoint</code> property exposes a <code>Publisher</code> which indicates the calibration point count (0, 1, 2, 3, &hellip;).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">currentPoint</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC7qualitySdvp"></a>
+                    <a name="//apple_ref/swift/Property/quality" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC7qualitySdvp">quality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>quality</code> property exposes a <code>Publisher</code> which indicates the overall quality of the calibration.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">quality</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC9qualitiesSaySdGvp"></a>
+                    <a name="//apple_ref/swift/Property/qualities" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC9qualitiesSaySdGvp">qualities</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>qualities</code> property exposes a <code>Publisher</code> which indicates the quality of each point of the calibration.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">qualities</span><span class="p">:</span> <span class="p">[</span><span class="kt">Double</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationCfd"></a>
+                    <a name="//apple_ref/swift/Method/deinit" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationCfd">deinit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Simple cleanup by killing the calibration gRPC call.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">deinit</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC5start6points7stopHID11recalibrate5width6heightySaySiG_S2bs5Int32VANtF"></a>
+                    <a name="//apple_ref/swift/Method/start(points:stopHID:recalibrate:width:height:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC5start6points7stopHID11recalibrate5width6heightySaySiG_S2bs5Int32VANtF">start(points:<wbr>stopHID:<wbr>recalibrate:<wbr>width:<wbr>height:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Starts a calibration asyncronously, updating the <code><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC5stateAC6StatesOvp">state</a></code>, <code><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC5pointAA5PointVvp">point</a></code>, <code><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC12currentPointSivp">currentPoint</a></code>, <code><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC7qualitySdvp">quality</a></code> and <code><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC9qualitiesSaySdGvp">qualities</a></code> properties.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">start</span><span class="p">(</span><span class="nv">points</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]</span> <span class="o">=</span> <span class="kt"><a href="../../Classes/ET/Calibration/Points.html">Points</a></span><span class="o">.</span><span class="kt">Nine</span><span class="p">,</span>
+                  <span class="nv">stopHID</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>
+                  <span class="nv">recalibrate</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">,</span>
+                  <span class="nv">width</span><span class="p">:</span> <span class="kt">Int32</span> <span class="o">=</span> <span class="kt"><a href="../../Classes/ET.html">ET</a></span><span class="o">.</span><span class="kt">Calibration</span><span class="o">.</span><span class="n"><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC5widths5Int32VvpZ">width</a></span><span class="p">,</span>
+                  <span class="nv">height</span><span class="p">:</span> <span class="kt">Int32</span> <span class="o">=</span> <span class="kt"><a href="../../Classes/ET.html">ET</a></span><span class="o">.</span><span class="kt">Calibration</span><span class="o">.</span><span class="n"><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC6heights5Int32VvpZ">height</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>points</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Amount of calibration points. Pass one of <code><a href="../../Classes/ET/Calibration/Points.html">ET.Calibration.Points</a></code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stopHID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Tells Skyle to stop HID (Mouse positioning updates) during the calibration.
+        Resets after the calibration has finished.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>recalibrate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Tells the calibration to keep the connection open after the calibration has finished
+            to perform a possible recalibration of certain points.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>width</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Screen width in pixels.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>height</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Screen height in pixels.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC4stopyyF"></a>
+                    <a name="//apple_ref/swift/Method/stop()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC4stopyyF">stop()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stops a calibration asyncronously, updating the <code><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC5stateAC6StatesOvp">state</a></code> and <code><a href="../../Classes/ET/Calibration.html#/s:13SkyleSwiftSDK2ETC11CalibrationC7controlAA0A21_calibControlMessagesVSgvp">control</a></code> properties.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">stop</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC5widths5Int32VvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/width" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC5widths5Int32VvpZ">width</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The width in pixels of the iPad Pro 12,9</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">width</span><span class="p">:</span> <span class="kt">Int32</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC6heights5Int32VvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/height" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC6heights5Int32VvpZ">height</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The height in pixels of the iPad Pro 12,9</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">Int32</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC5calcXySfSi_SftFZ"></a>
+                    <a name="//apple_ref/swift/Method/calcX(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC5calcXySfSi_SftFZ">calcX(_:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the x position in pixel of a calibration point by providing a value from <code>Points.&lt;Value&gt;</code>
+and the width of the screen in pixel.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">calcX</span><span class="p">(</span><span class="n">_</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">width</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC5calcY_5width6heightSfSi_S2ftFZ"></a>
+                    <a name="//apple_ref/swift/Method/calcY(_:width:height:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC5calcY_5width6heightSfSi_S2ftFZ">calcY(_:<wbr>width:<wbr>height:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the y position in pixel of a calibration point by providing a value from <code>Points.&lt;Value&gt;</code>
+and the width and height of the screen in pixel.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">calcY</span><span class="p">(</span><span class="n">_</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="kt">Float</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Float</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-07-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

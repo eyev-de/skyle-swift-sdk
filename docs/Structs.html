@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Structures  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Structures" class="dashAnchor"></a>
+    <a title="Structures  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">SkyleSwiftSDK Docs</a> (89% documented)</p>
+        <p class="header-right">
+          <form role="search" action="search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">SkyleSwiftSDK Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Structures  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ET.html">ET</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/States.html">– States</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Calibration.html">– Calibration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Control.html">– Control</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/GRPCErrorProvider.html">– GRPCErrorProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Delegate.html">– Delegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Legacy.html">– Legacy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Gaze.html">– Gaze</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/MjpegStream.html">– MjpegStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Positioning.html">– Positioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Profile.html">– Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Profiles.html">– Profiles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Reset.html">– Reset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ET/Version.html">– Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ObservableArray.html">ObservableArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Skyle_SkyleClientProtocol.html">Skyle_SkyleClientProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Skyle_SkyleProvider.html">Skyle_SkyleProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Point.html">Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_Button.html">Skyle_Button</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_CalibControl.html">Skyle_CalibControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_CalibImprove.html">Skyle_CalibImprove</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_CalibMessages.html">Skyle_CalibMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_CalibMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_CalibPoint.html">Skyle_CalibPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_CalibQuality.html">Skyle_CalibQuality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_DeviceVersions.html">Skyle_DeviceVersions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_FilterOptions.html">Skyle_FilterOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_IPadOptions.html">Skyle_IPadOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_OptionMessage.html">Skyle_OptionMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_OptionMessage/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_Options.html">Skyle_Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_Point.html">Skyle_Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_PositioningMessage.html">Skyle_PositioningMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_Profile.html">Skyle_Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_Profile/Skill.html">– Skill</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_ResetMessage.html">Skyle_ResetMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_ScreenResolution.html">Skyle_ScreenResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_calibControlMessages.html">Skyle_calibControlMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Skyle_calibControlMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Structures</h1>
+            <p>The following structures are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK5PointV"></a>
+                    <a name="//apple_ref/swift/Struct/Point" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK5PointV">Point</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Simple Point structure used to pass Gaze points and Position around</p>
+
+                        <a href="Structs/Point.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Point</span> <span class="p">:</span> <span class="kt">Hashable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A8_ProfileV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_Profile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A8_ProfileV">Skyle_Profile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message describing a user profile</p>
+
+                        <a href="Structs/Skyle_Profile.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_Profile</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_Profile</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_Profile</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A13_ResetMessageV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_ResetMessage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A13_ResetMessageV">Skyle_ResetMessage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message to request resets</p>
+
+                        <a href="Structs/Skyle_ResetMessage.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_ResetMessage</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_ResetMessage</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_ResetMessage</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A14_StatusMessageV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_StatusMessage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A14_StatusMessageV">Skyle_StatusMessage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>General status message</p>
+
+                        <a href="Structs/Skyle_StatusMessage.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_StatusMessage</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_StatusMessage</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_StatusMessage</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A14_OptionMessageV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_OptionMessage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A14_OptionMessageV">Skyle_OptionMessage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message to wrap the options message: either empty or filled with options</p>
+
+                        <a href="Structs/Skyle_OptionMessage.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_OptionMessage</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_OptionMessage</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_OptionMessage</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A21_calibControlMessagesV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_calibControlMessages" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A21_calibControlMessagesV">Skyle_calibControlMessages</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message wrapping possible calibration control messages for a client</p>
+
+                        <a href="Structs/Skyle_calibControlMessages.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_calibControlMessages</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_calibControlMessages</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_calibControlMessages</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A13_CalibControlV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_CalibControl" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A13_CalibControlV">Skyle_CalibControl</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message describing the calibration status</p>
+
+                        <a href="Structs/Skyle_CalibControl.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_CalibControl</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibControl</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibControl</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A17_ScreenResolutionV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_ScreenResolution" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A17_ScreenResolutionV">Skyle_ScreenResolution</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message with screen resolution of the client</p>
+
+                        <a href="Structs/Skyle_ScreenResolution.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_ScreenResolution</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_ScreenResolution</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_ScreenResolution</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A13_CalibImproveV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_CalibImprove" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A13_CalibImproveV">Skyle_CalibImprove</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message to improve a calibration</p>
+
+                        <a href="Structs/Skyle_CalibImprove.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_CalibImprove</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibImprove</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibImprove</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A14_CalibMessagesV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_CalibMessages" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A14_CalibMessagesV">Skyle_CalibMessages</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message wrapping calibration host messages</p>
+
+                        <a href="Structs/Skyle_CalibMessages.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_CalibMessages</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibMessages</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibMessages</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A6_PointV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_Point" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A6_PointV">Skyle_Point</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message for a 2D point</p>
+
+                        <a href="Structs/Skyle_Point.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_Point</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_Point</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_Point</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A11_CalibPointV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_CalibPoint" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A11_CalibPointV">Skyle_CalibPoint</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message describing a calibration point</p>
+
+                        <a href="Structs/Skyle_CalibPoint.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_CalibPoint</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibPoint</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibPoint</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A13_CalibQualityV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_CalibQuality" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A13_CalibQualityV">Skyle_CalibQuality</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message describing the quality of a calibration</p>
+
+                        <a href="Structs/Skyle_CalibQuality.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_CalibQuality</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibQuality</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_CalibQuality</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A19_PositioningMessageV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_PositioningMessage" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A19_PositioningMessageV">Skyle_PositioningMessage</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message with eye positions and quality indicators</p>
+
+                        <a href="Structs/Skyle_PositioningMessage.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_PositioningMessage</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_PositioningMessage</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_PositioningMessage</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A8_OptionsV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_Options" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A8_OptionsV">Skyle_Options</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Option message for configuration</p>
+
+                        <a href="Structs/Skyle_Options.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_Options</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_Options</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_Options</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A12_IPadOptionsV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_IPadOptions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A12_IPadOptionsV">Skyle_IPadOptions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>iPad Option message for configuration</p>
+
+                        <a href="Structs/Skyle_IPadOptions.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_IPadOptions</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_IPadOptions</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_IPadOptions</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A15_DeviceVersionsV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_DeviceVersions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A15_DeviceVersionsV">Skyle_DeviceVersions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message containing all build versions</p>
+
+                        <a href="Structs/Skyle_DeviceVersions.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_DeviceVersions</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_DeviceVersions</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_DeviceVersions</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A14_ButtonActionsV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_ButtonActions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A14_ButtonActionsV">Skyle_ButtonActions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Representing the three available button actions</p>
+
+                        <a href="Structs/Skyle_ButtonActions.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_ButtonActions</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_ButtonActions</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_ButtonActions</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A7_ButtonV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_Button" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A7_ButtonV">Skyle_Button</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Button message</p>
+
+                        <a href="Structs/Skyle_Button.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_Button</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_Button</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_Button</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0A14_FilterOptionsV"></a>
+                    <a name="//apple_ref/swift/Struct/Skyle_FilterOptions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0A14_FilterOptionsV">Skyle_FilterOptions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Filter configuration message</p>
+
+                        <a href="Structs/Skyle_FilterOptions.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Skyle_FilterOptions</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_FilterOptions</span><span class="p">:</span> <span class="kt">GRPCProtobufPayload</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Skyle_FilterOptions</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Message</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_MessageImplementationBase</span><span class="p">,</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="n">_ProtoNameProviding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-07-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

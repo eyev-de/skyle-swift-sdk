@@ -13,22 +13,34 @@ import CombineGRPC
 import SwiftProtobuf
 
 extension ET {
+    /**
+        Profiles exposes Skyles User Profiles API which makes it possible to create, update, select and delete profiles.
+        It also provides `Publisher` which hold the currently selected profile and a list of all profiles.
+     */
     public class Profiles: ObservableObject {
-        var client: Skyle_SkyleClient? = nil {
+        /// A reference to the current client, which represents the gRPC connection.
+        /// This is automatically updated by `ET` when a new connection is established.
+        /// In this case all `Profile`s are updated when this is updated.
+        internal var client: Skyle_SkyleClient? {
             willSet {
                 for profile in self.profiles {
                     profile.client = newValue
                 }
             }
         }
-        init() {}
-        init(_ client: Skyle_SkyleClient?) {
+        /// Internal empty constructor
+        internal init() {}
+        /// Internal constructor passing a possible client
+        internal init(_ client: Skyle_SkyleClient?) {
             self.client = client
         }
-        @Published private(set) public var state: States = .finished
         
+        /// The `state` property exposes a `Publisher` which indicates the state of streaming of profiles.
+        @Published private(set) public var state: States = .finished
+        /// The `profiles` property exposes a `Publisher` which holds an array of `Profile` objects pulled from Skyle.
         @Published private(set) public var profiles: [Profile] = []
-        @Published private(set) public var currentProfile: Profile? = nil
+        /// The `currentProfile` property exposes a `Publisher` which indicates the currently active `Profile`.
+        @Published private(set) public var currentProfile: Profile?
         
         private let grpc = GRPCExecutor()
         private var cancellables: Set<AnyCancellable> = []
@@ -36,7 +48,7 @@ extension ET {
         private var call: ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile>?
         private var deleteCall: UnaryCall<Skyle_Profile, Skyle_StatusMessage>?
         
-        private func run(completion: @escaping ([Profile]?, States) -> () = {_, _ in}) {
+        private func run(completion: @escaping (_ profiles: [ET.Profile]?, _ state: ET.States) -> Void = {_, _ in}) {
             guard let client = self.client else {
                 return
             }
@@ -50,9 +62,9 @@ extension ET {
                                 self?.state = .running
                             }
                         }
-                        let p = Profile(profile)
-                        p.client = self?.client
-                        tempProfiles.append(p)
+                        let temp = ET.Profile(profile)
+                        temp.client = self?.client
+                        tempProfiles.append(temp)
                     }
                     
                     self?.call?.status.whenComplete { result in
@@ -62,7 +74,6 @@ extension ET {
                             DispatchQueue.main.async { [weak self] in
                                 self?.state = .error(error)
                             }
-                            break
                         case .success(let status):
                             completion(self?.profiles, .finished)
                             if status.code != .ok && status.code != .cancelled {
@@ -76,7 +87,6 @@ extension ET {
                                 }
                                 self?.profiles = tempProfiles
                             }
-                            break
                         }
                     }
                 }
@@ -94,7 +104,7 @@ extension ET {
             }
         }
         
-        private func getCurrent(completion: @escaping (Profile?, States) -> () = {_, _ in}) {
+        private func getCurrent(completion: @escaping (_ profile: ET.Profile?, _ state: ET.States) -> Void = {_, _ in}) {
             guard let client = self.client else {
                 return
             }
@@ -105,7 +115,6 @@ extension ET {
                         switch $0 {
                         case .failure(let status):
                             completion(nil, .failed(status))
-                            break
                         case .finished:
                             break
                         }
@@ -118,7 +127,8 @@ extension ET {
             }
         }
         
-        private func deleteProfile(_ profile: Profile, completion: @escaping (Skyle_StatusMessage?, States) -> () = {_, _ in}) {
+        private func deleteProfile(_ profile: ET.Profile,
+                                   completion: @escaping (_ message: Skyle_StatusMessage?, _ state: ET.States) -> Void = {_, _ in}) {
             guard let client = self.client else {
                 return
             }
@@ -138,7 +148,7 @@ extension ET {
                 })
             }
         }
-        
+        /// Simple cleanup cancels all gRPC calls
         deinit {
             self.cancellables.removeAll()
         }
@@ -146,35 +156,61 @@ extension ET {
 }
 
 extension ET.Profiles {
-    public func get(completion: @escaping (ET.Profile?, ET.States) -> () = {_, _ in}) {
+    /**
+        Gets all profiles and the currently active `Profile` stored on Skyle asyncronously, updating the `state`,
+        `profiles` and `currentProfile` properties.
+        - Parameters:
+             - completion: A completion handler
+             - profile: The currently active `Profile`.
+             - state: A `ET.States` containing possible errors.
+     */
+    public func get(completion: @escaping (_ profile: ET.Profile?, _ state: ET.States) -> Void = {_, _ in}) {
         guard self.state != .running && self.state != .connecting else { return }
         DispatchQueue.main.async {  [weak self] in
             self?.state = .connecting
-            self?.run() { profiles, state in
-                self?.getCurrent() { profile, state in
+            self?.run { _, state in
+                self?.getCurrent { profile, state in
                     completion(profile, state)
                 }
             }
         }
     }
-    
-    public func set(_ profile: ET.Profile, completion: @escaping (ET.Profile?, ET.States) -> () = {_, _ in}) {
+    /**
+        Creates or updates a `Profile` and sets it to the currently active one.
+        - Parameters:
+            - profile: The profile to be created, updated and set to currently active.
+            - completion: A completion handler
+            - profile: The new, active `Profile`.
+            - state: A `ET.States` containing possible errors.
+     */
+    public func set(_ profile: ET.Profile, completion: @escaping (_ profile: ET.Profile?, _ state: ET.States) -> Void = {_, _ in}) {
         profile.client = self.client
-        profile.select() { _, state in
+        profile.select { _, state in
             guard state == .finished else {
                 completion(nil, state)
                 return
             }
-            self.get() { profile, state in
+            self.get { profile, state in
                 completion(profile, state)
             }
         }
     }
-    
-    public func delete(_ profile: ET.Profile, completion: @escaping (Skyle_StatusMessage?, ET.States) -> () = {_, _ in}) {
+    /**
+        Deletes a `Profile`.
+        - Parameters:
+            - profile: The profile to be deleted.
+            - completion: A completion handler.
+            - profile: The currently active `Profile`.
+            - state: A `ET.States` containing possible errors.
+     */
+    public func delete(_ profile: ET.Profile, completion: @escaping (_ profile: ET.Profile?, _ state: ET.States) -> Void = {_, _ in}) {
         self.deleteProfile(profile) { message, state in
-            self.getCurrent() { profile, state in
-                completion(message, state)
+            if message?.success ?? false {
+                self.getCurrent { profile, state in
+                    completion(profile, state)
+                }
+            } else {
+                completion(nil, state)
             }
         }
     }

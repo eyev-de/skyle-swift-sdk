@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Skyle_SkyleClient Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Skyle_SkyleClient" class="dashAnchor"></a>
+    <a title="Skyle_SkyleClient Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SkyleSwiftSDK Docs</a> (89% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SkyleSwiftSDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Skyle_SkyleClient Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ET.html">ET</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/States.html">– States</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Calibration.html">– Calibration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Control.html">– Control</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/GRPCErrorProvider.html">– GRPCErrorProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Delegate.html">– Delegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Legacy.html">– Legacy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Gaze.html">– Gaze</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/MjpegStream.html">– MjpegStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Positioning.html">– Positioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Profile.html">– Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Profiles.html">– Profiles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Reset.html">– Reset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Version.html">– Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObservableArray.html">ObservableArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Skyle_SkyleClientProtocol.html">Skyle_SkyleClientProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Skyle_SkyleProvider.html">Skyle_SkyleProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Point.html">Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Button.html">Skyle_Button</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibControl.html">Skyle_CalibControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibImprove.html">Skyle_CalibImprove</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibMessages.html">Skyle_CalibMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibPoint.html">Skyle_CalibPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibQuality.html">Skyle_CalibQuality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_DeviceVersions.html">Skyle_DeviceVersions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_FilterOptions.html">Skyle_FilterOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_IPadOptions.html">Skyle_IPadOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_OptionMessage.html">Skyle_OptionMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_OptionMessage/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Options.html">Skyle_Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Point.html">Skyle_Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_PositioningMessage.html">Skyle_PositioningMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Profile.html">Skyle_Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Profile/Skill.html">– Skill</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ResetMessage.html">Skyle_ResetMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ScreenResolution.html">Skyle_ScreenResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_calibControlMessages.html">Skyle_calibControlMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_calibControlMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Skyle_SkyleClient</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">Skyle_SkyleClient</span> <span class="p">:</span> <span class="kt">GRPCClient</span><span class="p">,</span> <span class="kt"><a href="../Protocols/Skyle_SkyleClientProtocol.html">Skyle_SkyleClientProtocol</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4GRPC10GRPCClientP7channelAA11GRPCChannel_pvp"></a>
+                    <a name="//apple_ref/swift/Property/channel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4GRPC10GRPCClientP7channelAA11GRPCChannel_pvp">channel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">channel</span><span class="p">:</span> <span class="kt">GRPCChannel</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4GRPC10GRPCClientP18defaultCallOptionsAA0dE0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/defaultCallOptions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4GRPC10GRPCClientP18defaultCallOptionsAA0dE0Vvp">defaultCallOptions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">defaultCallOptions</span><span class="p">:</span> <span class="kt">CallOptions</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC7channel18defaultCallOptionsAC4GRPC11GRPCChannel_p_AF0gH0Vtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(channel:defaultCallOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC7channel18defaultCallOptionsAC4GRPC11GRPCChannel_p_AF0gH0Vtcfc">init(channel:<wbr>defaultCallOptions:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a client for the Skyle.Skyle service.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">GRPCChannel</span><span class="p">,</span> <span class="n"><a href="../Classes/Skyle_SkyleClient.html#/s:4GRPC10GRPCClientP18defaultCallOptionsAA0dE0Vvp">defaultCallOptions</a></span><span class="p">:</span> <span class="kt">CallOptions</span> <span class="o">=</span> <span class="kt">CallOptions</span><span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>channel</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p><code>GRPCChannel</code> to the service host.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>defaultCallOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Options to use for each service call if the user doesn&rsquo;t provide them.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC9calibrate11callOptions7handler4GRPC26BidirectionalStreamingCallCyAA0A21_calibControlMessagesVAA0a6_CalibO0VGAG0lG0VSg_yAMctF"></a>
+                    <a name="//apple_ref/swift/Method/calibrate(callOptions:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC9calibrate11callOptions7handler4GRPC26BidirectionalStreamingCallCyAA0A21_calibControlMessagesVAA0a6_CalibO0VGAG0lG0VSg_yAMctF">calibrate(callOptions:<wbr>handler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Used to calibrate for the current user. Streams in both directions with given message types. Client needs to close the stream when done</p>
+
+<p>Callers should use the <code>send</code> method on the returned object to send messages
+ to the server. The caller should send an <code>.end</code> after the final message has been sent.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">calibrate</span><span class="p">(</span><span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/Skyle_CalibMessages.html">Skyle_CalibMessages</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">BidirectionalStreamingCall</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_calibControlMessages.html">Skyle_calibControlMessages</a></span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_CalibMessages.html">Skyle_CalibMessages</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure called when each response is received from the server.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>ClientStreamingCall</code> with futures for the metadata and status.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC11positioning_11callOptions7handler4GRPC19ServerStreamingCallCy0B8Protobuf07Google_M6_EmptyVAA0A19_PositioningMessageVGAL_AG0lG0VSgyANctF"></a>
+                    <a name="//apple_ref/swift/Method/positioning(_:callOptions:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC11positioning_11callOptions7handler4GRPC19ServerStreamingCallCy0B8Protobuf07Google_M6_EmptyVAA0A19_PositioningMessageVGAL_AG0lG0VSgyANctF">positioning(_:<wbr>callOptions:<wbr>handler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subscribe a stream sending eye positions and quality indicators to achieve good positioning of a user. Client needs to close the stream when done</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">positioning</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/Skyle_PositioningMessage.html">Skyle_PositioningMessage</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ServerStreamingCall</span><span class="o">&lt;</span><span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_PositioningMessage.html">Skyle_PositioningMessage</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to Positioning.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure called when each response is received from the server.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>ServerStreamingCall</code> with futures for the metadata and status.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC4gaze_11callOptions7handler4GRPC19ServerStreamingCallCy0B8Protobuf07Google_M6_EmptyVAA0A6_PointVGAL_AG0lG0VSgyANctF"></a>
+                    <a name="//apple_ref/swift/Method/gaze(_:callOptions:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC4gaze_11callOptions7handler4GRPC19ServerStreamingCallCy0B8Protobuf07Google_M6_EmptyVAA0A6_PointVGAL_AG0lG0VSgyANctF">gaze(_:<wbr>callOptions:<wbr>handler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subscribe a gaze stream, that sends coordinates of the current user gaze on a screen. Client needs to close the stream when done</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">gaze</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/Skyle_Point.html">Skyle_Point</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ServerStreamingCall</span><span class="o">&lt;</span><span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_Point.html">Skyle_Point</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to Gaze.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure called when each response is received from the server.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>ServerStreamingCall</code> with futures for the metadata and status.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC9getButton_11callOptions4GRPC9UnaryCallCy0B8Protobuf07Google_L6_EmptyVAA0a1_F0VGAK_AF0kH0VSgtF"></a>
+                    <a name="//apple_ref/swift/Method/getButton(_:callOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC9getButton_11callOptions4GRPC9UnaryCallCy0B8Protobuf07Google_L6_EmptyVAA0a1_F0VGAK_AF0kH0VSgtF">getButton(_:<wbr>callOptions:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to get the button status</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getButton</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UnaryCall</span><span class="o">&lt;</span><span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_Button.html">Skyle_Button</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to GetButton.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>UnaryCall</code> with futures for the metadata, status and response.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC9setButton_11callOptions4GRPC9UnaryCallCyAA0a1_F7ActionsVAJGAJ_AF0kH0VSgtF"></a>
+                    <a name="//apple_ref/swift/Method/setButton(_:callOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC9setButton_11callOptions4GRPC9UnaryCallCyAA0a1_F7ActionsVAJGAJ_AF0kH0VSgtF">setButton(_:<wbr>callOptions:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to configure the button actions, answers with the resulting configuration</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setButton</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a></span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UnaryCall</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a></span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to SetButton.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>UnaryCall</code> with futures for the metadata, status and response.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC9configure_11callOptions4GRPC9UnaryCallCyAA0A14_OptionMessageVAA0a1_G0VGAJ_AF0jG0VSgtF"></a>
+                    <a name="//apple_ref/swift/Method/configure(_:callOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC9configure_11callOptions4GRPC9UnaryCallCyAA0A14_OptionMessageVAA0a1_G0VGAJ_AF0jG0VSgtF">configure(_:<wbr>callOptions:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to get (OptionMessage -&gt; empty) or set options (OptionMessage -&gt; Options). Answers with the resulting options. Options are saved to the current user profile</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">configure</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_OptionMessage.html">Skyle_OptionMessage</a></span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UnaryCall</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_OptionMessage.html">Skyle_OptionMessage</a></span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_Options.html">Skyle_Options</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to Configure.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>UnaryCall</code> with futures for the metadata, status and response.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC11getVersions_11callOptions4GRPC9UnaryCallCy0B8Protobuf07Google_L6_EmptyVAA0a7_DeviceF0VGAK_AF0kH0VSgtF"></a>
+                    <a name="//apple_ref/swift/Method/getVersions(_:callOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC11getVersions_11callOptions4GRPC9UnaryCallCy0B8Protobuf07Google_L6_EmptyVAA0a7_DeviceF0VGAK_AF0kH0VSgtF">getVersions(_:<wbr>callOptions:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to get software versions</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getVersions</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UnaryCall</span><span class="o">&lt;</span><span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_DeviceVersions.html">Skyle_DeviceVersions</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to GetVersions.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>UnaryCall</code> with futures for the metadata, status and response.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC11getProfiles_11callOptions7handler4GRPC19ServerStreamingCallCy0B8Protobuf07Google_N6_EmptyVAA0A8_ProfileVGAL_AG0mH0VSgyANctF"></a>
+                    <a name="//apple_ref/swift/Method/getProfiles(_:callOptions:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC11getProfiles_11callOptions7handler4GRPC19ServerStreamingCallCy0B8Protobuf07Google_N6_EmptyVAA0A8_ProfileVGAL_AG0mH0VSgyANctF">getProfiles(_:<wbr>callOptions:<wbr>handler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Subscribe a profile stream of all available profiles. Host ends stream when all results are sent</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getProfiles</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ServerStreamingCall</span><span class="o">&lt;</span><span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to GetProfiles.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure called when each response is received from the server.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>ServerStreamingCall</code> with futures for the metadata and status.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC14currentProfile_11callOptions4GRPC9UnaryCallCy0B8Protobuf07Google_L6_EmptyVAA0a1_F0VGAK_AF0kH0VSgtF"></a>
+                    <a name="//apple_ref/swift/Method/currentProfile(_:callOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC14currentProfile_11callOptions4GRPC9UnaryCallCy0B8Protobuf07Google_L6_EmptyVAA0a1_F0VGAK_AF0kH0VSgtF">currentProfile(_:<wbr>callOptions:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to get the current profile</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">currentProfile</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UnaryCall</span><span class="o">&lt;</span><span class="kt">SwiftProtobuf</span><span class="o">.</span><span class="kt">Google_Protobuf_Empty</span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to CurrentProfile.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>UnaryCall</code> with futures for the metadata, status and response.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC10setProfile_11callOptions4GRPC9UnaryCallCyAA0a1_F0VAA0A14_StatusMessageVGAJ_AF0kH0VSgtF"></a>
+                    <a name="//apple_ref/swift/Method/setProfile(_:callOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC10setProfile_11callOptions4GRPC9UnaryCallCyAA0a1_F0VAA0A14_StatusMessageVGAJ_AF0kH0VSgtF">setProfile(_:<wbr>callOptions:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to set or create a profile. Answers with a status message (success or failure)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setProfile</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UnaryCall</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to SetProfile.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>UnaryCall</code> with futures for the metadata, status and response.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC13deleteProfile_11callOptions4GRPC9UnaryCallCyAA0a1_F0VAA0A14_StatusMessageVGAJ_AF0kH0VSgtF"></a>
+                    <a name="//apple_ref/swift/Method/deleteProfile(_:callOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC13deleteProfile_11callOptions4GRPC9UnaryCallCyAA0a1_F0VAA0A14_StatusMessageVGAJ_AF0kH0VSgtF">deleteProfile(_:<wbr>callOptions:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to delete a profile. Answers with a status message (success or failure)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">deleteProfile</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UnaryCall</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_Profile.html">Skyle_Profile</a></span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to DeleteProfile.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>UnaryCall</code> with futures for the metadata, status and response.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK0a1_A6ClientC5reset_11callOptions4GRPC9UnaryCallCyAA0A13_ResetMessageVAA0a7_StatusL0VGAJ_AF0jG0VSgtF"></a>
+                    <a name="//apple_ref/swift/Method/reset(_:callOptions:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK0a1_A6ClientC5reset_11callOptions4GRPC9UnaryCallCyAA0A13_ResetMessageVAA0a7_StatusL0VGAJ_AF0jG0VSgtF">reset(_:<wbr>callOptions:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Unary call to reset specific parts </p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">reset</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Structs/Skyle_ResetMessage.html">Skyle_ResetMessage</a></span><span class="p">,</span> <span class="nv">callOptions</span><span class="p">:</span> <span class="kt">CallOptions</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UnaryCall</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/Skyle_ResetMessage.html">Skyle_ResetMessage</a></span><span class="p">,</span> <span class="kt"><a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a></span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Request to send to Reset.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callOptions</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Call options; <code>self.defaultCallOptions</code> is used if <code>nil</code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>UnaryCall</code> with futures for the metadata, status and response.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-07-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

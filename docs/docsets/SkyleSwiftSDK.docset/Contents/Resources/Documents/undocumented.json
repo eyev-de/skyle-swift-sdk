@@ -1,0 +1,509 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Calibration.swift",
+      "line": 30,
+      "symbol": "ET.Calibration.Points",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Calibration.swift",
+      "line": 31,
+      "symbol": "ET.Calibration.Points.Five",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Calibration.swift",
+      "line": 32,
+      "symbol": "ET.Calibration.Points.Nine",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 24,
+      "symbol": "Point.x",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 26,
+      "symbol": "Point.y",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 28,
+      "symbol": "Point.init(x:y:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 297,
+      "symbol": "ET.GRPCErrorProvider.error",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 298,
+      "symbol": "ET.GRPCErrorProvider.file",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 299,
+      "symbol": "ET.GRPCErrorProvider.line",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 302,
+      "symbol": "ET.Delegate",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 305,
+      "symbol": "ET.Delegate.HardInterface",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 306,
+      "symbol": "ET.Delegate.HardInterface.connected",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
+      "line": 307,
+      "symbol": "ET.Delegate.HardInterface.ip",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 18,
+      "symbol": "ET.MjpegStream",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 20,
+      "symbol": "ET.MjpegStream.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 23,
+      "symbol": "ET.MjpegStream.MjpegStreamError",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 24,
+      "symbol": "ET.MjpegStream.MjpegStreamError.badResponse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 24,
+      "symbol": "ET.MjpegStream.MjpegStreamError.parseImage",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 30,
+      "symbol": "ET.MjpegStream.cgimage",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 32,
+      "symbol": "ET.MjpegStream.startMarker",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 33,
+      "symbol": "ET.MjpegStream.endMarker",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 35,
+      "symbol": "ET.MjpegStream.buffer",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 38,
+      "symbol": "ET.MjpegStream.task",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 40,
+      "symbol": "ET.MjpegStream.state",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 44,
+      "symbol": "ET.MjpegStream.start(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 61,
+      "symbol": "ET.MjpegStream.stop()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 84,
+      "symbol": "ET.MjpegStream.urlSession(_:dataTask:didReceive:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 95,
+      "symbol": "ET.MjpegStream.urlSession(_:dataTask:didReceive:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 109,
+      "symbol": "ET.MjpegStream.urlSession(_:didBecomeInvalidWithError:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 113,
+      "symbol": "ET.MjpegStream.urlSession(_:taskIsWaitingForConnectivity:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/MjpegStream.swift",
+      "line": 117,
+      "symbol": "ET.MjpegStream.urlSession(_:task:didCompleteWithError:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ObservableArray.swift",
+      "line": 12,
+      "symbol": "ObservableArray",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ObservableArray.swift",
+      "line": 13,
+      "symbol": "ObservableArray.array",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ObservableArray.swift",
+      "line": 16,
+      "symbol": "ObservableArray.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ObservableArray.swift",
+      "line": 18,
+      "symbol": "ObservableArray.init(array:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ObservableArray.swift",
+      "line": 23,
+      "symbol": "ObservableArray.append(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ObservableArray.swift",
+      "line": 28,
+      "symbol": "ObservableArray.isEmpty",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ObservableArray.swift",
+      "line": 38,
+      "symbol": "ObservableArray.deinit",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Profile.swift",
+      "line": 14,
+      "symbol": "Skyle_Profile.profile()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Profile.swift",
+      "line": 37,
+      "symbol": "ET.Profile.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Profile.swift",
+      "line": 39,
+      "symbol": "ET.Profile.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 32,
+      "symbol": "Skyle_SkyleClientProtocol.calibrate(callOptions:handler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 33,
+      "symbol": "Skyle_SkyleClientProtocol.positioning(_:callOptions:handler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 34,
+      "symbol": "Skyle_SkyleClientProtocol.gaze(_:callOptions:handler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 35,
+      "symbol": "Skyle_SkyleClientProtocol.getButton(_:callOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 36,
+      "symbol": "Skyle_SkyleClientProtocol.setButton(_:callOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 37,
+      "symbol": "Skyle_SkyleClientProtocol.configure(_:callOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 38,
+      "symbol": "Skyle_SkyleClientProtocol.getVersions(_:callOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 39,
+      "symbol": "Skyle_SkyleClientProtocol.getProfiles(_:callOptions:handler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 40,
+      "symbol": "Skyle_SkyleClientProtocol.currentProfile(_:callOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 41,
+      "symbol": "Skyle_SkyleClientProtocol.setProfile(_:callOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 42,
+      "symbol": "Skyle_SkyleClientProtocol.deleteProfile(_:callOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 43,
+      "symbol": "Skyle_SkyleClientProtocol.reset(_:callOptions:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.grpc.swift",
+      "line": 46,
+      "symbol": "Skyle_SkyleClient",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 69,
+      "symbol": "Skyle_Profile.Skill",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 80,
+      "symbol": "Skyle_Profile.Skill.UNRECOGNIZED(_:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 111,
+      "symbol": "Skyle_Profile.Skill",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 144,
+      "symbol": "Skyle_OptionMessage.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 166,
+      "symbol": "Skyle_OptionMessage.OneOf_Message",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 193,
+      "symbol": "Skyle_calibControlMessages.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 215,
+      "symbol": "Skyle_calibControlMessages.OneOf_Message",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 314,
+      "symbol": "Skyle_CalibMessages.message",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 345,
+      "symbol": "Skyle_CalibMessages.OneOf_Message",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
+      "line": 731,
+      "symbol": "Skyle_Profile.Skill",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Version.swift",
+      "line": 118,
+      "symbol": "ET.Version.Legacy.UpdateInfo",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Version.swift",
+      "line": 120,
+      "symbol": "ET.Version.Legacy.UpdateInfo.fW_version",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Version.swift",
+      "line": 122,
+      "symbol": "ET.Version.Legacy.UpdateInfo.eT_version",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Version.swift",
+      "line": 124,
+      "symbol": "ET.Version.Legacy.UpdateInfo.calib_version",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Version.swift",
+      "line": 126,
+      "symbol": "ET.Version.Legacy.UpdateInfo.base_version",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Version.swift",
+      "line": 128,
+      "symbol": "ET.Version.Legacy.UpdateInfo.skyle_type",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Version.swift",
+      "line": 129,
+      "symbol": "ET.Version.Legacy.UpdateInfo.serial",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Version.swift",
+      "line": 130,
+      "symbol": "ET.Version.Legacy.UpdateInfo.isDemo",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/Kw/Documents_local/SkyleSwiftSDK"
+}

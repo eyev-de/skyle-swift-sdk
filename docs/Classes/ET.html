@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ET Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ET" class="dashAnchor"></a>
+    <a title="ET Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">SkyleSwiftSDK Docs</a> (89% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">SkyleSwiftSDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ET Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ET.html">ET</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/States.html">– States</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Calibration.html">– Calibration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Control.html">– Control</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/GRPCErrorProvider.html">– GRPCErrorProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Delegate.html">– Delegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Legacy.html">– Legacy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Gaze.html">– Gaze</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/MjpegStream.html">– MjpegStream</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Positioning.html">– Positioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Profile.html">– Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Profiles.html">– Profiles</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Reset.html">– Reset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ET/Version.html">– Version</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObservableArray.html">ObservableArray</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Skyle_SkyleClientProtocol.html">Skyle_SkyleClientProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Skyle_SkyleProvider.html">Skyle_SkyleProvider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Point.html">Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Button.html">Skyle_Button</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ButtonActions.html">Skyle_ButtonActions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibControl.html">Skyle_CalibControl</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibImprove.html">Skyle_CalibImprove</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibMessages.html">Skyle_CalibMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibPoint.html">Skyle_CalibPoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_CalibQuality.html">Skyle_CalibQuality</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_DeviceVersions.html">Skyle_DeviceVersions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_FilterOptions.html">Skyle_FilterOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_IPadOptions.html">Skyle_IPadOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_OptionMessage.html">Skyle_OptionMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_OptionMessage/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Options.html">Skyle_Options</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Point.html">Skyle_Point</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_PositioningMessage.html">Skyle_PositioningMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Profile.html">Skyle_Profile</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_Profile/Skill.html">– Skill</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ResetMessage.html">Skyle_ResetMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_ScreenResolution.html">Skyle_ScreenResolution</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_StatusMessage.html">Skyle_StatusMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_calibControlMessages.html">Skyle_calibControlMessages</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Skyle_calibControlMessages/OneOf_Message.html">– OneOf_Message</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ET</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ET</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>Main class of the SDK, which takes care of the connection to Skyle and exposes all parts of the API.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC6StatesO"></a>
+                    <a name="//apple_ref/swift/Enum/States" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC6StatesO">States</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defenition of States that are used by all members of the SDK, indicating the connection and lifecycle of gRPC calls</p>
+
+                        <a href="../Classes/ET/States.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">States</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC6clientAA0a1_A6ClientCSgvp"></a>
+                    <a name="//apple_ref/swift/Property/client" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC6clientAA0a1_A6ClientCSgvp">client</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The client is generated by the proto files</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">client</span><span class="p">:</span> <span class="kt"><a href="../Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC14channelBuilder4GRPC16ClientConnectionC0F0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/channelBuilder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC14channelBuilder4GRPC16ClientConnectionC0F0Cvp">channelBuilder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The channel builder holds the configuration of the connection</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">channelBuilder</span><span class="p">:</span> <span class="kt">ClientConnection</span><span class="o">.</span><span class="kt">Builder</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11calibrationAC11CalibrationCvp"></a>
+                    <a name="//apple_ref/swift/Property/calibration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11calibrationAC11CalibrationCvp">calibration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reference to the current calibration. After each calibration please call <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC15makeCalibrationAC0F0CyF">makeCalibration()</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">calibration</span><span class="p">:</span> <span class="kt">ET</span><span class="o">.</span><span class="kt"><a href="../Classes/ET/Calibration.html">Calibration</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC15makeCalibrationAC0F0CyF"></a>
+                    <a name="//apple_ref/swift/Method/makeCalibration()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC15makeCalibrationAC0F0CyF">makeCalibration()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new calibration and sets <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC11calibrationAC11CalibrationCvp">calibration</a></code> to the new instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeCalibration</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ET/Calibration.html">Calibration</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC7controlAC7ControlCvp"></a>
+                    <a name="//apple_ref/swift/Property/control" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC7controlAC7ControlCvp">control</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reference to the current <code>control</code> instance. You can create a new instance by calling <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC11makeControlAC0F0CyF">makeControl()</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">control</span><span class="p">:</span> <span class="kt"><a href="../Classes/ET/Control.html">Control</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11makeControlAC0F0CyF"></a>
+                    <a name="//apple_ref/swift/Method/makeControl()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11makeControlAC0F0CyF">makeControl()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC7controlAC7ControlCvp">control</a></code> instance and sets <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC7controlAC7ControlCvp">control</a></code> to the new instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeControl</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ET/Control.html">Control</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC4gazeAC4GazeCvp"></a>
+                    <a name="//apple_ref/swift/Property/gaze" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC4gazeAC4GazeCvp">gaze</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reference to the current <code>gaze</code> instance. You can create a new instance by calling <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC8makeGazeAC0F0CyF">makeGaze()</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">gaze</span><span class="p">:</span> <span class="kt"><a href="../Classes/ET/Gaze.html">Gaze</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC8makeGazeAC0F0CyF"></a>
+                    <a name="//apple_ref/swift/Method/makeGaze()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC8makeGazeAC0F0CyF">makeGaze()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC4gazeAC4GazeCvp">gaze</a></code> instance and sets <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC4gazeAC4GazeCvp">gaze</a></code> to the new instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeGaze</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ET/Gaze.html">Gaze</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11positioningAC11PositioningCvp"></a>
+                    <a name="//apple_ref/swift/Property/positioning" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11positioningAC11PositioningCvp">positioning</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reference to the current <code>positioning</code> instance. You can create a new instance by calling <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC15makePositioningAC0F0CyF">makePositioning()</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">positioning</span><span class="p">:</span> <span class="kt"><a href="../Classes/ET/Positioning.html">Positioning</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC15makePositioningAC0F0CyF"></a>
+                    <a name="//apple_ref/swift/Method/makePositioning()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC15makePositioningAC0F0CyF">makePositioning()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC11positioningAC11PositioningCvp">positioning</a></code> instance and sets <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC11positioningAC11PositioningCvp">positioning</a></code> to the new instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makePositioning</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ET/Positioning.html">Positioning</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC8profilesAC8ProfilesCvp"></a>
+                    <a name="//apple_ref/swift/Property/profiles" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC8profilesAC8ProfilesCvp">profiles</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reference to the current <code>profiles</code> instance. You can create a new instance by calling <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC12makeProfilesAC0F0CyF">makeProfiles()</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">profiles</span><span class="p">:</span> <span class="kt"><a href="../Classes/ET/Profiles.html">Profiles</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC12makeProfilesAC0F0CyF"></a>
+                    <a name="//apple_ref/swift/Method/makeProfiles()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC12makeProfilesAC0F0CyF">makeProfiles()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC8profilesAC8ProfilesCvp">profiles</a></code> instance and sets <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC8profilesAC8ProfilesCvp">profiles</a></code> to the new instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeProfiles</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ET/Profiles.html">Profiles</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC5resetAC5ResetCvp"></a>
+                    <a name="//apple_ref/swift/Property/reset" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC5resetAC5ResetCvp">reset</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reference to the current <code>reset</code> instance. You can create a new instance by calling <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC9makeResetAC0F0CyF">makeReset()</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">reset</span><span class="p">:</span> <span class="kt"><a href="../Classes/ET/Reset.html">Reset</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC9makeResetAC0F0CyF"></a>
+                    <a name="//apple_ref/swift/Method/makeReset()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC9makeResetAC0F0CyF">makeReset()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC5resetAC5ResetCvp">reset</a></code> instance and sets <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC5resetAC5ResetCvp">reset</a></code> to the new instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeReset</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ET/Reset.html">Reset</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC7versionAC7VersionCvp"></a>
+                    <a name="//apple_ref/swift/Property/version" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC7versionAC7VersionCvp">version</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reference to the current <code>version</code> instance. You can create a new instance by calling <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC11makeVersionAC0F0CyF">makeVersion()</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">version</span><span class="p">:</span> <span class="kt"><a href="../Classes/ET/Version.html">Version</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11makeVersionAC0F0CyF"></a>
+                    <a name="//apple_ref/swift/Method/makeVersion()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11makeVersionAC0F0CyF">makeVersion()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC7versionAC7VersionCvp">version</a></code> instance and sets <code><a href="../Classes/ET.html#/s:13SkyleSwiftSDK2ETC7versionAC7VersionCvp">version</a></code> to the new instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">makeVersion</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/ET/Version.html">Version</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC6streamAC11MjpegStreamCvp"></a>
+                    <a name="//apple_ref/swift/Property/stream" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC6streamAC11MjpegStreamCvp">stream</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reference to the current <code>stream</code> instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt"><a href="../Classes/ET/MjpegStream.html">MjpegStream</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC12connectivity4GRPC17ConnectivityStateOvp"></a>
+                    <a name="//apple_ref/swift/Property/connectivity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC12connectivity4GRPC17ConnectivityStateOvp">connectivity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>connectivity</code> property exposes a <code>Publisher</code> which indicates the <code>ConnectivityState</code> of the API of Skyle.
+This is normaly updated by the gRPC library but will also be updated when a Legacy eyetracker is connected.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">connectivity</span><span class="p">:</span> <span class="kt">ConnectivityState</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC16hardConnectivitySbvp"></a>
+                    <a name="//apple_ref/swift/Property/hardConnectivity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC16hardConnectivitySbvp">hardConnectivity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>hardConnectivity</code> property exposes a <code>Publisher</code> which indicates the connection state of the interface of Skyle.
+This is <code>true</code> when the ethernet interface with Skyle is available. It is normaly available before the API is available.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">hardConnectivity</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC18legacyConnectivitySbvp"></a>
+                    <a name="//apple_ref/swift/Property/legacyConnectivity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC18legacyConnectivitySbvp">legacyConnectivity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>legacyConnectivity</code> property exposes a <code>Publisher</code> which indicates the connection state of the <code>http</code> API of Skyle.
+This is only used to detect <code><a href="../Classes/ET/Legacy.html">Legacy</a></code> devices and will be removed when all devices are updated to a firmware version &gt;=  3.0</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">legacyConnectivity</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC9grpcErrorAC17GRPCErrorProviderVSgvp"></a>
+                    <a name="//apple_ref/swift/Property/grpcError" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC9grpcErrorAC17GRPCErrorProviderVSgvp">grpcError</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>grpcError</code> property exposes a <code>Publisher</code> which provides all errors coming from the grpc library.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">grpcError</span><span class="p">:</span> <span class="kt"><a href="../Classes/ET/GRPCErrorProvider.html">GRPCErrorProvider</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC4host4portACSS_Sitcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(host:port:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC4host4portACSS_Sitcfc">init(host:<wbr>port:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes a new <code>ET</code> with the provided host and port to connect to.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"skyle.local"</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">50052</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>host</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The host to connect to. Defaults to <code>skyle.local</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>port</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The port to connect to. Defaults to <code>50052</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A brand new <code>ET</code> which is setup to be connected to.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETCfd"></a>
+                    <a name="//apple_ref/swift/Method/deinit" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETCfd">deinit</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Simple cleanup cancels the gRPC calls, invalidates timer and shuts down the EventLoopGroup.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">deinit</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11CalibrationC"></a>
+                    <a name="//apple_ref/swift/Class/Calibration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11CalibrationC">Calibration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The calibration class provides <code>Publisher</code> and functions to perform a calibration of Skyle.</p>
+
+                        <a href="../Classes/ET/Calibration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Calibration</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC7ControlC"></a>
+                    <a name="//apple_ref/swift/Class/Control" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC7ControlC">Control</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Control exposes <code>Publisher</code> which hold information about Skyles settings.
+These are partially user specific and should be pulled after a user is selected via <code>Profile.select</code>,
+<code>Profiles.set</code> or <code>Profiles.delete</code>.</p>
+
+                        <a href="../Classes/ET/Control.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Control</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC17GRPCErrorProviderV"></a>
+                    <a name="//apple_ref/swift/Struct/GRPCErrorProvider" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC17GRPCErrorProviderV">GRPCErrorProvider</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A simple struct to provide error information thrown by the gRPC library.</p>
+
+                        <a href="../Classes/ET/GRPCErrorProvider.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">GRPCErrorProvider</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC8DelegateC"></a>
+                    <a name="//apple_ref/swift/Class/Delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC8DelegateC">Delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="../Classes/ET/Delegate.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">internal</span> <span class="kd">class</span> <span class="kt">Delegate</span> <span class="p">:</span> <span class="kt">ConnectivityStateDelegate</span><span class="p">,</span> <span class="kt">ClientErrorDelegate</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC6LegacyC"></a>
+                    <a name="//apple_ref/swift/Class/Legacy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC6LegacyC">Legacy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Legacy connectivity provider via the http API.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    This is not to be used since the API is deprecated.
+
+</div>
+
+                        <a href="../Classes/ET/Legacy.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">internal</span> <span class="kd">class</span> <span class="kt">Legacy</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC4GazeC"></a>
+                    <a name="//apple_ref/swift/Class/Gaze" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC4GazeC">Gaze</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Gaze class provides a stream of gaze data directly from Skyle.</p>
+
+                        <a href="../Classes/ET/Gaze.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Gaze</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11MjpegStreamC"></a>
+                    <a name="//apple_ref/swift/Class/MjpegStream" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11MjpegStreamC">MjpegStream</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>MjpegStream serves the video stream of Skyle.</p>
+
+                        <a href="../Classes/ET/MjpegStream.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MjpegStream</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">URLSessionDelegate</span><span class="p">,</span> <span class="kt">URLSessionDataDelegate</span><span class="p">,</span> <span class="kt">ObservableObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC11PositioningC"></a>
+                    <a name="//apple_ref/swift/Class/Positioning" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC11PositioningC">Positioning</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Positioning exposes <code>Publisher</code> which stream the current position of the users eyes,
+quality indicators and if the user is present.</p>
+
+                        <a href="../Classes/ET/Positioning.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Positioning</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC7ProfileC"></a>
+                    <a name="//apple_ref/swift/Class/Profile" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC7ProfileC">Profile</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Profile exposes <code>Publisher</code> which hold information about a profile.</p>
+
+                        <a href="../Classes/ET/Profile.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Profile</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC8ProfilesC"></a>
+                    <a name="//apple_ref/swift/Class/Profiles" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC8ProfilesC">Profiles</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Profiles exposes Skyles User Profiles API which makes it possible to create, update, select and delete profiles.
+It also provides <code>Publisher</code> which hold the currently selected profile and a list of all profiles.</p>
+
+                        <a href="../Classes/ET/Profiles.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Profiles</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC5ResetC"></a>
+                    <a name="//apple_ref/swift/Class/Reset" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC5ResetC">Reset</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reset provides the following maintenance functions:</p>
+
+<ul>
+<li>Restart Skyles internal services including eyetracking, calibration and API</li>
+<li>Restart Skyle itself</li>
+<li>Reset all user data</li>
+</ul>
+
+                        <a href="../Classes/ET/Reset.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Reset</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC7VersionC"></a>
+                    <a name="//apple_ref/swift/Class/Version" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC7VersionC">Version</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Version provides <code>Publisher</code> with information about the software versions of Skyle.</p>
+
+                        <a href="../Classes/ET/Version.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Version</span> <span class="p">:</span> <span class="kt">ObservableObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-07-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

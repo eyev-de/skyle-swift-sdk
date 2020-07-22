@@ -13,15 +13,23 @@ import GRPC
 import SwiftProtobuf
 
 extension ET {
+    /**
+        The Gaze class provides a stream of gaze data directly from Skyle.
+     */
     public class Gaze: ObservableObject {
         
-        var client: Skyle_SkyleClient? = nil
-        init() {}
-        init(_ client: Skyle_SkyleClient?) {
+        /// A reference to the current client, which represents the gRPC connection.
+        /// This is automatically updated by `ET` when a new connection is established.
+        internal var client: Skyle_SkyleClient?
+        /// Internal empty constructor
+        internal init() {}
+        /// Internal constructor passing a possible client
+        internal init(_ client: Skyle_SkyleClient?) {
             self.client = client
         }
-        
+        /// The `state` property exposes a `Publisher` which indicates the state of the stream of gaze data.
         @Published private(set) public var state: States = .finished
+        /// The `point` property exposes a `Publisher` which indicates the point of gaze.
         @Published private(set) public var point = Point(x: 0, y: 0)
         
         private var call: ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Point>?
@@ -46,7 +54,6 @@ extension ET {
                         DispatchQueue.main.async { [weak self] in
                             self?.state = .error(error)
                         }
-                        break
                     case .success(let status):
                         if status.code != .ok && status.code != .cancelled {
                             DispatchQueue.main.async { [weak self] in
@@ -58,7 +65,6 @@ extension ET {
                                 self?.state = .finished
                             }
                         }
-                        break
                     }
                 }
             }
@@ -76,7 +82,7 @@ extension ET {
                 }
             }
         }
-        
+        /// Simple cleanup stops the gRPC call by killing it.
         deinit {
             self.stop()
         }
@@ -84,6 +90,7 @@ extension ET {
 }
 
 extension ET.Gaze {
+    /// Starts a gaze stream asyncronously, updating the `state` and `point` properties.
     public func start() {
         guard self.state != .running && self.state != .connecting else {
             return
@@ -93,12 +100,11 @@ extension ET.Gaze {
             self?.run()
         }
     }
+    /// Stops a gaze stream asyncronously, updating the `state` property.
     public func stop() {
-        if self.state != .finished {
-            self.kill()
-            DispatchQueue.main.async {
-                self.state = .finished
-            }
+        guard self.state != .finished else {
+            return
         }
+        self.kill()
     }
 }
