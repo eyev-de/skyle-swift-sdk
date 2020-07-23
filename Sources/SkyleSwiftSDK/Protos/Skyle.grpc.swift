@@ -28,22 +28,292 @@ import SwiftProtobuf
 
 
 /// Usage: instantiate Skyle_SkyleClient, then call methods of this protocol to make API calls.
-public protocol Skyle_SkyleClientProtocol {
-  func calibrate(callOptions: CallOptions?, handler: @escaping (Skyle_CalibMessages) -> Void) -> BidirectionalStreamingCall<Skyle_calibControlMessages, Skyle_CalibMessages>
-  func positioning(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions?, handler: @escaping (Skyle_PositioningMessage) -> Void) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_PositioningMessage>
-  func gaze(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions?, handler: @escaping (Skyle_Point) -> Void) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Point>
-  func getButton(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions?) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Button>
-  func setButton(_ request: Skyle_ButtonActions, callOptions: CallOptions?) -> UnaryCall<Skyle_ButtonActions, Skyle_ButtonActions>
-  func configure(_ request: Skyle_OptionMessage, callOptions: CallOptions?) -> UnaryCall<Skyle_OptionMessage, Skyle_Options>
-  func getVersions(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions?) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_DeviceVersions>
-  func getProfiles(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions?, handler: @escaping (Skyle_Profile) -> Void) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile>
-  func currentProfile(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions?) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile>
-  func setProfile(_ request: Skyle_Profile, callOptions: CallOptions?) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage>
-  func deleteProfile(_ request: Skyle_Profile, callOptions: CallOptions?) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage>
-  func reset(_ request: Skyle_ResetMessage, callOptions: CallOptions?) -> UnaryCall<Skyle_ResetMessage, Skyle_StatusMessage>
+public protocol Skyle_SkyleClientProtocol: GRPCClient {
+  func calibrate(
+    callOptions: CallOptions?,
+    handler: @escaping (Skyle_CalibMessages) -> Void
+  ) -> BidirectionalStreamingCall<Skyle_calibControlMessages, Skyle_CalibMessages>
+
+  func positioning(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions?,
+    handler: @escaping (Skyle_PositioningMessage) -> Void
+  ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_PositioningMessage>
+
+  func gaze(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions?,
+    handler: @escaping (Skyle_Point) -> Void
+  ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Point>
+
+  func getButton(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions?
+  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Button>
+
+  func setButton(
+    _ request: Skyle_ButtonActions,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Skyle_ButtonActions, Skyle_ButtonActions>
+
+  func configure(
+    _ request: Skyle_OptionMessage,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Skyle_OptionMessage, Skyle_Options>
+
+  func getVersions(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions?
+  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_DeviceVersions>
+
+  func getProfiles(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions?,
+    handler: @escaping (Skyle_Profile) -> Void
+  ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile>
+
+  func currentProfile(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions?
+  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile>
+
+  func setProfile(
+    _ request: Skyle_Profile,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage>
+
+  func deleteProfile(
+    _ request: Skyle_Profile,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage>
+
+  func reset(
+    _ request: Skyle_ResetMessage,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Skyle_ResetMessage, Skyle_StatusMessage>
+
 }
 
-public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
+extension Skyle_SkyleClientProtocol {
+
+  ///Used to calibrate for the current user. Streams in both directions with given message types. Client needs to close the stream when done
+  ///
+  /// Callers should use the `send` method on the returned object to send messages
+  /// to the server. The caller should send an `.end` after the final message has been sent.
+  ///
+  /// - Parameters:
+  ///   - callOptions: Call options.
+  ///   - handler: A closure called when each response is received from the server.
+  /// - Returns: A `ClientStreamingCall` with futures for the metadata and status.
+  public func calibrate(
+    callOptions: CallOptions? = nil,
+    handler: @escaping (Skyle_CalibMessages) -> Void
+  ) -> BidirectionalStreamingCall<Skyle_calibControlMessages, Skyle_CalibMessages> {
+    return self.makeBidirectionalStreamingCall(
+      path: "/Skyle.Skyle/Calibrate",
+      callOptions: callOptions ?? self.defaultCallOptions,
+      handler: handler
+    )
+  }
+
+  ///Subscribe a stream sending eye positions and quality indicators to achieve good positioning of a user. Client needs to close the stream when done
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to Positioning.
+  ///   - callOptions: Call options.
+  ///   - handler: A closure called when each response is received from the server.
+  /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
+  public func positioning(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions? = nil,
+    handler: @escaping (Skyle_PositioningMessage) -> Void
+  ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_PositioningMessage> {
+    return self.makeServerStreamingCall(
+      path: "/Skyle.Skyle/Positioning",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      handler: handler
+    )
+  }
+
+  ///Subscribe a gaze stream, that sends coordinates of the current user gaze on a screen. Client needs to close the stream when done
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to Gaze.
+  ///   - callOptions: Call options.
+  ///   - handler: A closure called when each response is received from the server.
+  /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
+  public func gaze(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions? = nil,
+    handler: @escaping (Skyle_Point) -> Void
+  ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Point> {
+    return self.makeServerStreamingCall(
+      path: "/Skyle.Skyle/Gaze",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      handler: handler
+    )
+  }
+
+  ///Unary call to get the button status
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to GetButton.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func getButton(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Button> {
+    return self.makeUnaryCall(
+      path: "/Skyle.Skyle/GetButton",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions
+    )
+  }
+
+  ///Unary call to configure the button actions, answers with the resulting configuration
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to SetButton.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func setButton(
+    _ request: Skyle_ButtonActions,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Skyle_ButtonActions, Skyle_ButtonActions> {
+    return self.makeUnaryCall(
+      path: "/Skyle.Skyle/SetButton",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions
+    )
+  }
+
+  ///Unary call to get (OptionMessage -> empty) or set options (OptionMessage -> Options). Answers with the resulting options. Options are saved to the current user profile
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to Configure.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func configure(
+    _ request: Skyle_OptionMessage,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Skyle_OptionMessage, Skyle_Options> {
+    return self.makeUnaryCall(
+      path: "/Skyle.Skyle/Configure",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions
+    )
+  }
+
+  ///Unary call to get software versions
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to GetVersions.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func getVersions(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_DeviceVersions> {
+    return self.makeUnaryCall(
+      path: "/Skyle.Skyle/GetVersions",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions
+    )
+  }
+
+  ///Subscribe a profile stream of all available profiles. Host ends stream when all results are sent
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to GetProfiles.
+  ///   - callOptions: Call options.
+  ///   - handler: A closure called when each response is received from the server.
+  /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
+  public func getProfiles(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions? = nil,
+    handler: @escaping (Skyle_Profile) -> Void
+  ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile> {
+    return self.makeServerStreamingCall(
+      path: "/Skyle.Skyle/GetProfiles",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      handler: handler
+    )
+  }
+
+  ///Unary call to get the current profile
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to CurrentProfile.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func currentProfile(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile> {
+    return self.makeUnaryCall(
+      path: "/Skyle.Skyle/CurrentProfile",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions
+    )
+  }
+
+  ///Unary call to set or create a profile. Answers with a status message (success or failure)
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to SetProfile.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func setProfile(
+    _ request: Skyle_Profile,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage> {
+    return self.makeUnaryCall(
+      path: "/Skyle.Skyle/SetProfile",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions
+    )
+  }
+
+  ///Unary call to delete a profile. Answers with a status message (success or failure)
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to DeleteProfile.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func deleteProfile(
+    _ request: Skyle_Profile,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage> {
+    return self.makeUnaryCall(
+      path: "/Skyle.Skyle/DeleteProfile",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions
+    )
+  }
+
+  ///Unary call to reset specific parts 
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to Reset.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func reset(
+    _ request: Skyle_ResetMessage,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Skyle_ResetMessage, Skyle_StatusMessage> {
+    return self.makeUnaryCall(
+      path: "/Skyle.Skyle/Reset",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions
+    )
+  }
+}
+
+public final class Skyle_SkyleClient: Skyle_SkyleClientProtocol {
   public let channel: GRPCChannel
   public var defaultCallOptions: CallOptions
 
@@ -56,160 +326,6 @@ public final class Skyle_SkyleClient: GRPCClient, Skyle_SkyleClientProtocol {
     self.channel = channel
     self.defaultCallOptions = defaultCallOptions
   }
-
-  ///Used to calibrate for the current user. Streams in both directions with given message types. Client needs to close the stream when done
-  ///
-  /// Callers should use the `send` method on the returned object to send messages
-  /// to the server. The caller should send an `.end` after the final message has been sent.
-  ///
-  /// - Parameters:
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  ///   - handler: A closure called when each response is received from the server.
-  /// - Returns: A `ClientStreamingCall` with futures for the metadata and status.
-  public func calibrate(callOptions: CallOptions? = nil, handler: @escaping (Skyle_CalibMessages) -> Void) -> BidirectionalStreamingCall<Skyle_calibControlMessages, Skyle_CalibMessages> {
-    return self.makeBidirectionalStreamingCall(path: "/Skyle.Skyle/Calibrate",
-                                               callOptions: callOptions ?? self.defaultCallOptions,
-                                               handler: handler)
-  }
-
-  ///Subscribe a stream sending eye positions and quality indicators to achieve good positioning of a user. Client needs to close the stream when done
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to Positioning.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  ///   - handler: A closure called when each response is received from the server.
-  /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
-  public func positioning(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions? = nil, handler: @escaping (Skyle_PositioningMessage) -> Void) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_PositioningMessage> {
-    return self.makeServerStreamingCall(path: "/Skyle.Skyle/Positioning",
-                                        request: request,
-                                        callOptions: callOptions ?? self.defaultCallOptions,
-                                        handler: handler)
-  }
-
-  ///Subscribe a gaze stream, that sends coordinates of the current user gaze on a screen. Client needs to close the stream when done
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to Gaze.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  ///   - handler: A closure called when each response is received from the server.
-  /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
-  public func gaze(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions? = nil, handler: @escaping (Skyle_Point) -> Void) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Point> {
-    return self.makeServerStreamingCall(path: "/Skyle.Skyle/Gaze",
-                                        request: request,
-                                        callOptions: callOptions ?? self.defaultCallOptions,
-                                        handler: handler)
-  }
-
-  ///Unary call to get the button status
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to GetButton.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getButton(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions? = nil) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Button> {
-    return self.makeUnaryCall(path: "/Skyle.Skyle/GetButton",
-                              request: request,
-                              callOptions: callOptions ?? self.defaultCallOptions)
-  }
-
-  ///Unary call to configure the button actions, answers with the resulting configuration
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to SetButton.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func setButton(_ request: Skyle_ButtonActions, callOptions: CallOptions? = nil) -> UnaryCall<Skyle_ButtonActions, Skyle_ButtonActions> {
-    return self.makeUnaryCall(path: "/Skyle.Skyle/SetButton",
-                              request: request,
-                              callOptions: callOptions ?? self.defaultCallOptions)
-  }
-
-  ///Unary call to get (OptionMessage -> empty) or set options (OptionMessage -> Options). Answers with the resulting options. Options are saved to the current user profile
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to Configure.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func configure(_ request: Skyle_OptionMessage, callOptions: CallOptions? = nil) -> UnaryCall<Skyle_OptionMessage, Skyle_Options> {
-    return self.makeUnaryCall(path: "/Skyle.Skyle/Configure",
-                              request: request,
-                              callOptions: callOptions ?? self.defaultCallOptions)
-  }
-
-  ///Unary call to get software versions
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to GetVersions.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func getVersions(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions? = nil) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_DeviceVersions> {
-    return self.makeUnaryCall(path: "/Skyle.Skyle/GetVersions",
-                              request: request,
-                              callOptions: callOptions ?? self.defaultCallOptions)
-  }
-
-  ///Subscribe a profile stream of all available profiles. Host ends stream when all results are sent
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to GetProfiles.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  ///   - handler: A closure called when each response is received from the server.
-  /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
-  public func getProfiles(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions? = nil, handler: @escaping (Skyle_Profile) -> Void) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile> {
-    return self.makeServerStreamingCall(path: "/Skyle.Skyle/GetProfiles",
-                                        request: request,
-                                        callOptions: callOptions ?? self.defaultCallOptions,
-                                        handler: handler)
-  }
-
-  ///Unary call to get the current profile
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to CurrentProfile.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func currentProfile(_ request: SwiftProtobuf.Google_Protobuf_Empty, callOptions: CallOptions? = nil) -> UnaryCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile> {
-    return self.makeUnaryCall(path: "/Skyle.Skyle/CurrentProfile",
-                              request: request,
-                              callOptions: callOptions ?? self.defaultCallOptions)
-  }
-
-  ///Unary call to set or create a profile. Answers with a status message (success or failure)
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to SetProfile.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func setProfile(_ request: Skyle_Profile, callOptions: CallOptions? = nil) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage> {
-    return self.makeUnaryCall(path: "/Skyle.Skyle/SetProfile",
-                              request: request,
-                              callOptions: callOptions ?? self.defaultCallOptions)
-  }
-
-  ///Unary call to delete a profile. Answers with a status message (success or failure)
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to DeleteProfile.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func deleteProfile(_ request: Skyle_Profile, callOptions: CallOptions? = nil) -> UnaryCall<Skyle_Profile, Skyle_StatusMessage> {
-    return self.makeUnaryCall(path: "/Skyle.Skyle/DeleteProfile",
-                              request: request,
-                              callOptions: callOptions ?? self.defaultCallOptions)
-  }
-
-  ///Unary call to reset specific parts 
-  ///
-  /// - Parameters:
-  ///   - request: Request to send to Reset.
-  ///   - callOptions: Call options; `self.defaultCallOptions` is used if `nil`.
-  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
-  public func reset(_ request: Skyle_ResetMessage, callOptions: CallOptions? = nil) -> UnaryCall<Skyle_ResetMessage, Skyle_StatusMessage> {
-    return self.makeUnaryCall(path: "/Skyle.Skyle/Reset",
-                              request: request,
-                              callOptions: callOptions ?? self.defaultCallOptions)
-  }
-
 }
 
 /// To build a server, implement a class that conforms to this protocol.
@@ -248,82 +364,82 @@ extension Skyle_SkyleProvider {
   public func handleMethod(_ methodName: String, callHandlerContext: CallHandlerContext) -> GRPCCallHandler? {
     switch methodName {
     case "Calibrate":
-      return BidirectionalStreamingCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeBidirectionalStreaming(callHandlerContext: callHandlerContext) { context in
         return self.calibrate(context: context)
       }
 
     case "Positioning":
-      return ServerStreamingCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeServerStreaming(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.positioning(request: request, context: context)
         }
       }
 
     case "Gaze":
-      return ServerStreamingCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeServerStreaming(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.gaze(request: request, context: context)
         }
       }
 
     case "GetButton":
-      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.getButton(request: request, context: context)
         }
       }
 
     case "SetButton":
-      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.setButton(request: request, context: context)
         }
       }
 
     case "Configure":
-      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.configure(request: request, context: context)
         }
       }
 
     case "GetVersions":
-      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.getVersions(request: request, context: context)
         }
       }
 
     case "GetProfiles":
-      return ServerStreamingCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeServerStreaming(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.getProfiles(request: request, context: context)
         }
       }
 
     case "CurrentProfile":
-      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.currentProfile(request: request, context: context)
         }
       }
 
     case "SetProfile":
-      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.setProfile(request: request, context: context)
         }
       }
 
     case "DeleteProfile":
-      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.deleteProfile(request: request, context: context)
         }
       }
 
     case "Reset":
-      return UnaryCallHandler(callHandlerContext: callHandlerContext) { context in
+      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.reset(request: request, context: context)
         }
@@ -334,24 +450,3 @@ extension Skyle_SkyleProvider {
   }
 }
 
-
-// Provides conformance to `GRPCPayload`
-extension Skyle_ResetMessage: GRPCProtobufPayload {}
-extension Skyle_Profile: GRPCProtobufPayload {}
-extension Skyle_StatusMessage: GRPCProtobufPayload {}
-extension Skyle_OptionMessage: GRPCProtobufPayload {}
-extension Skyle_calibControlMessages: GRPCProtobufPayload {}
-extension Skyle_CalibControl: GRPCProtobufPayload {}
-extension Skyle_ScreenResolution: GRPCProtobufPayload {}
-extension Skyle_CalibImprove: GRPCProtobufPayload {}
-extension Skyle_CalibMessages: GRPCProtobufPayload {}
-extension Skyle_Point: GRPCProtobufPayload {}
-extension Skyle_CalibPoint: GRPCProtobufPayload {}
-extension Skyle_CalibQuality: GRPCProtobufPayload {}
-extension Skyle_PositioningMessage: GRPCProtobufPayload {}
-extension Skyle_Options: GRPCProtobufPayload {}
-extension Skyle_IPadOptions: GRPCProtobufPayload {}
-extension Skyle_DeviceVersions: GRPCProtobufPayload {}
-extension Skyle_ButtonActions: GRPCProtobufPayload {}
-extension Skyle_Button: GRPCProtobufPayload {}
-extension Skyle_FilterOptions: GRPCProtobufPayload {}

@@ -101,7 +101,7 @@ extension ET {
         
         private func kill() {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                _ = self?.call?.cancel()
+                _ = self?.call?.cancel(promise: nil)
                 do {
                     _ = try self?.call?.status.wait()
                 } catch {

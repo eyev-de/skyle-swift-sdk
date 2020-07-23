@@ -8,13 +8,14 @@
 
 import Foundation
 import Combine
-import CombineGRPC
+import GRPC
+import SwiftProtobuf
 
 extension ET {
     /**
-        Control exposes `Publisher` which hold information about Skyles settings.
-        These are partially user specific and should be pulled after a user is selected via `Profile.select`,
-        `Profiles.set` or `Profiles.delete`.
+     Control exposes `Publisher` which hold information about Skyles settings.
+     These are partially user specific and should be pulled after a user is selected via `Profile.select`,
+     `Profiles.set` or `Profiles.delete`.
      */
     public class Control: ObservableObject {
         
@@ -74,8 +75,7 @@ extension ET {
         /// This is just for convenience. Please use the `Publishers` obove.
         @Published private(set) public var options: Skyle_Options?
         
-        private var cancellables: Set<AnyCancellable> = []
-        private let grpc = GRPCExecutor()
+        private var call: UnaryCall<Skyle_OptionMessage, Skyle_Options>?
         
         private func run(options: Skyle_OptionMessage, completion: @escaping (Skyle_Options?, States) -> Void = {_, _ in}) {
             guard let client = self.client else {
@@ -83,15 +83,12 @@ extension ET {
             }
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 guard let self = self else { return }
-                self.grpc.call(client.configure)(options)
-                    .sink(receiveCompletion: {
-                        switch $0 {
-                        case .failure(let status):
-                            completion(nil, .failed(status))
-                        case .finished:
-                            break
-                        }
-                    }, receiveValue: { control in
+                self.call = client.configure(options)
+                self.call?.response.whenComplete { response in
+                    switch response {
+                    case .failure(let error):
+                        completion(nil, .error(error))
+                    case .success(let control):
                         DispatchQueue.main.async { [weak self] in
                             self?.enablePause = control.enablePause
                             self?.enableStandby = control.enableStandby
@@ -109,42 +106,42 @@ extension ET {
                             if control.hasIPadOptions {
                                 self?.isOldiOs = control.iPadOptions.isOldiOs
                                 self?.isNotZoomed = control.iPadOptions.isNotZommed
+                            } else if options.options.hasIPadOptions {
+                                self?.isOldiOs = options.options.iPadOptions.isOldiOs
+                                self?.isNotZoomed = options.options.iPadOptions.isNotZommed
                             }
+                            
                             self?.options = control
                             completion(control, .finished)
                         }
-                    }).store(in: &self.cancellables)
+                    }
+                }
             }
         }
-        /// Simple cleanup cancels all gRPC calls
-        deinit {
-            self.cancellables.removeAll()
-        }
-        
     }
 }
 
 extension ET.Control {
     /**
-        Gets the current settings of the eyetracker Skyle and the currently active user selected via `Profile.select`,
-        `Profiles.set` or `Profiles.delete`.
-        This is managed by `ET` whenever a connection is established or lost. But needs to be done when ever a user profile is selected.
-        - Parameters:
-            - completion: A completion handler
-            - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
-            - state: A `ET.States` containing possible errors.
+     Gets the current settings of the eyetracker Skyle and the currently active user selected via `Profile.select`,
+     `Profiles.set` or `Profiles.delete`.
+     This is managed by `ET` whenever a connection is established or lost. But needs to be done when ever a user profile is selected.
+     - Parameters:
+     - completion: A completion handler
+     - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
+     - state: A `ET.States` containing possible errors.
      */
     public func get(completion: @escaping (_ options: Skyle_Options?, _ state: ET.States) -> Void = {_, _ in}) {
         self.run(options: Skyle_OptionMessage(), completion: completion)
     }
     /**
-        Sets the iPad options `isOldiOs` and `isNotZoomed`.
-        - Parameters:
-            - isOldiOs: Old means iOS version `<` 13.4.
-            - isNotZoomed: Determined by UIScreen.main.nativeScale `>` 2 means zoomed, UIScreen.main.nativeScale == 2 means not zoomed
-            - completion: A completion handler
-            - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
-            - state: A `ET.States` containing possible errors.
+     Sets the iPad options `isOldiOs` and `isNotZoomed`.
+     - Parameters:
+     - isOldiOs: Old means iOS version `<` 13.4.
+     - isNotZoomed: Determined by UIScreen.main.nativeScale `>` 2 means zoomed, UIScreen.main.nativeScale == 2 means not zoomed
+     - completion: A completion handler
+     - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
+     - state: A `ET.States` containing possible errors.
      */
     public func setiPadOptions(isOldiOs: Bool,
                                isNotZoomed: Bool,
@@ -160,12 +157,12 @@ extension ET.Control {
         }
     }
     /**
-        Sets the gaze filter setting.
-        - Parameters:
-            - value: min value = 3, max value 33, the higher the more lag.
-            - completion: A completion handler
-            - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
-            - state: A `ET.States` containing possible errors.
+     Sets the gaze filter setting.
+     - Parameters:
+     - value: min value = 3, max value 33, the higher the more lag.
+     - completion: A completion handler
+     - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
+     - state: A `ET.States` containing possible errors.
      */
     public func setGazeFilter(_ value: Int, completion: @escaping (_ options: Skyle_Options?, _ state: ET.States) -> Void = {_, _ in}) {
         self.run(options: Skyle_OptionMessage.with {
@@ -176,13 +173,13 @@ extension ET.Control {
         }
     }
     /**
-        Sets the fixation filter setting.
-        - Parameters:
-            - value: min value = 3, max value 33, the higher the slower the cursor moves when a fixation has been detected internally.
-                    Higher could mean more accurate when closing in on a target.
-            - completion: A completion handler
-            - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
-            - state: A `ET.States` containing possible errors.
+     Sets the fixation filter setting.
+     - Parameters:
+     - value: min value = 3, max value 33, the higher the slower the cursor moves when a fixation has been detected internally.
+     Higher could mean more accurate when closing in on a target.
+     - completion: A completion handler
+     - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
+     - state: A `ET.States` containing possible errors.
      */
     public func setFixationFilter(_ value: Int, completion: @escaping (_ options: Skyle_Options?, _ state: ET.States) -> Void = {_, _ in}) {
         self.run(options: Skyle_OptionMessage.with {
@@ -193,10 +190,10 @@ extension ET.Control {
         }
     }
     /**
-        Makes sure the input of a filter setting is between 3 and 33.
-        - Parameters:
-            - value: Integer input.
-        - returns: A value between 3 and 33.
+     Makes sure the input of a filter setting is between 3 and 33.
+     - Parameters:
+     - value: Integer input.
+     - returns: A value between 3 and 33.
      */
     public static func filterBoundaries(_ value: Int) -> Int32 {
         return Int32(min(max(value, 3), 33))

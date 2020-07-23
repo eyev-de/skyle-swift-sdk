@@ -8,7 +8,6 @@
 
 import Foundation
 import Combine
-import CombineGRPC
 import GRPC
 import NIO
 import Logging
@@ -233,8 +232,8 @@ public class ET: ObservableObject {
                 let channel = self.channelBuilder.connect(host: host, port: port)
                 self.client = Skyle_SkyleClient(channel: channel)
                 self.updateClient()
-                self.makeVersion().get()
-                self.makeControl().get()
+                self.version.get()
+                self.control.get()
                 DispatchQueue.global(qos: .background).async {
                     self.timeoutGRPC = Timer.scheduledTimer(withTimeInterval: 20.0, repeats: false) { _ in
                         if self.connectivity != .ready {
@@ -258,8 +257,8 @@ public class ET: ObservableObject {
             if newState == .ready {
                 self.timeoutGRPC?.invalidate()
                 self.legacy.stop()
-                self.makeVersion().get()
-                self.makeControl().get()
+                self.version.get()
+                self.control.get()
             } else if (newState == .idle || newState == .shutdown || newState == .transientFailure) && !self.legacyConnectivity {
                 DispatchQueue.main.async { [weak self] in
                     self?.version.version = Skyle_DeviceVersions()

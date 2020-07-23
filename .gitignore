@@ -95,4 +95,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-prebuild.log
+*.log

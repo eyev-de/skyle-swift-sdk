@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 import GRPC
-import CombineGRPC
 import SwiftProtobuf
 
 extension ET {
@@ -42,10 +41,8 @@ extension ET {
         /// The `currentProfile` property exposes a `Publisher` which indicates the currently active `Profile`.
         @Published private(set) public var currentProfile: Profile?
         
-        private let grpc = GRPCExecutor()
-        private var cancellables: Set<AnyCancellable> = []
-        
-        private var call: ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Profile>?
+        private var getAllCall: ServerStreamingCall<Google_Protobuf_Empty, Skyle_Profile>?
+        private var getCurrentCall: UnaryCall<Google_Protobuf_Empty, Skyle_Profile>?
         private var deleteCall: UnaryCall<Skyle_Profile, Skyle_StatusMessage>?
         
         private func run(completion: @escaping (_ profiles: [ET.Profile]?, _ state: ET.States) -> Void = {_, _ in}) {
@@ -56,7 +53,7 @@ extension ET {
                 self?.profiles.removeAll(keepingCapacity: true)
                 DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                     var tempProfiles: [ET.Profile] = []
-                    self?.call = client.getProfiles(Google_Protobuf_Empty()) { profile in
+                    self?.getAllCall = client.getProfiles(Google_Protobuf_Empty()) { profile in
                         DispatchQueue.main.async { [weak self] in
                             if self?.state != .running {
                                 self?.state = .running
@@ -67,7 +64,7 @@ extension ET {
                         tempProfiles.append(temp)
                     }
                     
-                    self?.call?.status.whenComplete { result in
+                    self?.getAllCall?.status.whenComplete { result in
                         switch result {
                         case .failure(let error):
                             completion(nil, .error(error))
@@ -95,9 +92,9 @@ extension ET {
         
         private func kill() {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                _ = self?.call?.cancel()
+                _ = self?.getAllCall?.cancel(promise: nil)
                 do {
-                    _ = try self?.call?.status.wait()
+                    _ = try self?.getAllCall?.status.wait()
                 } catch {
                     print(error)
                 }
@@ -110,20 +107,18 @@ extension ET {
             }
             DispatchQueue.global(qos: .userInitiated).async {  [weak self] in
                 guard let self = self else { return }
-                self.grpc.call(client.currentProfile)(Google_Protobuf_Empty())
-                    .sink(receiveCompletion: {
-                        switch $0 {
-                        case .failure(let status):
-                            completion(nil, .failed(status))
-                        case .finished:
-                            break
-                        }
-                    }, receiveValue: { profile in
+                self.getCurrentCall = client.currentProfile(Google_Protobuf_Empty())
+                self.getCurrentCall?.response.whenComplete { result in
+                    switch result {
+                    case .failure(let error):
+                        completion(nil, .error(error))
+                    case .success(let profile):
                         completion(profile.profile(), .finished)
                         DispatchQueue.main.async {  [weak self] in
                             self?.currentProfile = profile.profile()
                         }
-                    }).store(in: &self.cancellables)
+                    }
+                }
             }
         }
         
@@ -147,10 +142,6 @@ extension ET {
                     }
                 })
             }
-        }
-        /// Simple cleanup cancels all gRPC calls
-        deinit {
-            self.cancellables.removeAll()
         }
     }
 }

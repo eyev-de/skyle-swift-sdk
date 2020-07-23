@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 import GRPC
-import CombineGRPC
 import SwiftProtobuf
 import Alamofire
 
@@ -52,8 +51,7 @@ extension ET {
         /// The `isDemo` property exposes a `Publisher` which indicates if the device is a demo device.
         @Published private(set) public var isDemo: Bool? = false
         
-        private let grpc = GRPCExecutor()
-        private var cancellable: AnyCancellable?
+        private var call: UnaryCall<Google_Protobuf_Empty, Skyle_DeviceVersions>?
         
         /**
             Gets the current versions of software and other info from the eyetracker Skyle.
@@ -69,22 +67,20 @@ extension ET {
             }
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 guard let self = self else { return }
-                self.cancellable = self.grpc.call(client.getVersions)(Google_Protobuf_Empty())
-                    .sink(receiveCompletion: {
-                        switch $0 {
-                        case .failure(let status):
-                            completion(nil, .failed(status))
-                        case .finished:
-                            break
-                        }
-                    }, receiveValue: { versions in
+                self.call = client.getVersions(Google_Protobuf_Empty())
+                self.call?.response.whenComplete { result in
+                    switch result {
+                    case .failure(let error):
+                        completion(nil, .error(error))
+                    case.success(let versions):
                         DispatchQueue.main.async { [weak self] in
                             self?.setVersions(versions: versions)
                             DispatchQueue.global(qos: .userInitiated).async {
                                 completion(versions, .finished)
                             }
                         }
-                    })
+                    }
+                }
             }
         }
         
@@ -99,10 +95,6 @@ extension ET {
                 self.isDemo = versions.isDemo
                 self.serial = versions.serial
             }
-        }
-        /// Simple cleanup cancels the gRPC call
-        deinit {
-            self.cancellable?.cancel()
         }
     }
 }
