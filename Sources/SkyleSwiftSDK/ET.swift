@@ -21,13 +21,12 @@ import SystemConfiguration
 public struct Point: Hashable {
     // swiftlint:disable identifier_name
     public var x: Double = 0
-    // swiftlint:disable identifier_name
     public var y: Double = 0
-    // swiftlint:disable identifier_name
     public init (x: Double, y: Double) {
         self.x = x
         self.y = y
     }
+    // swiftlint:enable identifier_name
 }
 
 /**
@@ -251,9 +250,6 @@ public class ET: ObservableObject {
     
     private func setupSoftConnectivity() {
         self.delegate.softConnectivity.sink(receiveValue: { newState in
-            DispatchQueue.main.async { [weak self] in
-                self?.connectivity = newState
-            }
             if newState == .ready {
                 self.timeoutGRPC?.invalidate()
                 self.legacy.stop()
@@ -263,6 +259,9 @@ public class ET: ObservableObject {
                 DispatchQueue.main.async { [weak self] in
                     self?.version.version = Skyle_DeviceVersions()
                 }
+            }
+            DispatchQueue.main.async { [weak self] in
+                self?.connectivity = newState
             }
         })
             .store(in: &self.cancellables)

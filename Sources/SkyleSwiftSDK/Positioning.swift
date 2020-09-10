@@ -45,7 +45,12 @@ extension ET {
         /// and vertical position of the user.
         /// Ranges from `-50` to `50` with `0` indicating the optimal value.
         @Published private(set) public var qualitySides: Int = 0
-        
+        /// The `qualityXaxis` property exposes a `Publisher` which indicates the quality of the horizontal position of the user.
+        /// Ranges from `-50` to `50` with `0` indicating the optimal value.
+        @Published private(set) public var qualityXaxis: Int = 0
+        /// The `qualityYaxis` property exposes a `Publisher` which indicates the quality of the vertical position of the user.
+        /// Ranges from `-50` to `50` with `0` indicating the optimal value.
+        @Published private(set) public var qualityYaxis: Int = 0
         private var timer: Timer!
         
         private var call: ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_PositioningMessage>?
@@ -65,10 +70,18 @@ extension ET {
                             self?.timer.invalidate()
                         }
                         self?.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
-                            self?.isPresent = false
+                            DispatchQueue.main.async { [weak self] in
+                                self?.isPresent = false
+                                self?.qualityDepth = 0
+                                self?.qualitySides = 0
+                                self?.qualityXaxis = 0
+                                self?.qualityYaxis = 0
+                            }
                         }
                         self?.qualityDepth = Int(position.qualityDepth)
                         self?.qualitySides = Int(position.qualitySides)
+                        self?.qualityXaxis = Int(position.qualityXaxis)
+                        self?.qualityYaxis = Int(position.qualityYaxis)
                         let leftEye = position.hasLeftEye ?
                             Point(x: Double(position.leftEye.x), y: Double(position.leftEye.y)) : Point(x: 0, y: 0)
                         let rightEye = position.hasRightEye ?
@@ -136,5 +149,24 @@ extension ET.Positioning {
             return
         }
         self.kill()
+    }
+    
+    public func fakeStart() {
+        DispatchQueue.main.async { [weak self] in
+            self?.state = .running
+            self?.isPresent = true
+            self?.qualityDepth = 0
+            self?.qualitySides = 0
+            self?.qualityXaxis = 0
+            self?.qualityYaxis = 0
+            let leftEye = Point(x: 450, y: 450)
+            let rightEye = Point(x: 830, y: 400)
+            self?.position = (leftEye, rightEye)
+        }
+    }
+    public func fakeStop() {
+        DispatchQueue.main.async { [weak self] in
+            self?.state = .finished
+        }
     }
 }

@@ -17,7 +17,7 @@
     <a title="Control Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../../index.html">SkyleSwiftSDK Docs</a> (89% documented)</p>
+        <p><a href="../../index.html">SkyleSwiftSDK Docs</a> (88% documented)</p>
         <p class="header-right">
           <form role="search" action="../../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -273,6 +273,35 @@ This is automatically updated by <code><a href="../../Classes/ET.html">ET</a></c
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">internal</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">client</span><span class="p">:</span> <span class="kt"><a href="../../Classes/Skyle_SkyleClient.html">Skyle_SkyleClient</a></span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC7ControlC12disableMouseSbvp"></a>
+                    <a name="//apple_ref/swift/Property/disableMouse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC7ControlC12disableMouseSbvp">disableMouse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>disableMouse</code> property exposes a <code>Publisher</code> which enables / disables HID mouse control.
+This mode allows a user to pause the cursor movement but keeps gaze data stream enabled if used via the module <code><a href="../../Classes/ET/Gaze.html">Gaze</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@Published</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">disableMouse</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -572,9 +601,9 @@ This is just for convenience. Please use the <code>Publishers</code> obove.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13SkyleSwiftSDK2ETC7ControlC3get10completionyyAA0A8_OptionsVSg_AC6StatesOtc_tF"></a>
-                    <a name="//apple_ref/swift/Method/get(completion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC7ControlC3get10completionyyAA0A8_OptionsVSg_AC6StatesOtc_tF">get(completion:<wbr>)</a>
+                    <a name="/s:13SkyleSwiftSDK2ETC7ControlC3get3set10completionySb_yAA0A8_OptionsVSg_AC6StatesOtctF"></a>
+                    <a name="//apple_ref/swift/Method/get(set:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC7ControlC3get3set10completionySb_yAA0A8_OptionsVSg_AC6StatesOtctF">get(set:<wbr>completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -587,6 +616,7 @@ This is just for convenience. Please use the <code>Publishers</code> obove.</p>
 This is managed by <code><a href="../../Classes/ET.html">ET</a></code> whenever a connection is established or lost. But needs to be done when ever a user profile is selected.</p>
 
 <ul>
+<li>set: A <code>Bool</code> indicating if the memers should be set, to update UI</li>
 <li>completion: A completion handler</li>
 <li>options: A <code><a href="../../Structs/Skyle_Options.html">Skyle_Options</a></code> instance containing the current settings Skyle and the currently active user or nil</li>
 <li>state: A <code><a href="../../Classes/ET/States.html">ET.States</a></code> containing possible errors.</li>
@@ -597,7 +627,7 @@ This is managed by <code><a href="../../Classes/ET.html">ET</a></code> whenever 
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Skyle_Options.html">Skyle_Options</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../../Classes/ET.html">ET</a></span><span class="o">.</span><span class="kt"><a href="../../Classes/ET/States.html">States</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span><span class="p">})</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">get</span><span class="p">(</span><span class="nv">set</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Skyle_Options.html">Skyle_Options</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../../Classes/ET.html">ET</a></span><span class="o">.</span><span class="kt"><a href="../../Classes/ET/States.html">States</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span><span class="p">})</span></code></pre>
 
                         </div>
                       </div>
@@ -635,6 +665,41 @@ This is managed by <code><a href="../../Classes/ET.html">ET</a></code> whenever 
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setiPadOptions</span><span class="p">(</span><span class="nv">isOldiOs</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span>
                            <span class="nv">isNotZoomed</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span>
                            <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Skyle_Options.html">Skyle_Options</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../../Classes/ET.html">ET</a></span><span class="o">.</span><span class="kt"><a href="../../Classes/ET/States.html">States</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span><span class="p">})</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13SkyleSwiftSDK2ETC7ControlC9setFilter04gazeG008fixationG010completionySi_SiyAA0A8_OptionsVSg_AC6StatesOtctF"></a>
+                    <a name="//apple_ref/swift/Method/setFilter(gazeFilter:fixationFilter:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13SkyleSwiftSDK2ETC7ControlC9setFilter04gazeG008fixationG010completionySi_SiyAA0A8_OptionsVSg_AC6StatesOtctF">setFilter(gazeFilter:<wbr>fixationFilter:<wbr>completion:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the  filter settings.</p>
+
+<ul>
+<li>gazeFilter: min value = 3, max value 33, the higher the more lag.</li>
+<li>fixationFilter: min value = 3, max value 33, the higher the slower the cursor moves when a fixation has been detected internally.</li>
+<li>completion: A completion handler</li>
+<li>options: A <code><a href="../../Structs/Skyle_Options.html">Skyle_Options</a></code> instance containing the current settings Skyle and the currently active user or nil</li>
+<li>state: A <code><a href="../../Classes/ET/States.html">ET.States</a></code> containing possible errors.</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setFilter</span><span class="p">(</span><span class="nv">gazeFilter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">fixationFilter</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">options</span><span class="p">:</span> <span class="kt"><a href="../../Structs/Skyle_Options.html">Skyle_Options</a></span><span class="p">?,</span> <span class="n">_</span> <span class="nv">state</span><span class="p">:</span> <span class="kt"><a href="../../Classes/ET.html">ET</a></span><span class="o">.</span><span class="kt"><a href="../../Classes/ET/States.html">States</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span><span class="p">})</span></code></pre>
 
                         </div>
                       </div>
@@ -750,7 +815,7 @@ Higher could mean more accurate when closing in on a target.</li>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-07-23)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-09-10)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

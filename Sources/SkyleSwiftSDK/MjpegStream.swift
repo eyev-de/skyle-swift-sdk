@@ -40,30 +40,39 @@ extension ET {
         
         private var buffer: Data = Data()
         
-        private var session: URLSession?
+        private var session: URLSession {
+            let configuration = URLSessionConfiguration.ephemeral
+            configuration.timeoutIntervalForRequest = 1
+            return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+        }
         private var task: URLSessionDataTask?
         /// The `state` property exposes a `Publisher` which indicates the state of the stream of gaze data.
         @Published private(set) public var state: States = .finished
         
-        private var retry: Int = 3
+        private var retry: Int = 10
+        private let maxRetries: Int = 10
+        /// This function is called when a retry occurs. `continue` needs to be called to actually continue with the retry.
+        /// This is reset after each successful connection.
+        /// Please set this before calling `start()`
+        public var doBeforeRetry: ((_ continue: @escaping () -> Void) -> Void)?
+        private var url = URL(string: "http://skyle.local:8080/?action=stream")!
         /**
             Starts a video stream by calling on the provided URL.
             - Parameters:
                 - url: A `URL` pointing to the streams origin.
+                - retries: Maximum of retries.
          */
         public func start(_ url: URL = URL(string: "http://skyle.local:8080/?action=stream")!) {
             guard self.state != .running else {
                 return
             }
-            self.retry = 3
+            self.url = url
+            self.retry = self.maxRetries
             DispatchQueue.main.async {
                 self.state = .connecting
             }
             DispatchQueue.global(qos: .utility).async {
-                let configuration = URLSessionConfiguration.ephemeral
-                configuration.timeoutIntervalForRequest = 1
-                self.session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-                self.task = self.session?.dataTask(with: url)
+                self.task = self.session.dataTask(with: url)
                 self.task?.resume()
             }
         }
@@ -77,8 +86,7 @@ extension ET {
             
             self.buffer = Data()
             
-            self.session?.invalidateAndCancel()
-            self.session = nil
+            self.session.invalidateAndCancel()
             
             DispatchQueue.main.async {
                 self.state = .finished
@@ -106,6 +114,9 @@ extension ET {
             guard let response = dataTask.response as? HTTPURLResponse, response.statusCode == 200 else {
                 return
             }
+            if self.doBeforeRetry != nil {
+                self.doBeforeRetry = nil
+            }
             if data.range(of: self.startMarker) != nil {
                 self.buffer = Data()
             }
@@ -117,10 +128,13 @@ extension ET {
         }
         /// Session Delegate implementation.
         public func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
+            // THIS IS CALLED WHEN CANCELLING THE SESSION
             //print("Did become invalid with error")
         }
         /// Session Delegate implementation.
         public func urlSession(_ session: URLSession, taskIsWaitingForConnectivity task: URLSessionTask) {
+            // THIS MIGHT BE USED BUT NOT CURRENTLY SINCE I DON'T REALLY KNOW HOW TO CONFIGURE THIS CORRECTLY
+            // ALSO THE MANUAL RETRY WORKS I GUESS
             //print("Task is waiting for connectivity")
         }
         /// Session Delegate implementation.
@@ -128,33 +142,46 @@ extension ET {
             if let error = error {
                 if let nserror = error as NSError? {
                     if nserror.domain == URLError.errorDomain {
-                        if nserror.code == URLError.timedOut.rawValue {
-                            if self.retry < 0 {
-                                self.retry = 3
+                        if nserror.code == URLError.timedOut.rawValue || nserror.code == URLError.cannotConnectToHost.rawValue {
+                            if self.retry == 0 {
+                                self.retry = self.maxRetries
                                 DispatchQueue.main.async {
                                     self.state = .failed(GRPCStatus(code: .unavailable, message: nil))
                                 }
+                                self.stop()
                                 return
                             }
                             self.retry -= 1
-                            DispatchQueue.global(qos: .utility).async {
-                                let configuration = URLSessionConfiguration.ephemeral
-                                configuration.timeoutIntervalForRequest = 1
-                                self.session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-                                self.task?.cancel()
-                                self.task = nil
-                                self.task = self.session?.dataTask(with: (task.currentRequest?.url)!)
-                                self.task?.resume()
+                            if let doBeforeRetry = self.doBeforeRetry {
+                                doBeforeRetry() {
+                                    DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + 0.3) {
+                                        task.cancel()
+                                        self.task = self.session.dataTask(with: self.url)
+                                        self.task?.resume()
+                                    }
+                                }
+                            } else {
+                                DispatchQueue.global(qos: .utility).asyncAfter(deadline: .now() + 0.3) {
+                                    task.cancel()
+                                    self.task = self.session.dataTask(with: self.url)
+                                    self.task?.resume()
+                                }
                             }
+                            return
                         } else if nserror.code == URLError.cancelled.rawValue {
-                            // stopped manually
+                            // Stopped manually
+                            return
                         } else {
+                            // Stopped by unplugging Skyle for example
                             self.stop()
+                            return
                         }
                     }
                 }
+            } else {
+                // error == nil -> reset everything.
+                self.stop()
             }
-            
         }
         
         private func parseFrame(_ data: Data) {

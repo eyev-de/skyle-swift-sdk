@@ -458,8 +458,14 @@ public struct Skyle_PositioningMessage {
   ///Quality indicator for depth positioning. range is -50 to +50. 0 is the best, -50 to far away and 50 to close
   public var qualityDepth: Int32 = 0
 
-  ///Quality indicator for side positioning. range is -50 to +50. 0 is the best, -50 to far left and 50 to far right
+  ///Quality indicator for overall horizontal and vertical positioning : range is -50 to +50. 0 is the best
   public var qualitySides: Int32 = 0
+
+  ///Quality indicator for horizontal positioning. range is -50 to +50. 0 is the best, -50 to far left and 50 to far right
+  public var qualityXaxis: Int32 = 0
+
+  ///Quality indicator for vertical positioning. range is -50 to +50. 0 is the best, -50 to far down and 50 to far up
+  public var qualityYaxis: Int32 = 0
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -1158,6 +1164,8 @@ extension Skyle_PositioningMessage: SwiftProtobuf.Message, SwiftProtobuf._Messag
     2: .same(proto: "rightEye"),
     3: .same(proto: "qualityDepth"),
     4: .same(proto: "qualitySides"),
+    5: .same(proto: "qualityXAxis"),
+    6: .same(proto: "qualityYAxis"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1167,6 +1175,8 @@ extension Skyle_PositioningMessage: SwiftProtobuf.Message, SwiftProtobuf._Messag
       case 2: try decoder.decodeSingularMessageField(value: &self._rightEye)
       case 3: try decoder.decodeSingularInt32Field(value: &self.qualityDepth)
       case 4: try decoder.decodeSingularInt32Field(value: &self.qualitySides)
+      case 5: try decoder.decodeSingularInt32Field(value: &self.qualityXaxis)
+      case 6: try decoder.decodeSingularInt32Field(value: &self.qualityYaxis)
       default: break
       }
     }
@@ -1185,6 +1195,12 @@ extension Skyle_PositioningMessage: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.qualitySides != 0 {
       try visitor.visitSingularInt32Field(value: self.qualitySides, fieldNumber: 4)
     }
+    if self.qualityXaxis != 0 {
+      try visitor.visitSingularInt32Field(value: self.qualityXaxis, fieldNumber: 5)
+    }
+    if self.qualityYaxis != 0 {
+      try visitor.visitSingularInt32Field(value: self.qualityYaxis, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1193,6 +1209,8 @@ extension Skyle_PositioningMessage: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if lhs._rightEye != rhs._rightEye {return false}
     if lhs.qualityDepth != rhs.qualityDepth {return false}
     if lhs.qualitySides != rhs.qualitySides {return false}
+    if lhs.qualityXaxis != rhs.qualityXaxis {return false}
+    if lhs.qualityYaxis != rhs.qualityYaxis {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

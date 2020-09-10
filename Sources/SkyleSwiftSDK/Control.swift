@@ -28,6 +28,13 @@ extension ET {
         internal init(_ client: Skyle_SkyleClient?) {
             self.client = client
         }
+        /// The `disableMouse` property exposes a `Publisher` which enables / disables HID mouse control.
+        /// This mode allows a user to pause the cursor movement but keeps gaze data stream enabled if used via the module `Gaze`.
+        @Published public var disableMouse: Bool = false {
+            willSet {
+                self.mouse(disabled: newValue)
+            }
+        }
         /// The `enablePause` property exposes a `Publisher` which enables / disables the automatic pause mode.
         /// This mode allows a user to pause the cursor movement by looking into the camera (center of Skyle) for a couple of seconds.
         @Published public var enablePause: Bool = false {
@@ -77,7 +84,7 @@ extension ET {
         
         private var call: UnaryCall<Skyle_OptionMessage, Skyle_Options>?
         
-        private func run(options: Skyle_OptionMessage, completion: @escaping (Skyle_Options?, States) -> Void = {_, _ in}) {
+        private func run(options: Skyle_OptionMessage, set: Bool = true, completion: @escaping (Skyle_Options?, States) -> Void = {_, _ in}) {
             guard let client = self.client else {
                 return
             }
@@ -90,27 +97,49 @@ extension ET {
                         completion(nil, .error(error))
                     case .success(let control):
                         DispatchQueue.main.async { [weak self] in
-                            self?.enablePause = control.enablePause
-                            self?.enableStandby = control.enableStandby
-                            self?.guidance = control.guidance
-                            self?.pause = control.pause
-                            self?.stream = control.stream
-                            if control.hasFilter {
-                                if control.filter.gazeFilter >= 3 {
-                                    self?.gazeFilter = Int(control.filter.gazeFilter)
+                            if set {
+                                if self?.disableMouse != control.disableMouse {
+                                    self?.disableMouse = control.disableMouse
                                 }
-                                if control.filter.fixationFilter >= 3 {
-                                    self?.fixationFilter = Int(control.filter.fixationFilter)
+                                if self?.enablePause != control.enablePause {
+                                    self?.enablePause = control.enablePause
+                                }
+                                if self?.enableStandby != control.enableStandby {
+                                    self?.enableStandby = control.enableStandby
+                                }
+                                if self?.guidance != control.guidance {
+                                    self?.guidance = control.guidance
+                                }
+                                if self?.pause != control.pause {
+                                    self?.pause = control.pause
+                                }
+                                if self?.stream != control.stream {
+                                    self?.stream = control.stream
+                                }
+                                if control.hasFilter {
+                                    if control.filter.gazeFilter >= 3 {
+                                        self?.gazeFilter = Int(control.filter.gazeFilter)
+                                    }
+                                    if control.filter.fixationFilter >= 3 {
+                                        self?.fixationFilter = Int(control.filter.fixationFilter)
+                                    }
+                                }
+                                if control.hasIPadOptions {
+                                    if self?.isOldiOs != control.iPadOptions.isOldiOs {
+                                        self?.isOldiOs = control.iPadOptions.isOldiOs
+                                    }
+                                    if self?.isNotZoomed != control.iPadOptions.isNotZommed {
+                                        self?.isNotZoomed = control.iPadOptions.isNotZommed
+                                    }
+                                } else if options.options.hasIPadOptions {
+                                    if self?.isOldiOs != options.options.iPadOptions.isOldiOs {
+                                        self?.isOldiOs = options.options.iPadOptions.isOldiOs
+                                    }
+                                    if self?.isNotZoomed != options.options.iPadOptions.isNotZommed {
+                                        self?.isNotZoomed = options.options.iPadOptions.isNotZommed
+                                    }
                                 }
                             }
-                            if control.hasIPadOptions {
-                                self?.isOldiOs = control.iPadOptions.isOldiOs
-                                self?.isNotZoomed = control.iPadOptions.isNotZommed
-                            } else if options.options.hasIPadOptions {
-                                self?.isOldiOs = options.options.iPadOptions.isOldiOs
-                                self?.isNotZoomed = options.options.iPadOptions.isNotZommed
-                            }
-                            
                             self?.options = control
                             completion(control, .finished)
                         }
@@ -127,12 +156,13 @@ extension ET.Control {
      `Profiles.set` or `Profiles.delete`.
      This is managed by `ET` whenever a connection is established or lost. But needs to be done when ever a user profile is selected.
      - Parameters:
+     - set: A `Bool` indicating if the memers should be set, to update UI
      - completion: A completion handler
      - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
      - state: A `ET.States` containing possible errors.
      */
-    public func get(completion: @escaping (_ options: Skyle_Options?, _ state: ET.States) -> Void = {_, _ in}) {
-        self.run(options: Skyle_OptionMessage(), completion: completion)
+    public func get(set: Bool = true, completion: @escaping (_ options: Skyle_Options?, _ state: ET.States) -> Void = {_, _ in}) {
+        self.run(options: Skyle_OptionMessage(), set: set, completion: completion)
     }
     /**
      Sets the iPad options `isOldiOs` and `isNotZoomed`.
@@ -149,13 +179,34 @@ extension ET.Control {
         guard self.isNotZoomed != isNotZoomed || self.isOldiOs != isOldiOs else {
             return
         }
+        self.get(set: false) { _, _ in
+            self.run(options: Skyle_OptionMessage.with {
+                $0.options.iPadOptions.isNotZommed = isNotZoomed
+                $0.options.iPadOptions.isOldiOs = isOldiOs
+            }) { options, state in
+                completion(options, state)
+            }
+        }
+    }
+    
+    /**
+     Sets the  filter settings.
+     - Parameters:
+     - gazeFilter: min value = 3, max value 33, the higher the more lag.
+     - fixationFilter: min value = 3, max value 33, the higher the slower the cursor moves when a fixation has been detected internally.
+     - completion: A completion handler
+     - options: A `Skyle_Options` instance containing the current settings Skyle and the currently active user or nil
+     - state: A `ET.States` containing possible errors.
+     */
+    public func setFilter(gazeFilter: Int, fixationFilter: Int, completion: @escaping (_ options: Skyle_Options?, _ state: ET.States) -> Void = {_, _ in}) {
         self.run(options: Skyle_OptionMessage.with {
-            $0.options.iPadOptions.isNotZommed = isNotZoomed
-            $0.options.iPadOptions.isOldiOs = isOldiOs
+            $0.options.filter.gazeFilter = ET.Control.filterBoundaries(gazeFilter)
+            $0.options.filter.fixationFilter = ET.Control.filterBoundaries(fixationFilter)
         }) { options, state in
             completion(options, state)
         }
     }
+    
     /**
      Sets the gaze filter setting.
      - Parameters:
@@ -165,11 +216,14 @@ extension ET.Control {
      - state: A `ET.States` containing possible errors.
      */
     public func setGazeFilter(_ value: Int, completion: @escaping (_ options: Skyle_Options?, _ state: ET.States) -> Void = {_, _ in}) {
-        self.run(options: Skyle_OptionMessage.with {
-            $0.options.filter.gazeFilter = ET.Control.filterBoundaries(value)
-            $0.options.filter.fixationFilter = ET.Control.filterBoundaries(self.fixationFilter)
-        }) { options, state in
-            completion(options, state)
+        self.get(set: false) { options, _ in
+            guard let options = options else { return }
+            self.run(options: Skyle_OptionMessage.with {
+                $0.options.filter.gazeFilter = ET.Control.filterBoundaries(value)
+                $0.options.filter.fixationFilter = ET.Control.filterBoundaries(Int(options.filter.fixationFilter))
+            }) { options, state in
+                completion(options, state)
+            }
         }
     }
     /**
@@ -182,11 +236,14 @@ extension ET.Control {
      - state: A `ET.States` containing possible errors.
      */
     public func setFixationFilter(_ value: Int, completion: @escaping (_ options: Skyle_Options?, _ state: ET.States) -> Void = {_, _ in}) {
-        self.run(options: Skyle_OptionMessage.with {
-            $0.options.filter.gazeFilter = ET.Control.filterBoundaries(self.gazeFilter)
-            $0.options.filter.fixationFilter = ET.Control.filterBoundaries(value)
-        }) { options, state in
-            completion(options, state)
+        self.get(set: false) { options, _ in
+            guard let options = options else { return }
+            self.run(options: Skyle_OptionMessage.with {
+                $0.options.filter.gazeFilter = ET.Control.filterBoundaries(Int(options.filter.gazeFilter))
+                $0.options.filter.fixationFilter = ET.Control.filterBoundaries(value)
+            }) { options, state in
+                completion(options, state)
+            }
         }
     }
     /**
@@ -200,58 +257,92 @@ extension ET.Control {
     }
     
     private func stream(on: Bool, guided: Bool = false) {
-        guard self.stream != on else {
+        guard self.stream != on, self.options?.stream != on else {
             return
         }
-        self.run(options: Skyle_OptionMessage.with {
-            $0.options = Skyle_Options.with {
-                $0.stream = on
-                $0.enablePause = self.enablePause
-                $0.enableStandby = self.enableStandby
-                $0.pause = self.pause
-            }
-        })
+        self.get(set: false) { options, _ in
+            guard let options = options else { return }
+            self.run(options: Skyle_OptionMessage.with {
+                $0.options = Skyle_Options.with {
+                    $0.stream = on
+                    $0.enablePause = options.enablePause
+                    $0.enableStandby = options.enableStandby
+                    $0.pause = options.pause
+                    $0.disableMouse = options.disableMouse
+                }
+            })
+        }
     }
     
     private func pause(on: Bool) {
-        guard self.pause != on else {
+        guard self.pause != on, self.options?.pause != on else {
             return
         }
-        self.run(options: Skyle_OptionMessage.with {
-            $0.options = Skyle_Options.with {
-                $0.pause = on
-                $0.enablePause = self.enablePause
-                $0.enableStandby = self.enableStandby
-                $0.stream = self.stream
-            }
-        })
+        self.get(set: false) { options, _ in
+            guard let options = options else { return }
+            self.run(options: Skyle_OptionMessage.with {
+                $0.options = Skyle_Options.with {
+                    $0.pause = on
+                    $0.enablePause = options.enablePause
+                    $0.enableStandby = options.enableStandby
+                    $0.stream = options.stream
+                    $0.disableMouse = options.disableMouse
+                }
+            })
+        }
     }
     
     private func autoStandby(on: Bool) {
-        guard self.enableStandby != on else {
+        guard self.enableStandby != on, self.options?.enableStandby != on else {
             return
         }
-        self.run(options: Skyle_OptionMessage.with {
-            $0.options = Skyle_Options.with {
-                $0.enableStandby = on
-                $0.enablePause = self.enablePause
-                $0.pause = self.pause
-                $0.stream = self.stream
-            }
-        })
+        self.get(set: false) { options, _ in
+            guard let options = options else { return }
+            self.run(options: Skyle_OptionMessage.with {
+                $0.options = Skyle_Options.with {
+                    $0.enableStandby = on
+                    $0.enablePause = options.enablePause
+                    $0.pause = options.pause
+                    $0.stream = options.stream
+                    $0.disableMouse = options.disableMouse
+                }
+            })
+        }
     }
     
     private func autoPause(on: Bool) {
-        guard self.enablePause != on else {
+        guard self.enablePause != on, self.options?.enablePause != on else {
             return
         }
-        self.run(options: Skyle_OptionMessage.with {
-            $0.options = Skyle_Options.with {
-                $0.enablePause = on
-                $0.enableStandby = self.enableStandby
-                $0.pause = self.pause
-                $0.stream = self.stream
-            }
-        })
+        self.get(set: false) { options, _ in
+            guard let options = options else { return }
+            self.run(options: Skyle_OptionMessage.with {
+                $0.options = Skyle_Options.with {
+                    $0.enablePause = on
+                    $0.enableStandby = options.enableStandby
+                    $0.pause = options.pause
+                    $0.stream = options.stream
+                    $0.disableMouse = options.disableMouse
+                }
+            })
+        }
+    }
+    
+    private func mouse(disabled: Bool) {
+        guard self.disableMouse != disabled, self.options?.disableMouse != disabled else {
+            return
+        }
+        self.get(set: false) { options, _ in
+            guard let options = options else { return }
+            self.run(options: Skyle_OptionMessage.with {
+                $0.options = Skyle_Options.with {
+                    $0.disableMouse = disabled
+                    $0.pause = options.pause
+                    $0.enablePause = options.enablePause
+                    $0.enableStandby = options.enableStandby
+                    $0.stream = options.stream
+                }
+            })
+        }
     }
 }

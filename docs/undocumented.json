@@ -22,6 +22,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Calibration.swift",
+      "line": 215,
+      "symbol": "ET.Calibration.fakeCalibration(points:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
       "line": 23,
       "symbol": "Point.x",
@@ -30,63 +37,63 @@
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
-      "line": 25,
+      "line": 24,
       "symbol": "Point.y",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
-      "line": 27,
+      "line": 25,
       "symbol": "Point.init(x:y:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
-      "line": 296,
+      "line": 295,
       "symbol": "ET.GRPCErrorProvider.error",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
-      "line": 297,
+      "line": 296,
       "symbol": "ET.GRPCErrorProvider.file",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
-      "line": 298,
+      "line": 297,
       "symbol": "ET.GRPCErrorProvider.line",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
-      "line": 301,
+      "line": 300,
       "symbol": "ET.Delegate",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
-      "line": 304,
+      "line": 303,
       "symbol": "ET.Delegate.HardInterface",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
-      "line": 305,
+      "line": 304,
       "symbol": "ET.Delegate.HardInterface.connected",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ET.swift",
-      "line": 306,
+      "line": 305,
       "symbol": "ET.Delegate.HardInterface.ip",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
@@ -158,6 +165,20 @@
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/ObservableArray.swift",
       "line": 38,
       "symbol": "ObservableArray.deinit",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Positioning.swift",
+      "line": 154,
+      "symbol": "ET.Positioning.fakeStart()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Positioning.swift",
+      "line": 167,
+      "symbol": "ET.Positioning.fakeStop()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
@@ -338,7 +359,7 @@
     },
     {
       "file": "/Users/Kw/Documents_local/SkyleSwiftSDK/Sources/SkyleSwiftSDK/Protos/Skyle.pb.swift",
-      "line": 731,
+      "line": 737,
       "symbol": "Skyle_Profile.Skill",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"

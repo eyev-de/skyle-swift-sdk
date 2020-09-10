@@ -212,4 +212,51 @@ extension ET.Calibration {
         return ret - height / 2.0
     }
     
+    public func fakeCalibration(points: [Int] = Points.Nine) {
+        var calibrationPoints: [SkyleSwiftSDK.Point] = []
+        var qualities: [Double] = []
+        if points == Points.Nine {
+            qualities = [5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0, 5.0]
+            calibrationPoints = [
+                SkyleSwiftSDK.Point(x: 218.53436547032607, y: 218.51314142678348),
+                SkyleSwiftSDK.Point(x: 1366.3204316209242, y: 218.51314142678348),
+                SkyleSwiftSDK.Point(x: 2513.465634529674, y: 218.51314142678348),
+                SkyleSwiftSDK.Point(x: 218.53436547032607, y: 1024.0),
+                SkyleSwiftSDK.Point(x: 1366.3204316209242, y: 1024.0),
+                SkyleSwiftSDK.Point(x: 2513.465634529674, y: 1024.0),
+                SkyleSwiftSDK.Point(x: 218.53436547032607, y: 1829.4868585732165),
+                SkyleSwiftSDK.Point(x: 1366.3204316209242, y: 1829.4868585732165),
+                SkyleSwiftSDK.Point(x: 2513.465634529674, y: 1829.4868585732165),
+            ]
+        } else if points == Points.Five {
+            qualities = [5.0, 5.0, 5.0, 5.0, 5.0]
+            calibrationPoints = [
+                SkyleSwiftSDK.Point(x: 218.53436547032607, y: 218.51314142678348),
+                SkyleSwiftSDK.Point(x: 2513.465634529674, y: 218.51314142678348),
+                SkyleSwiftSDK.Point(x: 1366.3204316209242, y: 1024.0),
+                SkyleSwiftSDK.Point(x: 218.53436547032607, y: 1829.4868585732165),
+                SkyleSwiftSDK.Point(x: 2513.465634529674, y: 1829.4868585732165),
+            ]
+        }
+        let queue = DispatchQueue(label: "fakeCalibration")
+        queue.async {
+            DispatchQueue.main.async { [weak self] in
+                self?.state = .running
+            }
+            for (index, point) in calibrationPoints.enumerated() {
+                Thread.sleep(forTimeInterval: 1)
+                DispatchQueue.main.async { [weak self] in
+                    self?.currentPoint = index
+                    self?.point = point
+                }
+            }
+            Thread.sleep(forTimeInterval: 1)
+            DispatchQueue.main.async { [weak self] in
+                self?.quality = 5.0
+                self?.qualities = qualities
+                self?.state = .finished
+            }
+        }
+    }
+    
 }
