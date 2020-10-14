@@ -49,41 +49,42 @@ extension ET {
             guard let client = self.client else {
                 return
             }
-            DispatchQueue.main.async { [weak self] in
-                self?.profiles.removeAll(keepingCapacity: true)
-                DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                    var tempProfiles: [ET.Profile] = []
-                    self?.getAllCall = client.getProfiles(Google_Protobuf_Empty()) { profile in
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                var tempProfiles: [ET.Profile] = []
+                self?.getAllCall = client.getProfiles(Google_Protobuf_Empty()) { profile in
+                    DispatchQueue.main.async { [weak self] in
+                        if self?.state != .running {
+                            self?.state = .running
+                        }
+                    }
+                    let temp = ET.Profile(profile)
+                    temp.client = self?.client
+                    tempProfiles.append(temp)
+                }
+                
+                self?.getAllCall?.status.whenComplete { result in
+                    switch result {
+                    case .failure(let error):
+                        completion(nil, .error(error))
                         DispatchQueue.main.async { [weak self] in
-                            if self?.state != .running {
-                                self?.state = .running
+                            self?.state = .error(error)
+                        }
+                    case .success(let status):
+                        completion(self?.profiles, .finished)
+                        if status.code != .ok && status.code != .cancelled {
+                            DispatchQueue.main.async { [weak self] in
+                                self?.state = .failed(status)
                             }
                         }
-                        let temp = ET.Profile(profile)
-                        temp.client = self?.client
-                        tempProfiles.append(temp)
-                    }
-                    
-                    self?.getAllCall?.status.whenComplete { result in
-                        switch result {
-                        case .failure(let error):
-                            completion(nil, .error(error))
-                            DispatchQueue.main.async { [weak self] in
-                                self?.state = .error(error)
+                        DispatchQueue.main.async { [weak self] in
+                            if self?.state != .finished {
+                                self?.state = .finished
                             }
-                        case .success(let status):
-                            completion(self?.profiles, .finished)
-                            if status.code != .ok && status.code != .cancelled {
-                                DispatchQueue.main.async { [weak self] in
-                                    self?.state = .failed(status)
-                                }
-                            }
-                            DispatchQueue.main.async { [weak self] in
-                                if self?.state != .finished {
-                                    self?.state = .finished
-                                }
+                            if !(self?.profiles.elementsEqual(tempProfiles, by: { $0.id == $1.id && $0.name == $1.name && $0.skill == $1.skill }) ?? false) {
+                                self?.profiles.removeAll(keepingCapacity: true)
                                 self?.profiles = tempProfiles
                             }
+                            
                         }
                     }
                 }
