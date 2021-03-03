@@ -146,12 +146,14 @@ extension ET.Calibration {
                             to perform a possible recalibration of certain points.
             - width: Screen width in pixels.
             - height: Screen height in pixels.
+            - stepped: Indicating if the user wants to manually step through the calibration points. Need to call next()
      */
     public func start(points: [Int] = Points.Nine,
                       stopHID: Bool = true,
                       recalibrate: Bool = false,
                       width: Int32 = ET.Calibration.width,
-                      height: Int32 = ET.Calibration.height) {
+                      height: Int32 = ET.Calibration.height,
+                      stepped: Bool = false) {
         guard self.state != .running, self.state != .connecting else {
             return
         }
@@ -166,6 +168,7 @@ extension ET.Calibration {
                     self?.control = Skyle_calibControlMessages.with {
                         $0.calibControl.calibrate = true
                         $0.calibControl.stopHid = stopHID
+                        $0.calibControl.stepByStep = stepped
                         $0.calibControl.numberOfPoints = Int32(points.count)
                         var res = Skyle_ScreenResolution()
                         res.width = width
@@ -191,6 +194,18 @@ extension ET.Calibration {
             self?.kill()
         }
     }
+    /// When stepByStep is true this will request the next calibration point
+    public func next() {
+        guard self.state == .running || self.state == .connecting else {
+            return
+        }
+        DispatchQueue.main.async { [weak self] in
+            self?.control = Skyle_calibControlMessages.with {
+                $0.calibConfirm.confirmed = true
+            }
+        }
+    }
+    
     /// The width in pixels of the iPad Pro 12,9
     public static let width: Int32 = 2732
     /// The height in pixels of the iPad Pro 12,9

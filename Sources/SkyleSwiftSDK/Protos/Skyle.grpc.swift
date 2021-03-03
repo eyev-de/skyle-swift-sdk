@@ -46,6 +46,12 @@ public protocol Skyle_SkyleClientProtocol: GRPCClient {
     handler: @escaping (Skyle_Point) -> Void
   ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Point>
 
+  func trigger(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions?,
+    handler: @escaping (Skyle_TriggerMessage) -> Void
+  ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_TriggerMessage>
+
   func getButton(
     _ request: SwiftProtobuf.Google_Protobuf_Empty,
     callOptions: CallOptions?
@@ -150,6 +156,26 @@ extension Skyle_SkyleClientProtocol {
   ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_Point> {
     return self.makeServerStreamingCall(
       path: "/Skyle.Skyle/Gaze",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      handler: handler
+    )
+  }
+
+  ///Subscribe a trigger stream, that sends trigger messages, when a user fixates a point or clicks. Client needs to close the stream when done
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to Trigger.
+  ///   - callOptions: Call options.
+  ///   - handler: A closure called when each response is received from the server.
+  /// - Returns: A `ServerStreamingCall` with futures for the metadata and status.
+  public func trigger(
+    _ request: SwiftProtobuf.Google_Protobuf_Empty,
+    callOptions: CallOptions? = nil,
+    handler: @escaping (Skyle_TriggerMessage) -> Void
+  ) -> ServerStreamingCall<SwiftProtobuf.Google_Protobuf_Empty, Skyle_TriggerMessage> {
+    return self.makeServerStreamingCall(
+      path: "/Skyle.Skyle/Trigger",
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
       handler: handler
@@ -336,6 +362,8 @@ public protocol Skyle_SkyleProvider: CallHandlerProvider {
   func positioning(request: SwiftProtobuf.Google_Protobuf_Empty, context: StreamingResponseCallContext<Skyle_PositioningMessage>) -> EventLoopFuture<GRPCStatus>
   ///Subscribe a gaze stream, that sends coordinates of the current user gaze on a screen. Client needs to close the stream when done
   func gaze(request: SwiftProtobuf.Google_Protobuf_Empty, context: StreamingResponseCallContext<Skyle_Point>) -> EventLoopFuture<GRPCStatus>
+  ///Subscribe a trigger stream, that sends trigger messages, when a user fixates a point or clicks. Client needs to close the stream when done
+  func trigger(request: SwiftProtobuf.Google_Protobuf_Empty, context: StreamingResponseCallContext<Skyle_TriggerMessage>) -> EventLoopFuture<GRPCStatus>
   ///Unary call to get the button status
   func getButton(request: SwiftProtobuf.Google_Protobuf_Empty, context: StatusOnlyCallContext) -> EventLoopFuture<Skyle_Button>
   ///Unary call to configure the button actions, answers with the resulting configuration
@@ -379,6 +407,13 @@ extension Skyle_SkyleProvider {
       return CallHandlerFactory.makeServerStreaming(callHandlerContext: callHandlerContext) { context in
         return { request in
           self.gaze(request: request, context: context)
+        }
+      }
+
+    case "Trigger":
+      return CallHandlerFactory.makeServerStreaming(callHandlerContext: callHandlerContext) { context in
+        return { request in
+          self.trigger(request: request, context: context)
         }
       }
 

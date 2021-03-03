@@ -10,7 +10,7 @@
 ///*
 /// Full protocol that is used to interface with the Skyle eye tracker with gRPC
 ///
-/// (c) 2020 eyeV GmbH, written by Mathias Anhalt
+/// (c) 2020 - 2021 eyeV GmbH, written by Mathias Anhalt
 ///
 /// https://eyev.de/
 
@@ -25,6 +25,30 @@ import SwiftProtobuf
 fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAPIVersionCheck {
   struct _2: SwiftProtobuf.ProtobufAPIVersion_2 {}
   typealias Version = _2
+}
+
+///*
+/// Message to indicate a trigger
+public struct Skyle_TriggerMessage {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  ///indicates single click on attached button
+  public var singleClick: Bool = false
+
+  ///indicates double click on attached button
+  public var doubleClick: Bool = false
+
+  ///indicates that attached button is constantly pushed
+  public var holdClick: Bool = false
+
+  ///indicates that a user is fixating a point
+  public var fixation: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
 }
 
 ///*
@@ -210,6 +234,15 @@ public struct Skyle_calibControlMessages {
     set {message = .calibImprove(newValue)}
   }
 
+  ///Message to confirm this point on a step by step calib
+  public var calibConfirm: Skyle_CalibConfirm {
+    get {
+      if case .calibConfirm(let v)? = message {return v}
+      return Skyle_CalibConfirm()
+    }
+    set {message = .calibConfirm(newValue)}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_Message: Equatable {
@@ -217,12 +250,15 @@ public struct Skyle_calibControlMessages {
     case calibControl(Skyle_CalibControl)
     ///Message to improve a calibration
     case calibImprove(Skyle_CalibImprove)
+    ///Message to confirm this point on a step by step calib
+    case calibConfirm(Skyle_CalibConfirm)
 
   #if !swift(>=4.1)
     public static func ==(lhs: Skyle_calibControlMessages.OneOf_Message, rhs: Skyle_calibControlMessages.OneOf_Message) -> Bool {
       switch (lhs, rhs) {
       case (.calibControl(let l), .calibControl(let r)): return l == r
       case (.calibImprove(let l), .calibImprove(let r)): return l == r
+      case (.calibConfirm(let l), .calibConfirm(let r)): return l == r
       default: return false
       }
     }
@@ -261,6 +297,9 @@ public struct Skyle_CalibControl {
   /// Clears the value of `res`. Subsequent reads from it will return its default value.
   public mutating func clearRes() {self._res = nil}
 
+  ///Indicates a manual step by step calib (each point gets confirmed by client or button)
+  public var stepByStep: Bool = false
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -298,6 +337,21 @@ public struct Skyle_CalibImprove {
 
   ///If connected to an iPad or tablet, this will indicate if the native cursor should move or not
   public var stopHid: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+///*
+/// Message to confirm a calibration point
+public struct Skyle_CalibConfirm {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  ///confirmed this point
+  public var confirmed: Bool = false
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -652,6 +706,53 @@ public struct Skyle_FilterOptions {
 
 fileprivate let _protobuf_package = "Skyle"
 
+extension Skyle_TriggerMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".TriggerMessage"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "singleClick"),
+    2: .same(proto: "doubleClick"),
+    3: .same(proto: "holdClick"),
+    4: .same(proto: "fixation"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBoolField(value: &self.singleClick)
+      case 2: try decoder.decodeSingularBoolField(value: &self.doubleClick)
+      case 3: try decoder.decodeSingularBoolField(value: &self.holdClick)
+      case 4: try decoder.decodeSingularBoolField(value: &self.fixation)
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.singleClick != false {
+      try visitor.visitSingularBoolField(value: self.singleClick, fieldNumber: 1)
+    }
+    if self.doubleClick != false {
+      try visitor.visitSingularBoolField(value: self.doubleClick, fieldNumber: 2)
+    }
+    if self.holdClick != false {
+      try visitor.visitSingularBoolField(value: self.holdClick, fieldNumber: 3)
+    }
+    if self.fixation != false {
+      try visitor.visitSingularBoolField(value: self.fixation, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Skyle_TriggerMessage, rhs: Skyle_TriggerMessage) -> Bool {
+    if lhs.singleClick != rhs.singleClick {return false}
+    if lhs.doubleClick != rhs.doubleClick {return false}
+    if lhs.holdClick != rhs.holdClick {return false}
+    if lhs.fixation != rhs.fixation {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Skyle_ResetMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ResetMessage"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -825,6 +926,7 @@ extension Skyle_calibControlMessages: SwiftProtobuf.Message, SwiftProtobuf._Mess
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "calibControl"),
     2: .same(proto: "calibImprove"),
+    3: .same(proto: "calibConfirm"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -846,6 +948,14 @@ extension Skyle_calibControlMessages: SwiftProtobuf.Message, SwiftProtobuf._Mess
         }
         try decoder.decodeSingularMessageField(value: &v)
         if let v = v {self.message = .calibImprove(v)}
+      case 3:
+        var v: Skyle_CalibConfirm?
+        if let current = self.message {
+          try decoder.handleConflictingOneOf()
+          if case .calibConfirm(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {self.message = .calibConfirm(v)}
       default: break
       }
     }
@@ -857,6 +967,8 @@ extension Skyle_calibControlMessages: SwiftProtobuf.Message, SwiftProtobuf._Mess
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     case .calibImprove(let v)?:
       try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
+    case .calibConfirm(let v)?:
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
     case nil: break
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -877,6 +989,7 @@ extension Skyle_CalibControl: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     3: .same(proto: "abort"),
     4: .same(proto: "stopHID"),
     5: .same(proto: "res"),
+    6: .same(proto: "stepByStep"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -887,6 +1000,7 @@ extension Skyle_CalibControl: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
       case 3: try decoder.decodeSingularBoolField(value: &self.abort)
       case 4: try decoder.decodeSingularBoolField(value: &self.stopHid)
       case 5: try decoder.decodeSingularMessageField(value: &self._res)
+      case 6: try decoder.decodeSingularBoolField(value: &self.stepByStep)
       default: break
       }
     }
@@ -908,6 +1022,9 @@ extension Skyle_CalibControl: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     if let v = self._res {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
     }
+    if self.stepByStep != false {
+      try visitor.visitSingularBoolField(value: self.stepByStep, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -917,6 +1034,7 @@ extension Skyle_CalibControl: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     if lhs.abort != rhs.abort {return false}
     if lhs.stopHid != rhs.stopHid {return false}
     if lhs._res != rhs._res {return false}
+    if lhs.stepByStep != rhs.stepByStep {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -987,6 +1105,35 @@ extension Skyle_CalibImprove: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   public static func ==(lhs: Skyle_CalibImprove, rhs: Skyle_CalibImprove) -> Bool {
     if lhs.rating != rhs.rating {return false}
     if lhs.stopHid != rhs.stopHid {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Skyle_CalibConfirm: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CalibConfirm"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "confirmed"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularBoolField(value: &self.confirmed)
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.confirmed != false {
+      try visitor.visitSingularBoolField(value: self.confirmed, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Skyle_CalibConfirm, rhs: Skyle_CalibConfirm) -> Bool {
+    if lhs.confirmed != rhs.confirmed {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
