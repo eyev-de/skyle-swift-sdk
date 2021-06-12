@@ -28,8 +28,11 @@ extension ET {
         /// A simple struct containing the possible calibrations represented as array of ids.
         // swiftlint:disable nesting
         public struct Points {
+            public static let One = [4]
+            public static let Two = [0, 8]
             public static let Five = [0, 2, 4, 6, 8]
             public static let Nine = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+            public static var All:[[Int]] = [Points.One, Points.Two, Points.Five, Points.Nine]
         }
         
         /// The `type` property exposes a `Publisher` which indicates the type of calibration.
