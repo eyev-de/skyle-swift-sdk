@@ -10,11 +10,11 @@ It works on >= macOS 10.15 Catalina and >= iPadOS 13
 
 **You need to install the following to get RNDIS support on macOS: [hoRNDIS](https://github.com/jwise/horndis)**
 
+[FOLLOW THESE STEPS TO INSTALL ON BIG SUR](https://github.com/jwise/HoRNDIS/issues/132#issuecomment-745607263)
+
 # Example
 
 To dive straight in you can generate a Playground with the repository using [arena](https://github.com/finestructure/Arena).
-
-[FOLLOW THESE STEPS TO INSTALL ON BIG SUR](https://github.com/jwise/HoRNDIS/issues/132#issuecomment-745607263)
 
 Just follow the install instructions and execute the following:
 
